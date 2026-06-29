@@ -11,7 +11,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://finedining.example.com",
   base: "/",
   integrations: [mdx(), sitemap(), pagefind(), icon()],
 
@@ -19,10 +19,17 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   experimental: {
-    fonts: [{
+    fonts: [
+      {
         provider: fontProviders.fontsource(),
-        name: "Space Grotesk",
-        cssVariable: "--font-main",
-    }]
-    }
+        name: "Cormorant Garamond",
+        cssVariable: "--font-display",
+      },
+      {
+        provider: fontProviders.fontsource(),
+        name: "Inter",
+        cssVariable: "--font-sans",
+      }
+    ]
+  }
 });

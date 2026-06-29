@@ -1,6 +1,6 @@
 site:
-  title: "My Site"
-  description: "A modern Astro scaffolding ready for development."
-  based: "City, Country"
-  timezone: "UTC"
-  locale: "en-US"
+  title: "L'Étoile"
+  description: "A luxury fine dining restaurant experience."
+  based: "Paris, France"
+  timezone: "Europe/Paris"
+  locale: "fr-FR"

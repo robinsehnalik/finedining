@@ -4,10 +4,28 @@ const site = await getSite();
 const today = new Date();
 ---
 
-<footer class="border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-8">
-  <div class="content-shell">
-    <div class="flex items-center justify-between">
-      <p class="text-sm text-ink m-0"> {site.title} &copy; {today.getFullYear()}. All rights reserved. </p>
+<footer class="border-t border-[color:var(--color-border)] bg-[color:var(--color-paper)] py-16">
+  <div class="content-shell max-w-3xl mx-auto text-center space-y-8">
+    <div class="space-y-2">
+      <h3 class="text-2xl font-light tracking-[0.1em] uppercase">{site.title}</h3>
+      <p class="text-xs uppercase tracking-[0.2em] text-muted">Paris</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 pt-4 text-xs tracking-[0.15em] uppercase text-muted">
+      <div class="space-y-2">
+        <p class="font-medium text-ink">Hours</p>
+        <p>Tuesday – Saturday</p>
+        <p>19:00 – 23:00</p>
+      </div>
+      <div class="space-y-2">
+        <p class="font-medium text-ink">Location</p>
+        <p>12 Rue de la Paix, Paris</p>
+        <p>reservations@letoile.com</p>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-[color:var(--color-border)] text-[0.65rem] tracking-[0.2em] uppercase text-muted">
+      <p>{site.title} &copy; {today.getFullYear()}. All rights reserved.</p>
     </div>
   </div>
 </footer>

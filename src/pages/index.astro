@@ -1,16 +1,244 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import Hero from '../components/Hero.astro';
+import { Image } from 'astro:assets';
 import { getSite } from '../utils/consts';
+
+import heroWagyu from '../assets/hero_wagyu.png';
+import storySetting from '../assets/story_setting.png';
+import menuDessert from '../assets/menu_dessert.png';
+
 const site = await getSite();
 ---
 
-<PageLayout
-	title={site.title}
->
-	<Hero
-		eyebrow="Welcome"
-		title="A modern Astro scaffolding ready for development."
-		description="Kickstart your next website with a solid foundation. Customize this homepage by editing src/pages/index.astro."
-	/>
+<PageLayout title={`${site.title} · Paris`} description={site.description}>
+  <!-- Section: Landing Hero -->
+  <section class="hero-split min-h-[90vh] grid md:grid-cols-2 items-center gap-12 py-12 md:py-24">
+    <div class="space-y-8 max-w-xl">
+      <p class="text-xs uppercase tracking-[0.3em] text-muted">L'Art de la Table</p>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-light leading-none tracking-tight text-ink">
+        A symphony of pure taste.
+      </h1>
+      <p class="text-sm font-light text-muted leading-relaxed max-w-md">
+        An intimate culinary salon in Paris. We present a singular dining experience where raw French heritage meets contemporary culinary technique.
+      </p>
+      <div class="pt-4">
+        <a href="#menu" class="button primary uppercase tracking-widest text-xs py-4 px-8 border border-ink hover:bg-transparent hover:text-ink transition-colors">
+          Explore The Menu
+        </a>
+      </div>
+    </div>
+    <div class="h-[60vh] md:h-[80vh] w-full overflow-hidden border border-[color:var(--color-border)]">
+      <Image 
+        src={heroWagyu} 
+        alt="A5 Wagyu Beef culinary presentation" 
+        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+      />
+    </div>
+  </section>
+
+  <!-- Section: Our Story -->
+  <section id="story" class="py-24 md:py-36 border-t border-[color:var(--color-border)]">
+    <div class="grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-5 h-[50vh] md:h-[70vh] overflow-hidden border border-[color:var(--color-border)]">
+        <Image 
+          src={storySetting} 
+          alt="Minimalist table setting at L'Étoile" 
+          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+        />
+      </div>
+      <div class="md:col-span-6 md:col-start-7 space-y-8">
+        <p class="text-xs uppercase tracking-[0.3em] text-muted">The Philosophy</p>
+        <h2 class="text-4xl sm:text-5xl font-light leading-tight text-ink">
+          Crafted with intent, shaped by nature.
+        </h2>
+        <div class="space-y-6 text-sm font-light text-muted leading-relaxed max-w-lg">
+          <p>
+            At L'Étoile, we believe that space and silence are as crucial to a dining experience as the food itself. Our dining room is designed as an acoustic and visual sanctuary, letting the focus return completely to aroma, texture, and flavor.
+          </p>
+          <p>
+            Every ingredient is sourced from independent biodynamic micro-farms across France, harvested at dawn, and presented on your plate by nightfall.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: The Menu -->
+  <section id="menu" class="py-24 md:py-36 border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+    <div class="max-w-4xl mx-auto space-y-16">
+      <div class="text-center space-y-4">
+        <p class="text-xs uppercase tracking-[0.3em] text-muted">Carte du Soir</p>
+        <h2 class="text-4xl sm:text-5xl font-light text-ink">Menu Dégustation</h2>
+        <p class="text-xs italic text-muted tracking-wide">A curated eight-course experience &middot; €240</p>
+      </div>
+
+      <div class="space-y-12">
+        <!-- Item 1 -->
+        <div class="menu-item space-y-2">
+          <div class="flex justify-between items-baseline">
+            <h3 class="text-xl font-light tracking-wide text-ink">Le Tourteau</h3>
+            <span class="text-sm font-light text-muted">€38</span>
+          </div>
+          <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
+            Dungeness crab, seaweed gelée, toasted brioche air, preserved Meyer lemon.
+          </p>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="menu-item space-y-2">
+          <div class="flex justify-between items-baseline">
+            <h3 class="text-xl font-light tracking-wide text-ink">L'Asperge Blanche</h3>
+            <span class="text-sm font-light text-muted">€42</span>
+          </div>
+          <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
+            Loire Valley white asparagus, wild garlic emulsion, hazelnut crisp, brown butter.
+          </p>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="menu-item space-y-2">
+          <div class="flex justify-between items-baseline">
+            <h3 class="text-xl font-light tracking-wide text-ink">Le Saint-Pierre</h3>
+            <span class="text-sm font-light text-muted">€56</span>
+          </div>
+          <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
+            Wild John Dory, roasted kelp oil, sea fennel, shellfish reduction.
+          </p>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="menu-item space-y-2">
+          <div class="flex justify-between items-baseline">
+            <h3 class="text-xl font-light tracking-wide text-ink">Le Boeuf A5</h3>
+            <span class="text-sm font-light text-muted">€85</span>
+          </div>
+          <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
+            Seared Wagyu beef, charred leek ash, truffle jus, fermented potato purée.
+          </p>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="menu-item space-y-2">
+          <div class="flex justify-between items-baseline">
+            <h3 class="text-xl font-light tracking-wide text-ink">Le Sphère de Raspberry</h3>
+            <span class="text-sm font-light text-muted">€32</span>
+          </div>
+          <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
+            White chocolate glaze, fresh organic raspberries, rosewater, edible gold leaf.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center pt-12">
+        <div class="space-y-4">
+          <h4 class="text-lg font-light tracking-wide text-ink">Wine Pairing</h4>
+          <p class="text-xs font-light text-muted leading-relaxed">
+            Curated by our head sommelier, selecting exceptional vintages from historical estates and avant-garde natural vineyards across Burgundy and the Rhône Valley.
+          </p>
+          <p class="text-xs italic text-muted tracking-wide">Sommelier Selection &middot; €140</p>
+        </div>
+        <div class="h-64 overflow-hidden border border-[color:var(--color-border)]">
+          <Image 
+            src={menuDessert} 
+            alt="Minimalist luxury dessert presentation" 
+            class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Reservations -->
+  <section id="reservations" class="py-24 md:py-36 border-t border-[color:var(--color-border)]">
+    <div class="max-w-xl mx-auto space-y-12">
+      <div class="text-center space-y-4">
+        <p class="text-xs uppercase tracking-[0.3em] text-muted">Join Us</p>
+        <h2 class="text-4xl sm:text-5xl font-light text-ink">Make a Reservation</h2>
+        <p class="text-xs font-light text-muted leading-relaxed">
+          Due to our intimate seating capacity, we recommend reserving four weeks in advance.
+        </p>
+      </div>
+
+      <form class="space-y-8" onsubmit="event.preventDefault(); alert('Reservation Request Received. We will contact you shortly.');">
+        <div class="grid grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">Date</label>
+            <input 
+              type="date" 
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none focus:border-ink transition-colors" 
+              required 
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">Guests</label>
+            <select 
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none focus:border-ink transition-colors"
+              required
+            >
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5+ Guests</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">Name</label>
+            <input 
+              type="text" 
+              placeholder="Your Name" 
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/50 focus:border-ink transition-colors" 
+              required 
+            />
+          </div>
+          <div class="space-y-2">
+            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">Email</label>
+            <input 
+              type="email" 
+              placeholder="your@email.com" 
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/50 focus:border-ink transition-colors" 
+              required 
+            />
+          </div>
+        </div>
+
+        <div class="pt-4 text-center">
+          <button 
+            type="submit" 
+            class="button primary uppercase tracking-widest text-xs py-4 px-12 border border-ink hover:bg-transparent hover:text-ink transition-colors w-full sm:w-auto"
+          >
+            Request Table
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
 </PageLayout>
+
+<style>
+  .hero-split {
+    padding-top: 100px;
+  }
+
+  .menu-item {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+  }
+
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Fine Dining specific overrides for typography sizes and letter spacing */
+  h1, h2, h3, h4 {
+    letter-spacing: 0.05em;
+  }
+
+  input, select {
+    color: var(--color-ink);
+    border-radius: 0;
+  }
+</style>
