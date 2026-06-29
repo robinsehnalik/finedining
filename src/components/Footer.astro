@@ -1,0 +1,13 @@
+---
+import { getSite } from '../utils/consts';
+const site = await getSite();
+const today = new Date();
+---
+
+<footer class="border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-8">
+  <div class="content-shell">
+    <div class="flex items-center justify-between">
+      <p class="text-sm text-ink m-0"> {site.title} &copy; {today.getFullYear()}. All rights reserved. </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,16 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import { getSite } from '../utils/consts';
+const site = await getSite();
+---
+
+<PageLayout
+	title={site.title}
+>
+	<Hero
+		eyebrow="Welcome"
+		title="A modern Astro scaffolding ready for development."
+		description="Kickstart your next website with a solid foundation. Customize this homepage by editing src/pages/index.astro."
+	/>
+</PageLayout>

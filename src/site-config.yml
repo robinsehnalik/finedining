@@ -1,0 +1,6 @@
+site:
+  title: "My Site"
+  description: "A modern Astro scaffolding ready for development."
+  based: "City, Country"
+  timezone: "UTC"
+  locale: "en-US"
