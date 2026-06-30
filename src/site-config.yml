@@ -1,6 +1,6 @@
 site:
-  title: "L'Étoile"
-  description: "A luxury fine dining restaurant experience."
-  based: "Paris, France"
-  timezone: "Europe/Paris"
-  locale: "fr-FR"
+  title: "V Zátiší"
+  description: "Moderní interpretace lokálních chutí z farem a lesů."
+  based: "Prague, Czech Republic"
+  timezone: "Europe/Prague"
+  locale: "cs-CZ"

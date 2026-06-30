@@ -1,59 +1,192 @@
 ---
 import { getSite } from "../utils/consts";
 const site = await getSite();
-import ThemeToggle from "./ThemeToggle.astro";
 const subpath = import.meta.env.BASE_URL;
 ---
 
-<header class="fixed w-full z-30 flex items-center bg-[color:var(--color-paper)]/90 backdrop-blur-md border-b border-[color:var(--color-border)]">
-  <div class="content-shell w-full py-5">
+<header class="fixed w-full z-30 flex items-center bg-[color:var(--color-paper)]/90 backdrop-blur-md">
+  <div class="content-shell w-full py-6">
     <div class="flex items-center justify-between w-full">
-      <div>
-        <a href={subpath} class="brand-link" aria-label={site.title}>
-          <span class="brand-text">{site.title}</span>
-        </a>
-      </div>
-      
-      <nav class="hidden md:flex items-center gap-8 text-[0.72rem] tracking-[0.25em] uppercase text-muted">
-        <a href="#menu" class="nav-link">The Menu</a>
-        <a href="#story" class="nav-link">Our Story</a>
-        <a href="#reservations" class="nav-link">Reservations</a>
-      </nav>
+      <!-- Left side: Custom Logo & Brand Name -->
+      <a href={subpath} class="logo-group" aria-label={site.title}>
+        <div class="logo-box">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <rect x="5" y="5" width="90" height="90" fill="none" stroke="var(--color-gold)" stroke-width="4"></rect>
+            <line x1="5" y1="95" x2="95" y2="5" stroke="var(--color-gold)" stroke-width="4"></line>
+          </svg>
+        </div>
+        <span class="brand-subtitle">{site.title}</span>
+      </a>
 
-      <div class="flex items-center gap-4">
-        <ThemeToggle />
+      <!-- Right side: Navigation & Language switch & Hamburger -->
+      <div class="flex items-center gap-8 md:gap-12">
+        <nav class="flex items-center gap-6 md:gap-8">
+          <a href="#menu" class="nav-link">
+            <span data-lang="cz">menu ↗</span>
+            <span data-lang="en">menu ↗</span>
+          </a>
+          <a href="#reservations" class="nav-link">
+            <span data-lang="cz">rezervace ↗</span>
+            <span data-lang="en">reservations ↗</span>
+          </a>
+        </nav>
+
+        <!-- Language Switcher -->
+        <div class="lang-switch">
+          <button class="lang-btn" data-lang-target="cz">cz</button>
+          <span class="lang-separator">/</span>
+          <button class="lang-btn" data-lang-target="en">en</button>
+        </div>
+
+        <!-- Hamburger Icon -->
+        <button class="hamburger-btn" aria-label="Toggle navigation">
+          <div class="hamburger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </button>
       </div>
     </div>
   </div>
 </header>
 
+<script is:inline>
+  const STORAGE_KEY = 'vzatisi_lang';
+  const DEFAULT_LANG = 'cz';
+
+  const getPreferredLang = () => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === 'cz' || stored === 'en') return stored;
+    return DEFAULT_LANG;
+  };
+
+  const applyLang = (lang) => {
+    document.documentElement.setAttribute('data-lang', lang);
+    localStorage.setItem(STORAGE_KEY, lang);
+    
+    // Update active class on buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      if (btn.getAttribute('data-lang-target') === lang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  };
+
+  // init lang
+  const currentLang = getPreferredLang();
+  applyLang(currentLang);
+
+  // setup event listeners
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-lang-target');
+      applyLang(target);
+    });
+  });
+</script>
+
 <style>
   header {
-    height: 70px;
-    transition: background-color 150ms ease, border-color 150ms ease;
+    height: 100px;
+    transition: background-color 150ms ease;
   }
 
-  .brand-link {
-    display: inline-flex;
+  .logo-group {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 6px;
+    text-decoration: none;
   }
 
-  .brand-text {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
+  .logo-box {
+    width: 44px;
+    height: 44px;
+  }
+
+  .logo-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .brand-subtitle {
+    font-family: var(--font-sans);
     font-weight: 300;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
     color: var(--color-ink);
   }
 
   .nav-link {
-    font-family: var(--font-sans);
-    font-weight: 300;
-    transition: color 150ms ease;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1.5px solid var(--color-gold);
+    display: inline-flex;
+    align-items: center;
   }
 
-  .nav-link:hover {
+  .lang-switch {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
     color: var(--color-ink);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .lang-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--color-ink);
+    opacity: 0.6;
+    font-weight: 300;
+    transition: opacity 150ms ease, font-weight 150ms ease;
+  }
+
+  .lang-btn:hover {
+    opacity: 1;
+  }
+
+  .lang-btn.active {
+    opacity: 1;
+    font-weight: 700;
+    border-bottom: 1.5px solid var(--color-gold);
+  }
+
+  .lang-separator {
+    color: var(--color-ink);
+    opacity: 0.6;
+    margin: 0 2px;
+  }
+
+  .hamburger-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 28px;
+  }
+
+  .hamburger-menu .bar {
+    height: 1.5px;
+    width: 100%;
+    background-color: var(--color-ink);
   }
 </style>

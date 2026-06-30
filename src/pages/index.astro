@@ -10,29 +10,43 @@ import menuDessert from '../assets/menu_dessert.png';
 const site = await getSite();
 ---
 
-<PageLayout title={`${site.title} · Paris`} description={site.description}>
-  <!-- Section: Landing Hero -->
-  <section class="hero-split min-h-[90vh] grid md:grid-cols-2 items-center gap-12 py-12 md:py-24">
-    <div class="space-y-8 max-w-xl">
-      <p class="text-xs uppercase tracking-[0.3em] text-muted">L'Art de la Table</p>
-      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-light leading-none tracking-tight text-ink">
-        A symphony of pure taste.
-      </h1>
-      <p class="text-sm font-light text-muted leading-relaxed max-w-md">
-        An intimate culinary salon in Paris. We present a singular dining experience where raw French heritage meets contemporary culinary technique.
-      </p>
-      <div class="pt-4">
-        <a href="#menu" class="button primary uppercase tracking-widest text-xs py-4 px-8 border border-ink hover:bg-transparent hover:text-ink transition-colors">
-          Explore The Menu
-        </a>
+<PageLayout title={`${site.title} · Praha`} description={site.description}>
+  <!-- Section: Hero (V Zátiší custom preview layout) -->
+  <section class="hero-section min-h-[90vh] grid md:grid-cols-12 items-center gap-12 py-24 md:py-36">
+    <!-- Left side: Image with overlapping gold logo -->
+    <div class="md:col-span-6 flex justify-center">
+      <div class="hero-image-wrapper">
+        <Image 
+          src={heroWagyu} 
+          alt="Modern gourmet plating presentation" 
+          class="hero-img object-cover border border-[color:var(--color-border)]"
+        />
+        <!-- Overlapping large logo icon at top-right corner -->
+        <div class="large-logo-overlay">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <rect x="5" y="5" width="90" height="90" fill="none" stroke="var(--color-gold)" stroke-width="2.5"></rect>
+            <line x1="5" y1="95" x2="95" y2="5" stroke="var(--color-gold)" stroke-width="2.5"></line>
+          </svg>
+        </div>
       </div>
     </div>
-    <div class="h-[60vh] md:h-[80vh] w-full overflow-hidden border border-[color:var(--color-border)]">
-      <Image 
-        src={heroWagyu} 
-        alt="A5 Wagyu Beef culinary presentation" 
-        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-      />
+
+    <!-- Right side: Editorial monospace quote -->
+    <div class="md:col-span-6 space-y-8 md:pl-6">
+      <h1 class="quote-text font-light tracking-wide text-ink">
+        <span data-lang="cz">
+          Nový koncept, moderní interpretace lokálních chutí z farem a lesů, s příběhy krajiny a špetkou drzosti.
+        </span>
+        <span data-lang="en">
+          A new concept, a modern interpretation of local flavors from farms and forests, with stories of the landscape and a touch of audacity.
+        </span>
+      </h1>
+      
+      <!-- Author row with gold line -->
+      <div class="author-row">
+        <span class="gold-line"></span>
+        <span class="author-name">Marek Všelicha</span>
+      </div>
     </div>
   </section>
 
@@ -42,21 +56,31 @@ const site = await getSite();
       <div class="md:col-span-5 h-[50vh] md:h-[70vh] overflow-hidden border border-[color:var(--color-border)]">
         <Image 
           src={storySetting} 
-          alt="Minimalist table setting at L'Étoile" 
+          alt="Minimalist table setting at V Zátiší" 
           class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
         />
       </div>
       <div class="md:col-span-6 md:col-start-7 space-y-8">
-        <p class="text-xs uppercase tracking-[0.3em] text-muted">The Philosophy</p>
+        <p class="text-xs uppercase tracking-[0.3em] text-muted">
+          <span data-lang="cz">O nás</span>
+          <span data-lang="en">Our Story</span>
+        </p>
         <h2 class="text-4xl sm:text-5xl font-light leading-tight text-ink">
-          Crafted with intent, shaped by nature.
+          <span data-lang="cz">Prostor pro ticho a čistou chuť.</span>
+          <span data-lang="en">A space for silence and pure taste.</span>
         </h2>
         <div class="space-y-6 text-sm font-light text-muted leading-relaxed max-w-lg">
-          <p>
-            At L'Étoile, we believe that space and silence are as crucial to a dining experience as the food itself. Our dining room is designed as an acoustic and visual sanctuary, letting the focus return completely to aroma, texture, and flavor.
+          <p data-lang="cz">
+            Ve V Zátiší věříme, že prostor a klid jsou pro kulinářský zážitek stejně důležité jako jídlo samotné. Naše restaurace je navržena jako útočiště pro smysly, které vám umožní plně se soustředit na vůni, texturu a chuť každého sousta.
           </p>
-          <p>
-            Every ingredient is sourced from independent biodynamic micro-farms across France, harvested at dawn, and presented on your plate by nightfall.
+          <p data-lang="cz">
+            Každá surovina pochází od nezávislých lokálních farmářů z českých luhů a hájů, sbíraná za úsvitu a servírovaná na váš talíř tentýž večer.
+          </p>
+          <p data-lang="en">
+            At V Zátiší, we believe that space and serenity are just as crucial to a dining experience as the food itself. Our dining room is designed as a sensory sanctuary, letting your focus return completely to the aroma, texture, and flavor of each bite.
+          </p>
+          <p data-lang="en">
+            Every ingredient is sourced from independent local farms across the Czech countryside, harvested at dawn, and presented on your plate by nightfall.
           </p>
         </div>
       </div>
@@ -67,9 +91,15 @@ const site = await getSite();
   <section id="menu" class="py-24 md:py-36 border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
     <div class="max-w-4xl mx-auto space-y-16">
       <div class="text-center space-y-4">
-        <p class="text-xs uppercase tracking-[0.3em] text-muted">Carte du Soir</p>
+        <p class="text-xs uppercase tracking-[0.3em] text-muted">
+          <span data-lang="cz">Karta</span>
+          <span data-lang="en">Menu</span>
+        </p>
         <h2 class="text-4xl sm:text-5xl font-light text-ink">Menu Dégustation</h2>
-        <p class="text-xs italic text-muted tracking-wide">A curated eight-course experience &middot; €240</p>
+        <p class="text-xs italic text-muted tracking-wide">
+          <span data-lang="cz">Unikátní osmichodový zážitek &middot; 2400 Kč</span>
+          <span data-lang="en">A curated eight-course experience &middot; €95</span>
+        </p>
       </div>
 
       <div class="space-y-12">
@@ -77,10 +107,14 @@ const site = await getSite();
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
             <h3 class="text-xl font-light tracking-wide text-ink">Le Tourteau</h3>
-            <span class="text-sm font-light text-muted">€38</span>
+            <span class="text-sm font-light text-muted">
+              <span data-lang="cz">380 Kč</span>
+              <span data-lang="en">€15</span>
+            </span>
           </div>
           <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
-            Dungeness crab, seaweed gelée, toasted brioche air, preserved Meyer lemon.
+            <span data-lang="cz">Krab Dungeness, řasové želé, toastový brioškový vzduch, zavařený citron Meyer.</span>
+            <span data-lang="en">Dungeness crab, seaweed gelée, toasted brioche air, preserved Meyer lemon.</span>
           </p>
         </div>
 
@@ -88,10 +122,14 @@ const site = await getSite();
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
             <h3 class="text-xl font-light tracking-wide text-ink">L'Asperge Blanche</h3>
-            <span class="text-sm font-light text-muted">€42</span>
+            <span class="text-sm font-light text-muted">
+              <span data-lang="cz">420 Kč</span>
+              <span data-lang="en">€17</span>
+            </span>
           </div>
           <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
-            Loire Valley white asparagus, wild garlic emulsion, hazelnut crisp, brown butter.
+            <span data-lang="cz">Bílý chřest z údolí Loiry, emulze z divokého česneku, lískooříškový chips, hnědé máslo.</span>
+            <span data-lang="en">Loire Valley white asparagus, wild garlic emulsion, hazelnut crisp, brown butter.</span>
           </p>
         </div>
 
@@ -99,10 +137,14 @@ const site = await getSite();
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
             <h3 class="text-xl font-light tracking-wide text-ink">Le Saint-Pierre</h3>
-            <span class="text-sm font-light text-muted">€56</span>
+            <span class="text-sm font-light text-muted">
+              <span data-lang="cz">560 Kč</span>
+              <span data-lang="en">€22</span>
+            </span>
           </div>
           <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
-            Wild John Dory, roasted kelp oil, sea fennel, shellfish reduction.
+            <span data-lang="cz">Divoká ryba Saint-Pierre, pečený kelpový olej, mořský fenykl, redukce z měkkýšů.</span>
+            <span data-lang="en">Wild John Dory, roasted kelp oil, sea fennel, shellfish reduction.</span>
           </p>
         </div>
 
@@ -110,10 +152,14 @@ const site = await getSite();
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
             <h3 class="text-xl font-light tracking-wide text-ink">Le Boeuf A5</h3>
-            <span class="text-sm font-light text-muted">€85</span>
+            <span class="text-sm font-light text-muted">
+              <span data-lang="cz">850 Kč</span>
+              <span data-lang="en">€34</span>
+            </span>
           </div>
           <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
-            Seared Wagyu beef, charred leek ash, truffle jus, fermented potato purée.
+            <span data-lang="cz">Grilované hovězí Wagyu, popel z pórku, lanýžová šťáva, fermentované bramborové pyré.</span>
+            <span data-lang="en">Seared Wagyu beef, charred leek ash, truffle jus, fermented potato purée.</span>
           </p>
         </div>
 
@@ -121,21 +167,32 @@ const site = await getSite();
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
             <h3 class="text-xl font-light tracking-wide text-ink">Le Sphère de Raspberry</h3>
-            <span class="text-sm font-light text-muted">€32</span>
+            <span class="text-sm font-light text-muted">
+              <span data-lang="cz">320 Kč</span>
+              <span data-lang="en">€13</span>
+            </span>
           </div>
           <p class="text-xs font-light text-muted leading-relaxed max-w-2xl">
-            White chocolate glaze, fresh organic raspberries, rosewater, edible gold leaf.
+            <span data-lang="cz">Poleva z bílé čokolády, čerstvé bio maliny, růžová voda, plátkové zlato.</span>
+            <span data-lang="en">White chocolate glaze, fresh organic raspberries, rosewater, edible gold leaf.</span>
           </p>
         </div>
       </div>
 
       <div class="grid md:grid-cols-2 gap-12 items-center pt-12">
         <div class="space-y-4">
-          <h4 class="text-lg font-light tracking-wide text-ink">Wine Pairing</h4>
+          <h4 class="text-lg font-light tracking-wide text-ink">
+            <span data-lang="cz">Párování vína</span>
+            <span data-lang="en">Wine Pairing</span>
+          </h4>
           <p class="text-xs font-light text-muted leading-relaxed">
-            Curated by our head sommelier, selecting exceptional vintages from historical estates and avant-garde natural vineyards across Burgundy and the Rhône Valley.
+            <span data-lang="cz">Pečlivě vybráno naším hlavním sommelierem. Nabízíme výjimečné ročníky z historických panství i avantgardních přírodních vinařství z Burgundska a údolí Rhôny.</span>
+            <span data-lang="en">Curated by our head sommelier, selecting exceptional vintages from historical estates and avant-garde natural vineyards across Burgundy and the Rhône Valley.</span>
           </p>
-          <p class="text-xs italic text-muted tracking-wide">Sommelier Selection &middot; €140</p>
+          <p class="text-xs italic text-muted tracking-wide">
+            <span data-lang="cz">Výběr sommeliera &middot; 1400 Kč</span>
+            <span data-lang="en">Sommelier Selection &middot; €55</span>
+          </p>
         </div>
         <div class="h-64 overflow-hidden border border-[color:var(--color-border)]">
           <Image 
@@ -152,17 +209,30 @@ const site = await getSite();
   <section id="reservations" class="py-24 md:py-36 border-t border-[color:var(--color-border)]">
     <div class="max-w-xl mx-auto space-y-12">
       <div class="text-center space-y-4">
-        <p class="text-xs uppercase tracking-[0.3em] text-muted">Join Us</p>
-        <h2 class="text-4xl sm:text-5xl font-light text-ink">Make a Reservation</h2>
+        <p class="text-xs uppercase tracking-[0.3em] text-muted">
+          <span data-lang="cz">Rezervace stolu</span>
+          <span data-lang="en">Reservations</span>
+        </p>
+        <h2 class="text-4xl sm:text-5xl font-light text-ink">
+          <span data-lang="cz">Rezervujte si stůl</span>
+          <span data-lang="en">Book a Table</span>
+        </h2>
         <p class="text-xs font-light text-muted leading-relaxed">
-          Due to our intimate seating capacity, we recommend reserving four weeks in advance.
+          <span data-lang="cz">Vzhledem k naší omezené kapacitě doporučujeme rezervaci čtyři týdny předem.</span>
+          <span data-lang="en">Due to our intimate seating capacity, we recommend reserving four weeks in advance.</span>
         </p>
       </div>
 
-      <form class="space-y-8" onsubmit="event.preventDefault(); alert('Reservation Request Received. We will contact you shortly.');">
+      <form 
+        class="space-y-8" 
+        onsubmit="event.preventDefault(); const currentLang = document.documentElement.getAttribute('data-lang'); alert(currentLang === 'cz' ? 'Požadavek na rezervaci odeslán. Budeme vás brzy kontaktovat.' : 'Reservation Request Received. We will contact you shortly.');"
+      >
         <div class="grid grid-cols-2 gap-6">
           <div class="space-y-2">
-            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">Date</label>
+            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">
+              <span data-lang="cz">Datum</span>
+              <span data-lang="en">Date</span>
+            </label>
             <input 
               type="date" 
               class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none focus:border-ink transition-colors" 
@@ -170,36 +240,45 @@ const site = await getSite();
             />
           </div>
           <div class="space-y-2">
-            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">Guests</label>
+            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">
+              <span data-lang="cz">Hosté</span>
+              <span data-lang="en">Guests</span>
+            </label>
             <select 
               class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none focus:border-ink transition-colors"
               required
             >
-              <option value="1">1 Guest</option>
-              <option value="2" selected>2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4 Guests</option>
-              <option value="5">5+ Guests</option>
+              <option value="1"><span data-lang="cz">1 host</span><span data-lang="en">1 Guest</span></option>
+              <option value="2" selected><span data-lang="cz">2 hosté</span><span data-lang="en">2 Guests</span></option>
+              <option value="3"><span data-lang="cz">3 hosté</span><span data-lang="en">3 Guests</span></option>
+              <option value="4"><span data-lang="cz">4 hosté</span><span data-lang="en">4 Guests</span></option>
+              <option value="5"><span data-lang="cz">5+ hostů</span><span data-lang="en">5+ Guests</span></option>
             </select>
           </div>
         </div>
 
         <div class="grid grid-cols-2 gap-6">
           <div class="space-y-2">
-            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">Name</label>
+            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">
+              <span data-lang="cz">Jméno</span>
+              <span data-lang="en">Name</span>
+            </label>
             <input 
               type="text" 
               placeholder="Your Name" 
-              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/50 focus:border-ink transition-colors" 
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/30 focus:border-ink transition-colors" 
               required 
             />
           </div>
           <div class="space-y-2">
-            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">Email</label>
+            <label class="text-[0.65rem] uppercase tracking-widest text-muted block">
+              <span data-lang="cz">E-mail</span>
+              <span data-lang="en">Email</span>
+            </label>
             <input 
               type="email" 
               placeholder="your@email.com" 
-              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/50 focus:border-ink transition-colors" 
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/30 focus:border-ink transition-colors" 
               required 
             />
           </div>
@@ -210,7 +289,8 @@ const site = await getSite();
             type="submit" 
             class="button primary uppercase tracking-widest text-xs py-4 px-12 border border-ink hover:bg-transparent hover:text-ink transition-colors w-full sm:w-auto"
           >
-            Request Table
+            <span data-lang="cz">Požádat o stůl</span>
+            <span data-lang="en">Request Table</span>
           </button>
         </div>
       </form>
@@ -219,8 +299,66 @@ const site = await getSite();
 </PageLayout>
 
 <style>
-  .hero-split {
-    padding-top: 100px;
+  .hero-section {
+    padding-top: 140px;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .hero-img {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    max-height: 520px;
+  }
+
+  .large-logo-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(32%, -32%);
+    width: 90px;
+    height: 90px;
+    z-index: 10;
+  }
+
+  .logo-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .quote-text {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* Author row with gold line */
+  .author-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 2rem;
+  }
+
+  .gold-line {
+    display: block;
+    width: 40px;
+    height: 1.5px;
+    background-color: var(--color-gold);
+  }
+
+  .author-name {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--color-ink);
   }
 
   .menu-item {
@@ -232,7 +370,7 @@ const site = await getSite();
     border-bottom: none;
   }
 
-  /* Fine Dining specific overrides for typography sizes and letter spacing */
+  /* General typography letter spacing */
   h1, h2, h3, h4 {
     letter-spacing: 0.05em;
   }

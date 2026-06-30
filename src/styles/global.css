@@ -10,12 +10,13 @@
 	
 	--color-ink: #1C1B19;
 	--color-muted: #5E5B55;
-	--color-paper: #F6F4EE;
+	--color-paper: #FAF9F6;
 	--color-surface: #FAF9F6;
 	--color-border: rgba(28, 27, 25, 0.08);
+	--color-gold: #C5A880;
 	
 	--font-sans: var(--font-sans), sans-serif;
-	--font-display: var(--font-display), serif;
+	--font-display: var(--font-display), monospace;
 }
 
 @layer base {
@@ -23,7 +24,7 @@
 		color-scheme: light;
 		--color-ink: #1C1B19;
 		--color-muted: #5E5B55;
-		--color-paper: #F6F4EE;
+		--color-paper: #FAF9F6;
 		--color-surface: #FAF9F6;
 		--color-border: rgba(28, 27, 25, 0.08);
 	}
@@ -314,4 +315,12 @@
 		margin: 0.25rem 0;
 		line-height: 1.2;
 	}
+}
+
+/* Language switcher rules */
+html[data-lang="cz"] [data-lang="en"] {
+	display: none !important;
+}
+html[data-lang="en"] [data-lang="cz"] {
+	display: none !important;
 }
