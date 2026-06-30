@@ -4,38 +4,32 @@ const site = await getSite();
 const subpath = import.meta.env.BASE_URL;
 ---
 
-<header class="fixed w-full z-30 flex items-center bg-[color:var(--color-paper)]/90 backdrop-blur-md">
+<header class="fixed w-full z-30 flex items-center bg-[color:var(--color-paper)]/40 backdrop-blur-sm">
   <div class="content-shell w-full py-6">
-    <div class="flex items-center justify-between w-full">
-      <!-- Left side: Brand Name -->
-      <a href={subpath} class="logo-group" aria-label={site.title}>
-        <span class="brand-title">{site.title}</span>
-      </a>
+    <div class="grid grid-cols-3 items-center w-full">
+      <!-- Left side: Understated Reserve a Table link -->
+      <div class="justify-self-start">
+        <a href="#reservations" class="reserve-link">
+          <span data-lang="cz">Rezervovat stůl</span>
+          <span data-lang="en">Reserve a Table</span>
+        </a>
+      </div>
 
-      <!-- Right side: Navigation & Language switch & Hamburger -->
-      <div class="flex items-center gap-8 md:gap-12">
-        <nav class="flex items-center gap-6 md:gap-8">
-          <a href="#menu" class="nav-link">
-            <span data-lang="cz">menu ↗</span>
-            <span data-lang="en">menu ↗</span>
-          </a>
-          <a href="#reservations" class="nav-link">
-            <span data-lang="cz">rezervace ↗</span>
-            <span data-lang="en">reservations ↗</span>
-          </a>
-        </nav>
+      <!-- Center: Brand Name (shrinks on scroll via CSS scroll-driven animation) -->
+      <div class="justify-self-center text-center">
+        <a href={subpath} class="brand-link" aria-label={site.title}>
+          <span class="brand-title">{site.title}</span>
+        </a>
+      </div>
 
-        <!-- Language Switcher -->
-        <div class="lang-switch">
-          <button class="lang-btn" data-lang-target="cz">cz</button>
-          <span class="lang-separator">/</span>
-          <button class="lang-btn" data-lang-target="en">en</button>
-        </div>
-
-        <!-- Hamburger Icon -->
-        <button class="hamburger-btn" aria-label="Toggle navigation">
-          <div class="hamburger-menu">
-            <span class="bar"></span>
+      <!-- Right side: Minimal Menu toggle -->
+      <div class="justify-self-end">
+        <button popovertarget="nav-menu" class="menu-trigger" aria-label="Open Menu">
+          <span class="menu-trigger-text">
+            <span data-lang="cz">menu</span>
+            <span data-lang="en">menu</span>
+          </span>
+          <div class="menu-icon">
             <span class="bar"></span>
             <span class="bar"></span>
           </div>
@@ -44,6 +38,39 @@ const subpath = import.meta.env.BASE_URL;
     </div>
   </div>
 </header>
+
+<!-- Native Popover Full-Screen Overlay Navigation Menu -->
+<div id="nav-menu" popover class="fullscreen-nav">
+  <div class="nav-overlay-content">
+    <button popovertarget="nav-menu" class="close-btn" aria-label="Close Menu">
+      &times;
+    </button>
+    
+    <nav class="overlay-links">
+      <a href="#menu" popovertarget="nav-menu" class="overlay-link">
+        <span data-lang="cz">Menu dégustation</span>
+        <span data-lang="en">Tasting Menu</span>
+      </a>
+      <a href="#story" popovertarget="nav-menu" class="overlay-link">
+        <span data-lang="cz">Náš příběh</span>
+        <span data-lang="en">Our Story</span>
+      </a>
+      <a href="#reservations" popovertarget="nav-menu" class="overlay-link">
+        <span data-lang="cz">Rezervace</span>
+        <span data-lang="en">Reservations</span>
+      </a>
+    </nav>
+
+    <!-- Language Selector inside Overlay Menu -->
+    <div class="lang-switch-container">
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang-target="cz">cz</button>
+        <span class="lang-separator">/</span>
+        <button class="lang-btn" data-lang-target="en">en</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script is:inline>
   const STORAGE_KEY = 'vzatisi_lang';
@@ -59,7 +86,7 @@ const subpath = import.meta.env.BASE_URL;
     document.documentElement.setAttribute('data-lang', lang);
     localStorage.setItem(STORAGE_KEY, lang);
     
-    // Update active class on buttons
+    // Update active class on all buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
       if (btn.getAttribute('data-lang-target') === lang) {
         btn.classList.add('active');
@@ -80,43 +107,155 @@ const subpath = import.meta.env.BASE_URL;
       applyLang(target);
     });
   });
+
+  // Automatically close popover when clicking a link
+  document.querySelectorAll('.overlay-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const popover = document.getElementById('nav-menu');
+      if (popover && popover.hidePopover) {
+        popover.hidePopover();
+      }
+    });
+  });
 </script>
 
 <style>
   header {
-    height: 100px;
+    height: 90px;
+    border-bottom: 1px solid var(--color-border);
     transition: background-color 150ms ease;
   }
 
-  .logo-group {
-    display: flex;
-    align-items: center;
+  .reserve-link {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: opacity 150ms ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .reserve-link:hover {
+    border-bottom: 1px solid var(--color-accent);
+  }
+
+  .brand-link {
     text-decoration: none;
   }
 
   .brand-title {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: 1.4rem;
-    letter-spacing: 0.12em;
+    font-size: 1.8rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--color-ink);
+    display: inline-block;
+  }
+
+  .menu-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     color: var(--color-ink);
   }
 
-  .nav-link {
+  .menu-trigger-text {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 20px;
+  }
+
+  .menu-icon .bar {
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-ink);
+  }
+
+  /* Full Screen Popover Overlay */
+  .fullscreen-nav {
+    display: none;
+  }
+
+  .nav-overlay-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--color-ink);
+    font-size: 3rem;
+    font-weight: 200;
+    cursor: pointer;
+    line-height: 1;
+    transition: opacity 150ms ease;
+  }
+
+  .close-btn:hover {
+    opacity: 0.7;
+  }
+
+  .overlay-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .overlay-link {
     font-family: var(--font-display);
-    font-size: 1.05rem;
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
     color: var(--color-ink);
     text-decoration: none;
-    padding-bottom: 2px;
-    border-bottom: 1.5px solid var(--color-gold);
-    display: inline-flex;
-    align-items: center;
+    transition: color 200ms ease;
+  }
+
+  .overlay-link:hover {
+    color: var(--color-accent);
+  }
+
+  .lang-switch-container {
+    margin-top: 4rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+    width: 120px;
+    display: flex;
+    justify-content: center;
   }
 
   .lang-switch {
     font-family: var(--font-display);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--color-ink);
     display: flex;
     align-items: center;
@@ -132,7 +271,7 @@ const subpath = import.meta.env.BASE_URL;
     font-family: inherit;
     font-size: inherit;
     color: var(--color-ink);
-    opacity: 0.6;
+    opacity: 0.5;
     font-weight: 300;
     transition: opacity 150ms ease, font-weight 150ms ease;
   }
@@ -144,32 +283,12 @@ const subpath = import.meta.env.BASE_URL;
   .lang-btn.active {
     opacity: 1;
     font-weight: 700;
-    border-bottom: 1.5px solid var(--color-gold);
+    border-bottom: 1.5px solid var(--color-accent);
   }
 
   .lang-separator {
     color: var(--color-ink);
-    opacity: 0.6;
-    margin: 0 2px;
-  }
-
-  .hamburger-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-  }
-
-  .hamburger-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    width: 28px;
-  }
-
-  .hamburger-menu .bar {
-    height: 1.5px;
-    width: 100%;
-    background-color: var(--color-ink);
+    opacity: 0.5;
+    margin: 0 4px;
   }
 </style>

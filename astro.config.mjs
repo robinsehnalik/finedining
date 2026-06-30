@@ -22,7 +22,7 @@ export default defineConfig({
     fonts: [
       {
         provider: fontProviders.fontsource(),
-        name: "Space Mono",
+        name: "Cormorant Garamond",
         cssVariable: "--font-display",
       },
       {

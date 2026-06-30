@@ -11,87 +11,123 @@ const site = await getSite();
 ---
 
 <PageLayout title={`${site.title} · Praha`} description={site.description}>
-  <!-- Section: Hero (V Zátiší custom preview layout) -->
-  <section class="hero-section min-h-[90vh] grid md:grid-cols-12 items-center gap-12 py-24 md:py-36">
-    <!-- Left side: Image -->
-    <div class="md:col-span-6 flex justify-center">
-      <div class="hero-image-wrapper">
-        <Image 
-          src={heroWagyu} 
-          alt="Modern gourmet plating presentation" 
-          class="hero-img object-cover border border-[color:var(--color-border)]"
-        />
-      </div>
+  <!-- Section 1: Hero (Editorial Print Menu style) -->
+  <section class="hero-cover flex flex-col justify-between items-center py-12 md:py-20">
+    <!-- Top Spacer for Header -->
+    <div class="h-16"></div>
+
+    <!-- Parallax Food Photo (60-80% of Viewport) -->
+    <div class="hero-image-container w-full h-[65vh] overflow-hidden border border-[color:var(--color-border)] relative">
+      <Image 
+        src={heroWagyu} 
+        alt="L'Alchimiste signature Wagyu dish" 
+        class="parallax-image w-full h-[120%] object-cover absolute top-[-10%]"
+      />
     </div>
 
-    <!-- Right side: Editorial monospace quote -->
-    <div class="md:col-span-6 space-y-8 md:pl-6">
-      <h1 class="quote-text font-light tracking-wide text-ink">
-        <span data-lang="cz">
-          Nový koncept, moderní interpretace lokálních chutí z farem a lesů, s příběhy krajiny a špetkou drzosti.
-        </span>
-        <span data-lang="en">
-          A new concept, a modern interpretation of local flavors from farms and forests, with stories of the landscape and a touch of audacity.
-        </span>
-      </h1>
-      
-      <!-- Author row with gold line -->
-      <div class="author-row">
-        <span class="gold-line"></span>
-        <span class="author-name">Chef de Cuisine</span>
+    <!-- Understated Link Below Image -->
+    <div class="pt-8 text-center space-y-2">
+      <a href="#reservations" class="hero-reserve-link">
+        <span data-lang="cz">Rezervovat stůl</span>
+        <span data-lang="en">Reserve a Table</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 2: Awards & Magazine Mentions (Restrained typographical credits) -->
+  <section class="py-12 border-t border-b border-[color:var(--color-border)] bg-[color:var(--color-paper)]">
+    <div class="content-shell max-w-4xl mx-auto">
+      <div class="flex flex-wrap justify-between items-center gap-6 text-[0.68rem] tracking-[0.25em] uppercase text-muted text-center md:text-left">
+        <span class="credit-item">Le Guide Michelin &middot; Trois Étoiles</span>
+        <span class="credit-divider hidden md:inline">|</span>
+        <span class="credit-item">Vogue Magazine</span>
+        <span class="credit-divider hidden md:inline">|</span>
+        <span class="credit-item">Le Figaro</span>
+        <span class="credit-divider hidden md:inline">|</span>
+        <span class="credit-item">The New York Times</span>
       </div>
     </div>
   </section>
 
-  <!-- Section: Our Story -->
-  <section id="story" class="py-24 md:py-36 border-t border-[color:var(--color-border)]">
-    <div class="grid md:grid-cols-12 gap-12 items-center">
-      <div class="md:col-span-5 h-[50vh] md:h-[70vh] overflow-hidden border border-[color:var(--color-border)]">
+  <!-- Section 3: Narrative Section ("Chef's Notebook") -->
+  <section id="story" class="py-24 md:py-36 space-y-36">
+    <!-- Notebook Entry 1: Sourcing & Terroir -->
+    <div class="narrative-row grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-6 h-[50vh] md:h-[70vh] overflow-hidden border border-[color:var(--color-border)]">
         <Image 
           src={storySetting} 
-          alt="Minimalist table setting" 
+          alt="L'Alchimiste minimal setting" 
           class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
         />
       </div>
-      <div class="md:col-span-6 md:col-start-7 space-y-8">
-        <p class="text-xs uppercase tracking-[0.3em] text-muted">
-          <span data-lang="cz">O nás</span>
-          <span data-lang="en">Our Story</span>
-        </p>
-        <h2 class="text-4xl sm:text-5xl font-light leading-tight text-ink">
-          <span data-lang="cz">Prostor pro ticho a čistou chuť.</span>
-          <span data-lang="en">A space for silence and pure taste.</span>
+      <div class="md:col-span-5 md:col-start-8 space-y-6">
+        <span class="entry-index font-light tracking-[0.2em] text-muted text-xs block">I. TERROIR</span>
+        <h2 class="text-3xl sm:text-4xl font-light leading-tight text-ink">
+          <span data-lang="cz">Surovina v plné nahotě.</span>
+          <span data-lang="en">Raw, unhurried sourcing.</span>
         </h2>
-        <div class="space-y-6 text-sm font-light text-muted leading-relaxed max-w-lg">
+        <div class="text-sm font-light text-muted leading-relaxed space-y-4 max-w-md">
           <p data-lang="cz">
-            V naší restauraci věříme, že prostor a klid jsou pro kulinářský zážitek stejně důležité jako jídlo samotné. Naše restaurace je navržena jako útočiště pro smysly, které vám umožní plně se soustředit na vůni, texturu a chuť každého sousta.
+            Základem každého chodu je absolutní respekt k sezónní zralosti. Spolupracujeme výhradně s malými biodynamickými farmami v Čechách a ve Francii, které sdílejí naši filozofii pomalého pěstování a úcty k půdě.
           </p>
           <p data-lang="cz">
-            Každá surovina pochází od nezávislých lokálních farmářů z českých luhů a hájů, sbíraná za úsvitu a servírovaná na váš talíř tentýž večer.
+            Naše menu se nemění podle kalendáře, ale podle ranní sklizně. Co ráno roste v zemi, večer definuje váš talíř.
           </p>
           <p data-lang="en">
-            At our restaurant, we believe that space and serenity are just as crucial to a dining experience as the food itself. Our dining room is designed as a sensory sanctuary, letting your focus return completely to the aroma, texture, and flavor of each bite.
+            The foundation of every course is absolute respect for seasonal maturity. We collaborate exclusively with small, biodynamic farms in Bohemia and France that share our philosophy of slow cultivation and respect for the land.
           </p>
           <p data-lang="en">
-            Every ingredient is sourced from independent local farms across the Czech countryside, harvested at dawn, and presented on your plate by nightfall.
+            Our menu does not adapt to the calendar, but to the morning harvest. What grows in the soil at dawn defines your plate by dusk.
           </p>
         </div>
       </div>
     </div>
+
+    <!-- Notebook Entry 2: Technique & Plating -->
+    <div class="narrative-row grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-5 space-y-6 md:order-last md:col-start-8">
+        <span class="entry-index font-light tracking-[0.2em] text-muted text-xs block">II. TECHNIQUE</span>
+        <h2 class="text-3xl sm:text-4xl font-light leading-tight text-ink">
+          <span data-lang="cz">Neviditelné umění.</span>
+          <span data-lang="en">Invisible craftsmanship.</span>
+        </h2>
+        <div class="text-sm font-light text-muted leading-relaxed space-y-4 max-w-md">
+          <p data-lang="cz">
+            Složitost našich pokrmů spočívá v jejich zdánlivé jednoduchosti. Tradiční francouzské techniky redukcí a fermentace používáme k tomu, abychom zvýraznili přirozenou esenci surovin, nikoli ji zakryli.
+          </p>
+          <p data-lang="cz">
+            Tvorba omáček trvá dny; dokončení na talíři pak vteřiny. Je to čistá alchymie chutí zbavená veškerého vizuálního šumu.
+          </p>
+          <p data-lang="en">
+            The complexity of our dishes lies in their apparent simplicity. We apply classical French reduction and fermentation techniques to elevate the natural essence of the ingredients, never to mask them.
+          </p>
+          <p data-lang="en">
+            Crafting a sauce takes days; plating takes seconds. It is a pure culinary alchemy stripped of all unnecessary visual noise.
+          </p>
+        </div>
+      </div>
+      <div class="md:col-span-6 md:order-first h-[50vh] md:h-[70vh] overflow-hidden border border-[color:var(--color-border)]">
+        <Image 
+          src={menuDessert} 
+          alt="Michelin-starred dessert presentation" 
+          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+        />
+      </div>
+    </div>
   </section>
 
-  <!-- Section: The Menu -->
-  <section id="menu" class="py-24 md:py-36 border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
-    <div class="max-w-4xl mx-auto space-y-16">
+  <!-- Section 4: Tasting Menu (Curated tasting menu) -->
+  <section id="menu" class="py-24 md:py-36 border-t border-b border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+    <div class="max-w-3xl mx-auto space-y-20">
       <div class="text-center space-y-4">
         <p class="text-xs uppercase tracking-[0.3em] text-muted">
-          <span data-lang="cz">Karta</span>
-          <span data-lang="en">Menu</span>
+          <span data-lang="cz">Lístek</span>
+          <span data-lang="en">Tasting Menu</span>
         </p>
         <h2 class="text-4xl sm:text-5xl font-light text-ink">Menu Dégustation</h2>
         <p class="text-xs italic text-muted tracking-wide">
-          <span data-lang="cz">Unikátní osmichodový zážitek &middot; 2400 Kč</span>
-          <span data-lang="en">A curated eight-course experience &middot; €95</span>
+          <span data-lang="cz">Osmichodová cesta &middot; 2400 Kč</span>
+          <span data-lang="en">Eight-course menu &middot; €95</span>
         </p>
       </div>
 
@@ -99,7 +135,7 @@ const site = await getSite();
         <!-- Item 1 -->
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
-            <h3 class="text-xl font-light tracking-wide text-ink">Le Tourteau</h3>
+            <h3 class="text-xl font-light text-ink">Le Tourteau</h3>
             <span class="text-sm font-light text-muted">
               <span data-lang="cz">380 Kč</span>
               <span data-lang="en">€15</span>
@@ -114,7 +150,7 @@ const site = await getSite();
         <!-- Item 2 -->
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
-            <h3 class="text-xl font-light tracking-wide text-ink">L'Asperge Blanche</h3>
+            <h3 class="text-xl font-light text-ink">L'Asperge Blanche</h3>
             <span class="text-sm font-light text-muted">
               <span data-lang="cz">420 Kč</span>
               <span data-lang="en">€17</span>
@@ -129,7 +165,7 @@ const site = await getSite();
         <!-- Item 3 -->
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
-            <h3 class="text-xl font-light tracking-wide text-ink">Le Saint-Pierre</h3>
+            <h3 class="text-xl font-light text-ink">Le Saint-Pierre</h3>
             <span class="text-sm font-light text-muted">
               <span data-lang="cz">560 Kč</span>
               <span data-lang="en">€22</span>
@@ -144,7 +180,7 @@ const site = await getSite();
         <!-- Item 4 -->
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
-            <h3 class="text-xl font-light tracking-wide text-ink">Le Boeuf A5</h3>
+            <h3 class="text-xl font-light text-ink">Le Boeuf A5</h3>
             <span class="text-sm font-light text-muted">
               <span data-lang="cz">850 Kč</span>
               <span data-lang="en">€34</span>
@@ -159,7 +195,7 @@ const site = await getSite();
         <!-- Item 5 -->
         <div class="menu-item space-y-2">
           <div class="flex justify-between items-baseline">
-            <h3 class="text-xl font-light tracking-wide text-ink">Le Sphère de Raspberry</h3>
+            <h3 class="text-xl font-light text-ink">Le Sphère de Raspberry</h3>
             <span class="text-sm font-light text-muted">
               <span data-lang="cz">320 Kč</span>
               <span data-lang="en">€13</span>
@@ -171,35 +207,11 @@ const site = await getSite();
           </p>
         </div>
       </div>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center pt-12">
-        <div class="space-y-4">
-          <h4 class="text-lg font-light tracking-wide text-ink">
-            <span data-lang="cz">Párování vína</span>
-            <span data-lang="en">Wine Pairing</span>
-          </h4>
-          <p class="text-xs font-light text-muted leading-relaxed">
-            <span data-lang="cz">Pečlivě vybráno naším hlavním sommelierem. Nabízíme výjimečné ročníky z historických panství i avantgardních přírodních vinařství z Burgundska a údolí Rhôny.</span>
-            <span data-lang="en">Curated by our head sommelier, selecting exceptional vintages from historical estates and avant-garde natural vineyards across Burgundy and the Rhône Valley.</span>
-          </p>
-          <p class="text-xs italic text-muted tracking-wide">
-            <span data-lang="cz">Výběr sommeliera &middot; 1400 Kč</span>
-            <span data-lang="en">Sommelier Selection &middot; €55</span>
-          </p>
-        </div>
-        <div class="h-64 overflow-hidden border border-[color:var(--color-border)]">
-          <Image 
-            src={menuDessert} 
-            alt="Minimalist luxury dessert presentation" 
-            class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-          />
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Section: Reservations -->
-  <section id="reservations" class="py-24 md:py-36 border-t border-[color:var(--color-border)]">
+  <!-- Section 5: Reservations (Terracotta/wine accent link & minimal form) -->
+  <section id="reservations" class="py-24 md:py-36">
     <div class="max-w-xl mx-auto space-y-12">
       <div class="text-center space-y-4">
         <p class="text-xs uppercase tracking-[0.3em] text-muted">
@@ -207,12 +219,12 @@ const site = await getSite();
           <span data-lang="en">Reservations</span>
         </p>
         <h2 class="text-4xl sm:text-5xl font-light text-ink">
-          <span data-lang="cz">Rezervujte si stůl</span>
+          <span data-lang="cz">Vstupte do salonu</span>
           <span data-lang="en">Book a Table</span>
         </h2>
         <p class="text-xs font-light text-muted leading-relaxed">
-          <span data-lang="cz">Vzhledem k naší omezené kapacitě doporučujeme rezervaci čtyři týdny předem.</span>
-          <span data-lang="en">Due to our intimate seating capacity, we recommend reserving four weeks in advance.</span>
+          <span data-lang="cz">Vzhledem k omezené kapacitě doporučujeme provést rezervaci s předstihem.</span>
+          <span data-lang="en">Due to our intimate seating capacity, we recommend reserving several weeks in advance.</span>
         </p>
       </div>
 
@@ -228,7 +240,7 @@ const site = await getSite();
             </label>
             <input 
               type="date" 
-              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none focus:border-ink transition-colors" 
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none focus:border-[color:var(--color-accent)] transition-colors" 
               required 
             />
           </div>
@@ -238,7 +250,7 @@ const site = await getSite();
               <span data-lang="en">Guests</span>
             </label>
             <select 
-              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none focus:border-ink transition-colors"
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
               required
             >
               <option value="1"><span data-lang="cz">1 host</span><span data-lang="en">1 Guest</span></option>
@@ -259,7 +271,7 @@ const site = await getSite();
             <input 
               type="text" 
               placeholder="Your Name" 
-              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/30 focus:border-ink transition-colors" 
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/30 focus:border-[color:var(--color-accent)] transition-colors" 
               required 
             />
           </div>
@@ -271,16 +283,16 @@ const site = await getSite();
             <input 
               type="email" 
               placeholder="your@email.com" 
-              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/30 focus:border-ink transition-colors" 
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] py-2 text-sm focus:outline-none placeholder:text-muted/30 focus:border-[color:var(--color-accent)] transition-colors" 
               required 
             />
           </div>
         </div>
 
-        <div class="pt-4 text-center">
+        <div class="pt-6 text-center">
           <button 
             type="submit" 
-            class="button primary uppercase tracking-widest text-xs py-4 px-12 border border-ink hover:bg-transparent hover:text-ink transition-colors w-full sm:w-auto"
+            class="button-accent uppercase tracking-widest text-[0.7rem] py-4 px-12 border border-[color:var(--color-accent)] bg-[color:var(--color-accent)] text-[color:var(--color-paper)] hover:bg-transparent hover:text-[color:var(--color-accent)] transition-all duration-300 w-full sm:w-auto cursor-pointer"
           >
             <span data-lang="cz">Požádat o stůl</span>
             <span data-lang="en">Request Table</span>
@@ -292,53 +304,41 @@ const site = await getSite();
 </PageLayout>
 
 <style>
-  .hero-section {
-    padding-top: 140px;
+  /* Printed Menu Hero layout */
+  .hero-cover {
+    min-height: 90vh;
   }
 
-  .hero-image-wrapper {
-    position: relative;
-    display: inline-block;
-    max-width: 100%;
+  .hero-reserve-link {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    text-decoration: none;
+    border-bottom: 1.2px solid var(--color-accent);
+    padding-bottom: 4px;
+    transition: opacity 200ms ease;
   }
 
-  .hero-img {
-    display: block;
-    width: 100%;
-    max-width: 440px;
-    height: auto;
-    max-height: 520px;
+  .hero-reserve-link:hover {
+    opacity: 0.7;
   }
 
-
-
-  .quote-text {
-    font-family: var(--font-display);
-    font-size: 2.1rem;
-    line-height: 1.5;
+  /* Credits showcase styling */
+  .credit-item {
     font-weight: 300;
   }
 
-  /* Author row with gold line */
-  .author-row {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-top: 2rem;
+  .credit-divider {
+    opacity: 0.25;
   }
 
-  .gold-line {
-    display: block;
-    width: 40px;
-    height: 1.5px;
-    background-color: var(--color-gold);
-  }
-
-  .author-name {
-    font-family: var(--font-sans);
+  /* Notebook styling */
+  .entry-index {
+    color: var(--color-accent);
     font-weight: 400;
-    font-size: 0.95rem;
-    color: var(--color-ink);
   }
 
   .menu-item {
@@ -350,9 +350,11 @@ const site = await getSite();
     border-bottom: none;
   }
 
-  /* General typography letter spacing */
-  h1, h2, h3, h4 {
-    letter-spacing: 0.05em;
+  /* Terracotta button */
+  .button-accent {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    border-radius: 0;
   }
 
   input, select {
