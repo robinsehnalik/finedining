@@ -28,11 +28,11 @@
 		--color-paper: #F4F0E8;
 		--color-surface: #F4F0E8;
 		--color-border: rgba(43, 38, 34, 0.08);
-		--bg-gradient-start: #FFFFFF;
-		--bg-gradient-mid: #FAF8F5;
-		--bg-gradient-end: #F4F0E8;
+		--bg-gradient-start: #EAE4D9;
+		--bg-gradient-mid: #F1ECE3;
+		--bg-gradient-end: #F8F6F2;
 		--bg-menu-gradient: linear-gradient(135deg, #FAF8F5 0%, #EFECE4 100%);
-		--bg-footer-gradient: transparent;
+		--bg-footer-gradient: #F8F6F2;
 		--bg-header-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.65) 100%);
 		--bg-zigzag-gradient: linear-gradient(135deg, #FAF8F5 0%, #F5EFEB 100%);
 	}
@@ -48,7 +48,7 @@
 		--bg-gradient-mid: #25201D;
 		--bg-gradient-end: #2B2622;
 		--bg-menu-gradient: linear-gradient(135deg, #2D2824 0%, #221E1C 100%);
-		--bg-footer-gradient: transparent;
+		--bg-footer-gradient: #2B2622;
 		--bg-header-gradient: linear-gradient(180deg, rgba(43, 38, 34, 0.75) 0%, rgba(43, 38, 34, 0.65) 100%);
 		--bg-zigzag-gradient: linear-gradient(135deg, #2D2824 0%, #25201D 100%);
 	}
