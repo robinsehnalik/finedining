@@ -1,46 +1,165 @@
 ---
-interface Action {
-	label: string;
-	href: string;
-}
-
-interface Props {
-	eyebrow?: string;
-	title: string;
-	description?: string;
-	actions?: Action[];
-}
-
-import { withBase } from '../utils/slugify';
-
-const { eyebrow, title, description, actions = [] } = Astro.props;
+import { Image } from "astro:assets";
+import heroWagyu from "../assets/hero_wagyu.png";
+import storySetting from "../assets/story_setting.png";
 ---
 
-<section class="content-shell flex items-center">
-	<div class="grid gap-4 max-w-3xl">
-		{eyebrow && <p class="eyebrow">{eyebrow}</p>}
-		<h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight m-0">{title}</h1>
-		{description && <p class="text-muted text-base md:text-lg max-w-2xl m-0">{description}</p>}
-		{actions.length > 0 && (
-			<div class="flex flex-wrap gap-3 mt-3">
-				{actions.map((action) => (
-					<a class="button primary" href={withBase(action.href)}>
-						{action.label}
-					</a>
-				))}
-			</div>
-		)}
-	</div>
+<section class="hero-section min-h-[90vh] flex items-center py-12 md:py-24 overflow-hidden">
+  <div class="content-shell w-full grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-center">
+    
+    <!-- Left / Top Column: Typographic Content (SEO Friendly H1 headings) -->
+    <div class="md:col-span-6 space-y-8 text-left z-10">
+      <!-- Hidden H1 for SEO compliance while maintaining clean design -->
+      <h1 class="sr-only">L'Alchimiste - Fine Dining Restaurant Prague</h1>
+      
+      <div class="hero-heading-container">
+        <p class="hero-heading text-6xl sm:text-7xl lg:text-8xl font-light text-ink leading-[1.05] tracking-tight">
+          <span class="block">pure taste.</span>
+          <span class="block font-serif italic text-[color:var(--color-accent)]">unhurried.</span>
+        </p>
+      </div>
+
+      <p class="hero-subtext text-sm sm:text-base font-light text-muted leading-relaxed max-w-md">
+        <span data-lang="cz">
+          Kulinářská alchymie inspirovaná klidem české krajiny a precizností francouzské kuchyně. Každý pokrm je příběh napsaný ranní sklizní.
+        </span>
+        <span data-lang="en">
+          Culinary alchemy inspired by the tranquility of the Bohemian countryside and French precision. Every dish is a story written by the morning harvest.
+        </span>
+      </p>
+
+      <div class="hero-action-container pt-4">
+        <a href="#reservations" class="hero-reserve-btn">
+          <span data-lang="cz">Rezervovat stůl ↗</span>
+          <span data-lang="en">Reserve a Table ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right / Bottom Column: Captivating Multi-Image Overlay (Mobile-first stacked grid) -->
+    <div class="md:col-span-6 relative flex justify-center items-center w-full h-[45vh] sm:h-[55vh] md:h-[65vh]">
+      <!-- Main Portrait Image with Parallax scroll animation -->
+      <div class="hero-main-img-wrapper border border-[color:var(--color-border)] overflow-hidden w-2/3 h-full absolute left-4 md:left-8 z-0">
+        <Image 
+          src={heroWagyu} 
+          alt="L'Alchimiste tasting plate plating" 
+          class="parallax-image w-full h-[120%] object-cover absolute top-[-10%]"
+        />
+      </div>
+
+      <!-- Overlapping Detail Image for Depth -->
+      <div class="hero-detail-img-wrapper border border-[color:var(--color-border)] overflow-hidden w-1/2 aspect-[4/5] absolute right-4 bottom-4 md:right-0 md:bottom-8 z-10 bg-[color:var(--color-paper)]">
+        <Image 
+          src={storySetting} 
+          alt="Minimalist table setting detail" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <style>
-	.content-shell {
-		min-height: calc(100vh - calc(var(--grid-cell) * 1));
-	}
+  /* CSS-Only Hardware-Accelerated Load-in Animations (SEO & Performance Friendly) */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-	@media (max-width: 720px) {
-		.content-shell {
-			min-height: calc(100vh - calc(var(--grid-cell) * 4));
-		}
-	}
+  @keyframes imageEntry {
+    from {
+      opacity: 0;
+      transform: scale(0.96) translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateX(0);
+    }
+  }
+
+  @keyframes detailEntry {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Load-in triggers */
+  .hero-heading {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s forwards;
+  }
+
+  .hero-subtext {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s forwards;
+  }
+
+  .hero-action-container {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeUp 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.7s forwards;
+  }
+
+  .hero-main-img-wrapper {
+    opacity: 0;
+    transform: scale(0.96) translateX(30px);
+    animation: imageEntry 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s forwards;
+  }
+
+  .hero-detail-img-wrapper {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    animation: detailEntry 1.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0.8s forwards;
+  }
+
+  /* Mobile-first hover zoom */
+  .hero-detail-img-wrapper img {
+    transition: transform 0.5s ease;
+  }
+  .hero-detail-img-wrapper:hover img {
+    transform: scale(1.05);
+  }
+
+  .hero-reserve-btn {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--color-ink);
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 6px;
+    display: inline-block;
+    transition: transform 0.25s ease, font-weight 0.25s ease;
+  }
+
+  .hero-reserve-btn:hover {
+    transform: scale(1.05);
+    font-weight: 700;
+  }
+
+  /* Accessibility hide helper */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 </style>
