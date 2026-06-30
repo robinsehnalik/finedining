@@ -9,6 +9,8 @@ import menuDessert from '../assets/menu_dessert.png';
 import diningRoomInterior from '../assets/dining_room_interior.png';
 import fireCookingDetail from '../assets/fire_cooking_detail.png';
 
+
+
 const site = await getSite();
 ---
 
@@ -16,19 +18,49 @@ const site = await getSite();
   <!-- Section 1: Hero Component -->
   <Hero />
 
+  <!-- Section 2: Awards & Magazine Mentions (Compact Icon Showcase - Moved above CTA) -->
+  <section class="reveal-on-scroll py-8 border-t border-b border-[color:var(--color-border)]">
+    <div class="content-shell max-w-5xl mx-auto">
+      <!-- Icons grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center">
+        
+        <!-- Michelin Real PNG -->
+        <div class="flex items-center justify-center">
+          <img src="/michelin-2025.png" alt="Michelin Guide 2025" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
+        </div>
+        
+        <!-- Tripadvisor Real PNG -->
+        <div class="flex items-center justify-center">
+          <img src="/tripadvisor.png" alt="Tripadvisor Travellers' Choice" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
+        </div>
+
+        <!-- Gault&Millau Real PNG -->
+        <div class="flex items-center justify-center">
+          <img src="/gam.png" alt="Gault & Millau" class="h-8 md:h-9 w-auto object-contain mix-blend-multiply" />
+        </div>
+
+        <!-- B-Corp Real PNG -->
+        <div class="flex items-center justify-center">
+          <img src="/bcorp.png" alt="Certified B Corporation" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Tasting Menu CTA Section (Selected - Text Only Full-Width) -->
   <section class="reveal-on-scroll py-16 md:py-24 border-b border-[color:var(--color-border)]">
     <div class="content-shell max-w-4xl mx-auto text-center space-y-8">
       <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">SELECTION</span>
       
-      <!-- Creative headline similar to hero but smaller -->
+      <!-- Creative headline similar to hero but smaller - no coloring -->
       <div class="tasting-cta-heading-wrap">
         <p class="tasting-cta-heading text-5xl sm:text-6xl lg:text-7xl font-light text-ink leading-[1.05] tracking-tight">
-          <span data-lang="cz" class="block">vybráno.</span>
-          <span data-lang="cz" class="block font-serif italic text-[color:var(--color-accent)]">průvodce michelin.</span>
+          <span data-lang="cz" class="block font-serif">vybráno.</span>
+          <span data-lang="cz" class="block font-serif italic text-ink">průvodce michelin.</span>
           
-          <span data-lang="en" class="block">selected.</span>
-          <span data-lang="en" class="block font-serif italic text-[color:var(--color-accent)]">michelin guide.</span>
+          <span data-lang="en" class="block font-serif">selected.</span>
+          <span data-lang="en" class="block font-serif italic text-ink">michelin guide.</span>
         </p>
       </div>
 
@@ -45,67 +77,6 @@ const site = await getSite();
           <span data-lang="cz">Tasting menu ↗</span>
           <span data-lang="en">Tasting menu ↗</span>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 2: Awards & Magazine Mentions (Compact Icon Showcase) -->
-  <section class="reveal-on-scroll py-10 border-b border-[color:var(--color-border)] bg-[color:var(--color-paper)]">
-    <div class="content-shell max-w-5xl mx-auto">
-      <!-- Icons grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center">
-        
-        <!-- Michelin Real Variant -->
-        <div class="flex items-center gap-3 text-ink">
-          <svg viewBox="0 0 100 100" class="w-8 h-8 fill-[#E31B23]">
-            <circle cx="50" cy="50" r="10" fill="#E31B23"></circle>
-            <path d="M 50,22 C 55,22 55,38 50,38 C 45,38 45,22 50,22 Z" />
-            <path d="M 50,62 C 55,62 55,78 50,78 C 45,78 45,62 50,62 Z" />
-            <path d="M 26,36 C 28.5,31.7 42.3,39.7 39.8,44 C 37.3,48.3 23.5,40.3 26,36 Z" />
-            <path d="M 60.2,56 C 62.7,51.7 76.5,59.7 74,64 C 71.5,68.3 57.7,60.3 60.2,56 Z" />
-            <path d="M 74,36 C 76.5,40.3 62.7,48.3 60.2,44 C 57.7,39.7 71.5,31.7 74,36 Z" />
-            <path d="M 39.8,56 C 37.3,60.3 23.5,68.3 26,64 C 28.5,59.7 42.3,51.7 39.8,56 Z" />
-          </svg>
-          <div class="flex flex-col text-left">
-            <span class="font-sans font-black tracking-[0.08em] text-lg leading-none uppercase">MICHELIN</span>
-            <span class="font-mono text-[0.55rem] tracking-[0.2em] opacity-85 mt-1">2026</span>
-          </div>
-        </div>
-        
-        <!-- Tripadvisor Real Variant -->
-        <div class="flex items-center gap-3 text-ink">
-          <svg viewBox="0 0 100 100" class="w-8 h-8 fill-none stroke-[2.5] stroke-ink">
-            <circle cx="36" cy="50" r="16"></circle>
-            <circle cx="64" cy="50" r="16"></circle>
-            <circle cx="36" cy="50" r="5" fill="var(--color-ink)"></circle>
-            <circle cx="64" cy="50" r="5" fill="var(--color-ink)"></circle>
-            <polygon points="50,54 46,62 54,62" fill="var(--color-ink)"></polygon>
-            <path d="M 12,50 C 12,70 30,82 50,82 C 70,82 88,70 88,50" stroke-linecap="round"></path>
-          </svg>
-          <div class="flex flex-col text-left text-[0.65rem] font-mono tracking-wider uppercase leading-tight">
-            <span>Tripadvisor</span>
-            <span class="opacity-75 text-[0.55rem]">Travellers' Choice</span>
-          </div>
-        </div>
-
-        <!-- Gault&Millau Real Variant -->
-        <div class="flex items-center gap-3 text-ink">
-          <span class="font-serif font-black italic text-xl tracking-tight">Gault&amp;Millau</span>
-          <div class="flex gap-1 text-sm">
-            <span>🍴</span>
-            <span>🍴</span>
-          </div>
-        </div>
-
-        <!-- B-Corp Real Variant -->
-        <div class="bcorp-badge-showcase flex items-center gap-3 scale-90">
-          <span class="bcorp-top">Certified</span>
-          <div class="bcorp-circle-box">
-            <span>B</span>
-          </div>
-          <span class="bcorp-bottom">Corporation</span>
-        </div>
-
       </div>
     </div>
   </section>
@@ -432,20 +403,23 @@ const site = await getSite();
 
 
   .tasting-menu-cta-link {
-    font-family: var(--font-mono);
-    font-size: 1.15rem;
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
     color: var(--color-ink);
     text-decoration: none;
-    border-bottom: 2px solid var(--color-accent);
-    padding-bottom: 4px;
+    border-bottom: 2.5px solid var(--color-accent);
+    padding-bottom: 8px;
     display: inline-block;
-    transition: transform 0.25s ease, color 0.25s ease;
+    transition: font-weight 0.2s ease, transform 0.2s ease, color 0.2s ease;
   }
 
   .tasting-menu-cta-link:hover {
+    font-weight: 800;
+    transform: scale(1.1);
     color: var(--color-accent);
-    transform: scale(1.05);
-    font-weight: 700;
   }
 
   /* BCorp showcase styling */
