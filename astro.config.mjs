@@ -29,6 +29,11 @@ export default defineConfig({
         provider: fontProviders.fontsource(),
         name: "Inter",
         cssVariable: "--font-sans",
+      },
+      {
+        provider: fontProviders.fontsource(),
+        name: "Space Mono",
+        cssVariable: "--font-mono",
       }
     ]
   }

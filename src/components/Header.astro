@@ -1,37 +1,52 @@
 ---
 import { getSite } from "../utils/consts";
+import { Image } from "astro:assets";
+import menuDessert from "../assets/menu_dessert.png";
+
 const site = await getSite();
 const subpath = import.meta.env.BASE_URL;
 ---
 
-<header class="fixed w-full z-30 flex items-center bg-[color:var(--color-paper)]/40 backdrop-blur-sm">
-  <div class="content-shell w-full py-6">
-    <div class="grid grid-cols-3 items-center w-full">
-      <!-- Left side: Understated Reserve a Table link -->
-      <div class="justify-self-start">
-        <a href="#reservations" class="reserve-link">
-          <span data-lang="cz">Rezervovat stůl</span>
-          <span data-lang="en">Reserve a Table</span>
-        </a>
-      </div>
+<header class="fixed w-full z-30 flex items-center bg-[color:var(--color-paper)]/90 backdrop-blur-md">
+  <div class="content-shell w-full py-4 md:py-6">
+    <div class="flex items-center justify-between w-full">
+      <!-- Left side: Mock Logo icon + Brand Name underneath -->
+      <a href={subpath} class="logo-group" aria-label={site.title}>
+        <div class="logo-box">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <rect x="5" y="5" width="90" height="90" fill="none" stroke="var(--color-accent)" stroke-width="4"></rect>
+            <line x1="5" y1="95" x2="95" y2="5" stroke="var(--color-accent)" stroke-width="4"></line>
+          </svg>
+        </div>
+        <span class="brand-subtitle">{site.title}</span>
+      </a>
 
-      <!-- Center: Brand Name (shrinks on scroll via CSS scroll-driven animation) -->
-      <div class="justify-self-center text-center">
-        <a href={subpath} class="brand-link" aria-label={site.title}>
-          <span class="brand-title">{site.title}</span>
-        </a>
-      </div>
+      <!-- Right side: Navigation & Language switch & Popover Trigger -->
+      <div class="flex items-center gap-6 md:gap-12">
+        <nav class="hidden sm:flex items-center gap-6 md:gap-8">
+          <a href="#menu" class="nav-link-prev">
+            <span data-lang="cz">menu ↗</span>
+            <span data-lang="en">menu ↗</span>
+          </a>
+          <a href="#reservations" class="nav-link-prev">
+            <span data-lang="cz">rezervace ↗</span>
+            <span data-lang="en">reservation ↗</span>
+          </a>
+        </nav>
 
-      <!-- Right side: Minimal Menu toggle -->
-      <div class="justify-self-end">
-        <button popovertarget="nav-menu" class="menu-trigger" aria-label="Open Menu">
-          <span class="menu-trigger-text">
-            <span data-lang="cz">menu</span>
-            <span data-lang="en">menu</span>
-          </span>
-          <div class="menu-icon">
-            <span class="bar"></span>
-            <span class="bar"></span>
+        <!-- Language Switcher in Header -->
+        <div class="lang-switch-header">
+          <button class="lang-btn" data-lang-target="en">en</button>
+          <span class="lang-separator">/</span>
+          <button class="lang-btn" data-lang-target="cz">cz</button>
+        </div>
+
+        <!-- Hamburger Icon Box -->
+        <button popovertarget="nav-menu" class="hamburger-box" aria-label="Open Menu">
+          <div class="hamburger-lines">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
           </div>
         </button>
       </div>
@@ -39,34 +54,150 @@ const subpath = import.meta.env.BASE_URL;
   </div>
 </header>
 
-<!-- Native Popover Full-Screen Overlay Navigation Menu -->
-<div id="nav-menu" popover class="fullscreen-nav">
-  <div class="nav-overlay-content">
-    <button popovertarget="nav-menu" class="close-btn" aria-label="Close Menu">
-      &times;
-    </button>
-    
-    <nav class="overlay-links">
-      <a href="#menu" popovertarget="nav-menu" class="overlay-link">
-        <span data-lang="cz">Menu dégustation</span>
-        <span data-lang="en">Tasting Menu</span>
-      </a>
-      <a href="#story" popovertarget="nav-menu" class="overlay-link">
-        <span data-lang="cz">Náš příběh</span>
-        <span data-lang="en">Our Story</span>
-      </a>
-      <a href="#reservations" popovertarget="nav-menu" class="overlay-link">
-        <span data-lang="cz">Rezervace</span>
-        <span data-lang="en">Reservations</span>
-      </a>
-    </nav>
+<!-- Popover Full-Screen Menu Page (Covers the whole page) -->
+<div id="nav-menu" popover class="menu-overlay">
+  <div class="menu-overlay-container">
+    <!-- Top Nav bar inside overlay to match background header layout -->
+    <div class="content-shell w-full py-4 md:py-6 flex items-center justify-between border-b border-[color:var(--color-border)]">
+      <div class="logo-group">
+        <div class="logo-box">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <rect x="5" y="5" width="90" height="90" fill="none" stroke="var(--color-accent)" stroke-width="4"></rect>
+            <line x1="5" y1="95" x2="95" y2="5" stroke="var(--color-accent)" stroke-width="4"></line>
+          </svg>
+        </div>
+        <span class="brand-subtitle">{site.title}</span>
+      </div>
 
-    <!-- Language Selector inside Overlay Menu -->
-    <div class="lang-switch-container">
-      <div class="lang-switch">
-        <button class="lang-btn" data-lang-target="cz">cz</button>
-        <span class="lang-separator">/</span>
-        <button class="lang-btn" data-lang-target="en">en</button>
+      <div class="flex items-center gap-6 md:gap-12">
+        <nav class="hidden sm:flex items-center gap-6 md:gap-8">
+          <a href="#menu" popovertarget="nav-menu" class="nav-link-prev">
+            <span data-lang="cz">menu ↗</span>
+            <span data-lang="en">menu ↗</span>
+          </a>
+          <a href="#reservations" popovertarget="nav-menu" class="nav-link-prev">
+            <span data-lang="cz">rezervace ↗</span>
+            <span data-lang="en">reservation ↗</span>
+          </a>
+        </nav>
+
+        <div class="lang-switch-header">
+          <button class="lang-btn" data-lang-target="en">en</button>
+          <span class="lang-separator">/</span>
+          <button class="lang-btn" data-lang-target="cz">cz</button>
+        </div>
+
+        <!-- Close Button (X icon box) -->
+        <button popovertarget="nav-menu" class="close-box" aria-label="Close Menu">
+          <div class="close-cross">
+            <span class="cross-line line-1"></span>
+            <span class="cross-line line-2"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content Area: Split Layout -->
+    <div class="overlay-body grid md:grid-cols-12 gap-8 items-center py-12 px-6 max-w-6xl mx-auto w-full">
+      <!-- Left Column: Logo + Food Image -->
+      <div class="md:col-span-5 flex flex-col items-center md:items-start gap-8">
+        <div class="flex items-center gap-4">
+          <div class="logo-box-large">
+            <svg viewBox="0 0 100 100" class="logo-svg">
+              <rect x="5" y="5" width="90" height="90" fill="none" stroke="var(--color-accent)" stroke-width="3.5"></rect>
+              <line x1="5" y1="95" x2="95" y2="5" stroke="var(--color-accent)" stroke-width="3.5"></line>
+            </svg>
+          </div>
+          <span class="brand-title-large">{site.title}</span>
+        </div>
+        <div class="overlay-img-wrapper border border-[color:var(--color-border)]">
+          <Image 
+            src={menuDessert} 
+            alt="Menu tasting dish" 
+            class="overlay-img w-full object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- Right Column: Navigation Links -->
+      <div class="md:col-span-6 md:col-start-7 flex flex-col gap-12 text-left">
+        <!-- Section 1: Menu -->
+        <div class="overlay-menu-section space-y-4">
+          <h3 class="overlay-section-header">
+            <span data-lang="cz">Menu</span>
+            <span data-lang="en">Menu</span>
+          </h3>
+          <ul class="overlay-submenu-list">
+            <li>
+              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
+                <span data-lang="cz">Tasting menu</span>
+                <span data-lang="en">Tasting menu</span>
+              </a>
+            </li>
+            <li>
+              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
+                <span data-lang="cz">Á la carte</span>
+                <span data-lang="en">Á la carte</span>
+              </a>
+            </li>
+            <li>
+              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
+                <span data-lang="cz">Obědové menu</span>
+                <span data-lang="en">Lunch menu</span>
+              </a>
+            </li>
+            <li>
+              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
+                <span data-lang="cz">Víkendový brunch</span>
+                <span data-lang="en">Weekend brunch</span>
+              </a>
+            </li>
+            <li>
+              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
+                <span data-lang="cz">Letní festival</span>
+                <span data-lang="en">Summer festival</span>
+              </a>
+            </li>
+            <li>
+              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
+                <span data-lang="cz">Vinný lístek</span>
+                <span data-lang="en">Wine list</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section 2: Group Dining -->
+        <div class="overlay-menu-section">
+          <a href="#menu" popovertarget="nav-menu" class="overlay-section-header-link">
+            <span data-lang="cz">Skupinové akce</span>
+            <span data-lang="en">Group dining</span>
+          </a>
+        </div>
+
+        <!-- Section 3: About Us -->
+        <div class="overlay-menu-section">
+          <a href="#story" popovertarget="nav-menu" class="overlay-section-header-link">
+            <span data-lang="cz">O nás</span>
+            <span data-lang="en">About us</span>
+          </a>
+        </div>
+
+        <!-- Overlay Footer Details -->
+        <div class="overlay-menu-footer flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pt-8 border-t border-[color:var(--color-border)]">
+          <div class="space-y-1 text-xs">
+            <p class="font-medium text-ink">Gourmet Club</p>
+            <p class="text-muted">Exclusive culinary benefits</p>
+          </div>
+
+          <!-- Socials inside overlay -->
+          <div class="flex items-center gap-4 text-ink text-sm">
+            <a href="#" class="hover:opacity-75" aria-label="Facebook">FB</a>
+            <a href="#" class="hover:opacity-75" aria-label="Instagram">IG</a>
+            <a href="#" class="hover:opacity-75" aria-label="YouTube">YT</a>
+            <a href="#" class="hover:opacity-75" aria-label="Tripadvisor">TA</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -74,7 +205,7 @@ const subpath = import.meta.env.BASE_URL;
 
 <script is:inline>
   const STORAGE_KEY = 'vzatisi_lang';
-  const DEFAULT_LANG = 'cz';
+  const DEFAULT_LANG = 'en'; // Let's set 'en' as default or 'cz' based on selector style
 
   const getPreferredLang = () => {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -108,8 +239,8 @@ const subpath = import.meta.env.BASE_URL;
     });
   });
 
-  // Automatically close popover when clicking a link
-  document.querySelectorAll('.overlay-link').forEach(link => {
+  // Automatically close popover when clicking a submenu link or overlay link
+  document.querySelectorAll('.overlay-submenu-link, .overlay-section-header-link').forEach(link => {
     link.addEventListener('click', () => {
       const popover = document.getElementById('nav-menu');
       if (popover && popover.hidePopover) {
@@ -122,140 +253,56 @@ const subpath = import.meta.env.BASE_URL;
 <style>
   header {
     height: 90px;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1.5px solid var(--color-border);
     transition: background-color 150ms ease;
   }
 
-  .reserve-link {
-    font-family: var(--font-sans);
-    font-weight: 300;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-ink);
-    text-decoration: none;
-    transition: opacity 150ms ease;
-    border-bottom: 1px solid transparent;
-  }
-
-  .reserve-link:hover {
-    border-bottom: 1px solid var(--color-accent);
-  }
-
-  .brand-link {
-    text-decoration: none;
-  }
-
-  .brand-title {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: 1.8rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-ink);
-    display: inline-block;
-  }
-
-  .menu-trigger {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--color-ink);
-  }
-
-  .menu-trigger-text {
-    font-family: var(--font-sans);
-    font-weight: 300;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .menu-icon {
+  .logo-group {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    width: 20px;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
   }
 
-  .menu-icon .bar {
-    height: 1px;
-    width: 100%;
-    background-color: var(--color-ink);
+  .logo-box {
+    width: 32px;
+    height: 32px;
   }
 
-  /* Full Screen Popover Overlay */
-  .fullscreen-nav {
-    display: none;
+  .logo-box-large {
+    width: 44px;
+    height: 44px;
   }
 
-  .nav-overlay-content {
+  .logo-svg {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 2rem;
   }
 
-  .close-btn {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    background: none;
-    border: none;
+  .brand-subtitle {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
     color: var(--color-ink);
-    font-size: 3rem;
-    font-weight: 200;
-    cursor: pointer;
-    line-height: 1;
-    transition: opacity 150ms ease;
   }
 
-  .close-btn:hover {
-    opacity: 0.7;
-  }
-
-  .overlay-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-  }
-
-  .overlay-link {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
+  .nav-link-prev {
+    font-family: var(--font-mono);
+    font-size: 1rem;
     color: var(--color-ink);
     text-decoration: none;
-    transition: color 200ms ease;
+    padding-bottom: 2px;
+    border-bottom: 1.5px solid var(--color-accent);
+    text-transform: lowercase;
+    display: inline-flex;
+    align-items: center;
   }
 
-  .overlay-link:hover {
-    color: var(--color-accent);
-  }
-
-  .lang-switch-container {
-    margin-top: 4rem;
-    border-top: 1px solid var(--color-border);
-    padding-top: 2rem;
-    width: 120px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .lang-switch {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
+  .lang-switch-header {
+    font-family: var(--font-mono);
+    font-size: 1rem;
     color: var(--color-ink);
     display: flex;
     align-items: center;
@@ -290,5 +337,140 @@ const subpath = import.meta.env.BASE_URL;
     color: var(--color-ink);
     opacity: 0.5;
     margin: 0 4px;
+  }
+
+  /* Hamburger & Close Boxes styling to match screen */
+  .hamburger-box, .close-box {
+    width: 42px;
+    height: 28px;
+    background: none;
+    border: 1.5px solid var(--color-ink);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .hamburger-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 22px;
+  }
+
+  .hamburger-lines .line {
+    height: 1.5px;
+    width: 100%;
+    background-color: var(--color-ink);
+  }
+
+  .close-cross {
+    position: relative;
+    width: 22px;
+    height: 22px;
+  }
+
+  .close-cross .cross-line {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 1.5px;
+    width: 100%;
+    background-color: var(--color-ink);
+  }
+
+  .close-cross .line-1 {
+    transform: rotate(45deg);
+  }
+
+  .close-cross .line-2 {
+    transform: rotate(-45deg);
+  }
+
+  /* Full Screen Overlay Page overlay styling */
+  .menu-overlay {
+    display: none;
+  }
+
+  .menu-overlay-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: var(--color-paper);
+  }
+
+  .overlay-body {
+    flex: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .brand-title-large {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: var(--color-ink);
+  }
+
+  .overlay-img-wrapper {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .overlay-img {
+    aspect-ratio: 1/1;
+  }
+
+  .overlay-section-header {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    border-bottom: 2px solid var(--color-ink);
+    padding-bottom: 4px;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+
+  .overlay-section-header-link {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    border-bottom: 2px solid var(--color-ink);
+    padding-bottom: 4px;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .overlay-section-header-link:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .overlay-submenu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .overlay-submenu-link {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .overlay-submenu-link:hover {
+    color: var(--color-accent);
   }
 </style>

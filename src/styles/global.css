@@ -17,6 +17,7 @@
 	
 	--font-sans: var(--font-sans), sans-serif;
 	--font-display: var(--font-display), serif;
+	--font-mono: var(--font-mono), monospace;
 }
 
 @layer base {

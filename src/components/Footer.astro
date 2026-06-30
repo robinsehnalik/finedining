@@ -4,35 +4,256 @@ const site = await getSite();
 const today = new Date();
 ---
 
-<footer class="border-t border-[color:var(--color-border)] bg-[color:var(--color-paper)] py-16">
-  <div class="content-shell max-w-3xl mx-auto text-center space-y-8">
-    <div class="space-y-2">
-      <h3 class="text-2xl font-light tracking-[0.1em] uppercase">{site.title}</h3>
-      <p class="text-xs uppercase tracking-[0.2em] text-muted">{site.based}</p>
-    </div>
+<footer class="border-t border-[color:var(--color-border)] bg-[color:var(--color-paper)] py-16 text-ink">
+  <div class="content-shell max-w-6xl mx-auto space-y-12">
+    <!-- Top Part: Three Columns -->
+    <div class="grid md:grid-cols-12 gap-12">
+      <!-- Column 1: Address / contact -->
+      <div class="md:col-span-4 space-y-6">
+        <h3 class="footer-section-header">
+          <span data-lang="cz">Adresa / kontakt</span>
+          <span data-lang="en">Address / contact</span>
+        </h3>
+        
+        <div class="text-sm font-light text-muted space-y-4 leading-relaxed">
+          <p class="font-medium text-ink">{site.title} restaurant</p>
+          <p>reservations@lalchimiste.cz<br/>+420 222 221 155</p>
+          <p>
+            Liliová 1, Praha 1,<br/>
+            <span data-lang="cz">Česká republika</span>
+            <span data-lang="en">Czech Republic</span><br/>
+            <span class="text-xs italic" data-lang="cz">3 minuty od Karlova mostu</span>
+            <span class="text-xs italic" data-lang="en">3 minutes from Charles Bridge</span>
+          </p>
+          <p class="text-xs">
+            L'Alchimiste Catering a.s.<br/>
+            Novotného lávka 5, Praha 1<br/>
+            IČO: 15269574
+          </p>
+        </div>
 
-    <div class="grid md:grid-cols-2 gap-8 pt-4 text-xs tracking-[0.15em] uppercase text-muted">
-      <div class="space-y-2">
-        <p class="font-medium text-ink">
+        <a href="#reservations" class="footer-reserve-link">
+          <span data-lang="cz">rezervace ↗</span>
+          <span data-lang="en">reservation ↗</span>
+        </a>
+      </div>
+
+      <!-- Column 2: Opening hours -->
+      <div class="md:col-span-4 space-y-6">
+        <h3 class="footer-section-header">
           <span data-lang="cz">Otevírací doba</span>
-          <span data-lang="en">Hours</span>
-        </p>
-        <p data-lang="cz">Úterý – Sobota</p>
-        <p data-lang="en">Tuesday – Saturday</p>
-        <p>19:00 – 23:00</p>
+          <span data-lang="en">Opening hours</span>
+        </h3>
+
+        <div class="text-sm font-light text-muted space-y-6 leading-relaxed">
+          <p data-lang="cz">Pro konkrétní termíny zkontrolujte dostupnost v našem rezervačním systému. Některé dny může být zavřeno pro soukromé akce.</p>
+          <p data-lang="en">For specific dates, please check availability in our booking system. Some days may be closed for private events.</p>
+          
+          <div class="space-y-2">
+            <p class="font-medium text-ink" data-lang="cz">Pondělí — Pátek</p>
+            <p class="font-medium text-ink" data-lang="en">Monday — Friday</p>
+            <p>
+              <span data-lang="cz">oběd 11:30–15:00</span>
+              <span data-lang="en">lunch 11:30–15:00</span><br/>
+              <span data-lang="cz">večeře 17:00–23:00</span>
+              <span data-lang="en">dinner 17:00–23:00</span>
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <p class="font-medium text-ink" data-lang="cz">Sobota a Neděle</p>
+            <p class="font-medium text-ink" data-lang="en">Saturday and Sunday</p>
+            <p>
+              <span data-lang="cz">víkendový brunch 11:30–15:00</span>
+              <span data-lang="en">weekend brunch 11:30–15:00</span><br/>
+              <span data-lang="cz">večeře 17:00–23:00</span>
+              <span data-lang="en">dinner 17:00–23:00</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- B-Corp Badge rendered in SVG -->
+        <div class="bcorp-badge">
+          <span class="bcorp-label-top">Certified</span>
+          <div class="bcorp-circle-wrap">
+            <svg viewBox="0 0 100 100" class="bcorp-svg">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="var(--color-ink)" stroke-width="6"></circle>
+              <text x="50" y="62" font-family="var(--font-sans)" font-weight="bold" font-size="44" text-anchor="middle" fill="var(--color-ink)">B</text>
+            </svg>
+          </div>
+          <span class="bcorp-label-bottom">Corporation</span>
+        </div>
       </div>
-      <div class="space-y-2">
-        <p class="font-medium text-ink">
-          <span data-lang="cz">Adresa</span>
-          <span data-lang="en">Location</span>
-        </p>
-        <p>Address Line, City</p>
-        <p>reservations@example.com</p>
+
+      <!-- Column 3: Custom Print Map -->
+      <div class="md:col-span-4 space-y-6">
+        <h3 class="footer-section-header">
+          <span data-lang="cz">Mapa</span>
+          <span data-lang="en">Map</span>
+        </h3>
+        
+        <!-- Vector Map drawing -->
+        <div class="map-container border border-[color:var(--color-border)] relative bg-[#FAF9F5]">
+          <svg viewBox="0 0 300 200" class="w-full h-full">
+            <!-- Rivers / Water -->
+            <path d="M 0,0 L 50,0 L 25,200 L 0,200 Z" fill="#EAE6DF"></path>
+            
+            <!-- Roads -->
+            <!-- Smetanovo nabrezi -->
+            <line x1="50" y1="0" x2="25" y2="200" stroke="#D3C9BE" stroke-width="16"></line>
+            <!-- Naprstkova -->
+            <line x1="40" y1="160" x2="280" y2="135" stroke="#D3C9BE" stroke-width="12"></line>
+            <!-- Liliova -->
+            <line x1="220" y1="20" x2="245" y2="180" stroke="#D3C9BE" stroke-width="12"></line>
+            <!-- Karlova -->
+            <line x1="30" y1="30" x2="280" y2="10" stroke="#D3C9BE" stroke-width="12"></line>
+            
+            <!-- Road Labels in small mono -->
+            <text x="35" y="100" font-family="var(--font-mono)" font-size="7" fill="var(--color-muted)" transform="rotate(78, 35, 100)" letter-spacing="0.1em">SMETANOVO NÁBŘEŽÍ</text>
+            <text x="120" y="156" font-family="var(--font-mono)" font-size="7" fill="var(--color-muted)" transform="rotate(-6, 120, 156)" letter-spacing="0.1em">NÁPRSTKOVA</text>
+            <text x="246" y="90" font-family="var(--font-mono)" font-size="7" fill="var(--color-muted)" transform="rotate(81, 246, 90)" letter-spacing="0.1em">LILIOVÁ</text>
+            <text x="260" y="145" font-family="var(--font-mono)" font-size="7" fill="var(--color-muted)">BETLÉMSKÉ NÁM.</text>
+
+            <!-- Map Pin at Liliova/Naprstkova intersection -->
+            <g transform="translate(222, 115)">
+              <circle cx="0" cy="0" r="10" fill="var(--color-paper)" stroke="var(--color-accent)" stroke-width="1.5"></circle>
+              <circle cx="0" cy="0" r="4" fill="var(--color-accent)"></circle>
+            </g>
+          </svg>
+
+          <!-- Food review guides below map -->
+          <div class="flex justify-between items-center mt-4">
+            <span class="font-serif text-xs font-bold italic tracking-wide text-ink">Gault&amp;Millau</span>
+            <div class="flex gap-2 text-xs">
+              <span>🍴🍴</span>
+              <span>☘️</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="pt-8 border-t border-[color:var(--color-border)] text-[0.65rem] tracking-[0.2em] uppercase text-muted">
-      <p>{site.title} &copy; {today.getFullYear()}. All rights reserved.</p>
+    <!-- Middle Part: Socials & Terms -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pt-12 border-t border-[color:var(--color-border)] text-muted text-xs">
+      <!-- Social icons -->
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:opacity-75" aria-label="Facebook">Facebook</a>
+        <a href="#" class="hover:opacity-75" aria-label="Instagram">Instagram</a>
+        <a href="#" class="hover:opacity-75" aria-label="YouTube">YouTube</a>
+        <a href="#" class="hover:opacity-75" aria-label="Tripadvisor">Tripadvisor</a>
+      </div>
+
+      <!-- Copyright terms -->
+      <div>
+        <p>
+          <span data-lang="cz">Obchodní podmínky</span>
+          <span data-lang="en">Terms and Conditions</span>
+          &mdash; {site.title} &copy; {today.getFullYear()}
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Part: Group Sister Brands (Minimalist Mock Logos) -->
+    <div class="pt-8 border-t border-[color:var(--color-border)] space-y-4">
+      <h4 class="footer-section-header">Group</h4>
+      <div class="flex flex-wrap gap-4 items-center">
+        <!-- Brand 1 -->
+        <div class="group-brand-box">
+          <span class="group-brand-text font-serif font-bold">L'Alchimiste</span>
+        </div>
+        <!-- Brand 2 -->
+        <div class="group-brand-box">
+          <span class="group-brand-text font-mono font-light">mlýnec.</span>
+        </div>
+        <!-- Brand 3 -->
+        <div class="group-brand-box">
+          <span class="group-brand-text text-[0.65rem] tracking-wider uppercase font-sans">#catering</span>
+        </div>
+        <!-- Brand 4 -->
+        <div class="group-brand-box">
+          <span class="group-brand-text text-[0.65rem] font-serif italic font-light">Office Catering</span>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-section-header {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--color-ink);
+    border-bottom: 1.5px solid var(--color-border);
+    padding-bottom: 6px;
+    display: block;
+    text-transform: capitalize;
+  }
+
+  .footer-reserve-link {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1.5px solid var(--color-accent);
+    text-transform: lowercase;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .footer-reserve-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* BCorp logo design */
+  .bcorp-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--color-border);
+    padding: 10px 14px;
+    background-color: var(--color-surface);
+  }
+
+  .bcorp-label-top {
+    font-family: var(--font-sans);
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .bcorp-circle-wrap {
+    width: 32px;
+    height: 32px;
+  }
+
+  .bcorp-label-bottom {
+    font-family: var(--font-sans);
+    font-size: 0.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  /* Group Sister Brand Box styling */
+  .group-brand-box {
+    border: 1.5px solid var(--color-ink);
+    padding: 6px 14px;
+    min-width: 110px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-surface);
+  }
+
+  .group-brand-text {
+    font-size: 0.75rem;
+    color: var(--color-ink);
+    text-align: center;
+  }
+</style>
