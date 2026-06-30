@@ -28,12 +28,13 @@
 		--color-paper: #F4F0E8;
 		--color-surface: #F4F0E8;
 		--color-border: rgba(43, 38, 34, 0.08);
-		--bg-gradient-start: #F4F0E8;
-		--bg-gradient-mid: #EFEBE0;
-		--bg-gradient-end: #EAE4D9;
+		--bg-gradient-start: #FFFFFF;
+		--bg-gradient-mid: #FAF8F5;
+		--bg-gradient-end: #F4F0E8;
 		--bg-menu-gradient: linear-gradient(135deg, #FAF8F5 0%, #EFECE4 100%);
-		--bg-footer-gradient: linear-gradient(180deg, #EAE4D9 0%, #F8F6F2 100%);
-		--bg-header-gradient: linear-gradient(180deg, #F5F2EC 0%, #F4F0E8 100%);
+		--bg-footer-gradient: transparent;
+		--bg-header-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+		--bg-zigzag-gradient: linear-gradient(135deg, #FAF8F5 0%, #F5EFEB 100%);
 	}
 
 	:root[data-theme="dark"] {
@@ -43,12 +44,13 @@
 		--color-paper: #2B2622;
 		--color-surface: #2B2622;
 		--color-border: rgba(244, 240, 232, 0.08);
-		--bg-gradient-start: #2B2622;
+		--bg-gradient-start: #1E1A18;
 		--bg-gradient-mid: #25201D;
-		--bg-gradient-end: #1E1A18;
+		--bg-gradient-end: #2B2622;
 		--bg-menu-gradient: linear-gradient(135deg, #2D2824 0%, #221E1C 100%);
-		--bg-footer-gradient: linear-gradient(180deg, #1E1A18 0%, #2E2925 100%);
-		--bg-header-gradient: linear-gradient(180deg, #2B2622 0%, #2B2622 100%);
+		--bg-footer-gradient: transparent;
+		--bg-header-gradient: linear-gradient(180deg, rgba(43, 38, 34, 0.98) 0%, rgba(43, 38, 34, 0.95) 100%);
+		--bg-zigzag-gradient: linear-gradient(135deg, #2D2824 0%, #25201D 100%);
 	}
 
 
