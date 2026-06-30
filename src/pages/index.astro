@@ -218,23 +218,21 @@ const site = await getSite();
 
 
   .tasting-menu-cta-link {
-    font-family: var(--font-sans);
-    font-size: 1.6rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
     color: var(--color-ink);
     text-decoration: none;
-    border-bottom: 2.5px solid var(--color-accent);
-    padding-bottom: 8px;
-    display: inline-block;
-    transition: font-weight 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--color-accent);
+    text-transform: lowercase;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.25s ease, font-weight 0.25s ease, border-color 0.25s ease;
   }
 
   .tasting-menu-cta-link:hover {
-    font-weight: 800;
-    transform: scale(1.1);
-    color: var(--color-accent);
+    transform: scale(1.06);
+    font-weight: 700;
   }
 
   /* BCorp showcase styling */
