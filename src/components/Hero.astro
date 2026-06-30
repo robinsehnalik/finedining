@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import heroWagyu from "../assets/hero_wagyu.png";
-import storySetting from "../assets/story_setting.png";
 ---
 
 <section class="hero-section min-h-[90vh] flex items-center py-12 md:py-24 overflow-hidden">
@@ -13,48 +12,37 @@ import storySetting from "../assets/story_setting.png";
       <h1 class="sr-only">L'Alchimiste - Fine Dining Restaurant Prague</h1>
       
       <div class="hero-heading-container">
-        <p class="hero-heading text-6xl sm:text-7xl lg:text-8xl font-light text-ink leading-[1.05] tracking-tight">
+        <p class="hero-heading text-7xl sm:text-8xl lg:text-9xl xl:text-[7.5rem] font-light text-ink leading-[0.95] tracking-tighter">
           <span class="block">pure taste.</span>
           <span class="block font-serif italic text-[color:var(--color-accent)]">unhurried.</span>
         </p>
       </div>
 
-      <p class="hero-subtext text-sm sm:text-base font-light text-muted leading-relaxed max-w-md">
-        <span data-lang="cz">
-          Kulinářská alchymie inspirovaná klidem české krajiny a precizností francouzské kuchyně. Každý pokrm je příběh napsaný ranní sklizní.
-        </span>
-        <span data-lang="en">
-          Culinary alchemy inspired by the tranquility of the Bohemian countryside and French precision. Every dish is a story written by the morning harvest.
-        </span>
-      </p>
-
-      <div class="hero-action-container pt-4">
-        <a href="#reservations" class="hero-reserve-btn">
-          <span data-lang="cz">Rezervovat stůl ↗</span>
-          <span data-lang="en">Reserve a Table ↗</span>
-        </a>
+      <!-- Chef's Quote Description (Enlarged) -->
+      <div class="hero-subtext-container">
+        <blockquote class="hero-subtext text-lg sm:text-xl lg:text-2xl font-light text-muted leading-relaxed font-serif italic max-w-lg">
+          <span data-lang="cz">
+            „Kulinářská alchymie inspirovaná klidem české krajiny a precizností francouzské kuchyně. Každý pokrm je příběh napsaný ranní sklizní.“
+          </span>
+          <span data-lang="en">
+            “Culinary alchemy inspired by the tranquility of the Bohemian countryside and French precision. Every dish is a story written by the morning harvest.”
+          </span>
+        </blockquote>
+        <cite class="hero-quote-author text-xs uppercase tracking-widest text-ink mt-4 block font-sans not-italic">
+          <span data-lang="cz">&mdash; šéfkuchař</span>
+          <span data-lang="en">&mdash; Chef de Cuisine</span>
+        </cite>
       </div>
     </div>
 
-    <!-- Right / Bottom Column: Captivating Multi-Image Overlay (Mobile-first stacked grid) -->
-    <div class="md:col-span-6 relative flex justify-center items-center w-full h-[45vh] sm:h-[55vh] md:h-[65vh]">
-      <!-- Main Portrait Image with Parallax scroll animation -->
-      <div class="hero-main-img-wrapper border border-[color:var(--color-border)] overflow-hidden w-2/3 h-full absolute left-4 md:left-8 z-0">
-        <Image 
-          src={heroWagyu} 
-          alt="L'Alchimiste tasting plate plating" 
-          class="parallax-image w-full h-[120%] object-cover absolute top-[-10%]"
-        />
-      </div>
-
-      <!-- Overlapping Detail Image for Depth -->
-      <div class="hero-detail-img-wrapper border border-[color:var(--color-border)] overflow-hidden w-1/2 aspect-[4/5] absolute right-4 bottom-4 md:right-0 md:bottom-8 z-10 bg-[color:var(--color-paper)]">
-        <Image 
-          src={storySetting} 
-          alt="Minimalist table setting detail" 
-          class="w-full h-full object-cover"
-        />
-      </div>
+    <!-- Right / Bottom Column: Single Big 4K Image -->
+    <div class="md:col-span-6 relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
+      <Image 
+        src={heroWagyu} 
+        alt="L'Alchimiste tasting plate presentation" 
+        class="parallax-image w-full h-[120%] object-cover absolute top-[-10%]"
+        loading="eager"
+      />
     </div>
 
   </div>
@@ -76,22 +64,11 @@ import storySetting from "../assets/story_setting.png";
   @keyframes imageEntry {
     from {
       opacity: 0;
-      transform: scale(0.96) translateX(30px);
+      transform: scale(0.98) translateX(20px);
     }
     to {
       opacity: 1;
       transform: scale(1) translateX(0);
-    }
-  }
-
-  @keyframes detailEntry {
-    from {
-      opacity: 0;
-      transform: translateY(40px) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
     }
   }
 
@@ -102,52 +79,15 @@ import storySetting from "../assets/story_setting.png";
     animation: fadeUp 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s forwards;
   }
 
-  .hero-subtext {
+  .hero-subtext-container {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeUp 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s forwards;
   }
 
-  .hero-action-container {
+  .parallax-image {
     opacity: 0;
-    transform: translateY(15px);
-    animation: fadeUp 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0.7s forwards;
-  }
-
-  .hero-main-img-wrapper {
-    opacity: 0;
-    transform: scale(0.96) translateX(30px);
-    animation: imageEntry 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s forwards;
-  }
-
-  .hero-detail-img-wrapper {
-    opacity: 0;
-    transform: translateY(40px) scale(0.95);
-    animation: detailEntry 1.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0.8s forwards;
-  }
-
-  /* Mobile-first hover zoom */
-  .hero-detail-img-wrapper img {
-    transition: transform 0.5s ease;
-  }
-  .hero-detail-img-wrapper:hover img {
-    transform: scale(1.05);
-  }
-
-  .hero-reserve-btn {
-    font-family: var(--font-mono);
-    font-size: 1.1rem;
-    color: var(--color-ink);
-    text-decoration: none;
-    border-bottom: 2px solid var(--color-accent);
-    padding-bottom: 6px;
-    display: inline-block;
-    transition: transform 0.25s ease, font-weight 0.25s ease;
-  }
-
-  .hero-reserve-btn:hover {
-    transform: scale(1.05);
-    font-weight: 700;
+    animation: imageEntry 1.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s forwards;
   }
 
   /* Accessibility hide helper */
