@@ -28,6 +28,9 @@
 		--color-paper: #F4F0E8;
 		--color-surface: #F4F0E8;
 		--color-border: rgba(43, 38, 34, 0.08);
+		--bg-gradient-start: #F4F0E8;
+		--bg-gradient-mid: #EFEBE0;
+		--bg-gradient-end: #EAE4D9;
 	}
 
 	:root[data-theme="dark"] {
@@ -37,6 +40,9 @@
 		--color-paper: #2B2622;
 		--color-surface: #2B2622;
 		--color-border: rgba(244, 240, 232, 0.08);
+		--bg-gradient-start: #2B2622;
+		--bg-gradient-mid: #25201D;
+		--bg-gradient-end: #1E1A18;
 	}
 
 
@@ -54,7 +60,8 @@
 		font-family: var(--font-sans);
 		line-height: 1.6;
 		color: var(--color-ink);
-		background-color: var(--color-paper);
+		background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
+		background-attachment: fixed;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -406,5 +413,5 @@ html[data-lang="en"] [data-lang="cz"] {
 .reveal-on-scroll {
   animation: scroll-reveal linear forwards;
   animation-timeline: view();
-  animation-range: entry 5% cover 30%;
+  animation-range: entry 0% entry 35%;
 }
