@@ -82,16 +82,16 @@ const site = await getSite();
   </section>
 
   <!-- Section 3: Narrative Section ("Chef's Notebook" - Zigzag layout) -->
-  <section id="story" class="py-24 md:py-36 space-y-48 overflow-hidden relative bg-transparent">
-    <!-- Large color blobs — warm rose and sage green complementing white/beige -->
-    <div class="absolute pointer-events-none z-0" style="top: 0%; left: -10%; width: 70vw; height: 70vw; border-radius: 50%; background: rgba(197, 161, 128, 0.18); filter: blur(120px);"></div>
-    <div class="absolute pointer-events-none z-0" style="top: 50%; right: -15%; width: 60vw; height: 60vw; border-radius: 50%; background: rgba(180, 140, 110, 0.14); filter: blur(110px);"></div>
+  <section id="story" class="py-24 md:py-36 space-y-48 relative bg-transparent">
+    <!-- Large color blobs — warm gold tones complementing white and beige -->
+    <div class="absolute pointer-events-none z-0" style="top: 0%; left: -15%; width: 75vw; height: 75vw; border-radius: 50%; background: rgba(197, 161, 128, 0.28); filter: blur(100px);"></div>
+    <div class="absolute pointer-events-none z-0" style="top: 55%; right: -20%; width: 65vw; height: 65vw; border-radius: 50%; background: rgba(210, 175, 140, 0.22); filter: blur(90px);"></div>
 
     <!-- Inner content wrapper -->
     <div class="relative z-10 space-y-48 w-full">
       <!-- Notebook Entry I: Terroir (Image Left, Text Right) -->
       <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-        <div class="md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
+        <div class="story-img-wrap md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden">
           <Image 
             src={storySetting} 
             alt="L'Alchimiste minimal table setting" 
@@ -144,7 +144,7 @@ const site = await getSite();
             </p>
           </div>
         </div>
-        <div class="md:col-span-6 md:order-last md:col-start-7 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
+        <div class="story-img-wrap md:col-span-6 md:order-last md:col-start-7 h-[55vh] md:h-[75vh] overflow-hidden">
           <Image 
             src={menuDessert} 
             alt="Michelin-starred dessert presentation" 
@@ -155,7 +155,7 @@ const site = await getSite();
 
       <!-- Notebook Entry III: Silence (Image Left, Text Right) -->
       <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-        <div class="md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
+        <div class="story-img-wrap md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden">
           <Image 
             src={diningRoomInterior} 
             alt="L'Alchimiste dining room interior widely spaced tables" 
@@ -208,7 +208,7 @@ const site = await getSite();
             </p>
           </div>
         </div>
-        <div class="md:col-span-6 md:order-last md:col-start-7 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
+        <div class="story-img-wrap md:col-span-6 md:order-last md:col-start-7 h-[55vh] md:h-[75vh] overflow-hidden">
           <Image 
             src={fireCookingDetail} 
             alt="Gourmet food cooking over glowing charcoal" 
@@ -242,6 +242,11 @@ const site = await getSite();
     font-weight: 700;
   }
 
+  /* Image soft fade blend into background */
+  .story-img-wrap {
+    -webkit-mask-image: radial-gradient(ellipse 90% 88% at 50% 50%, black 45%, transparent 100%);
+    mask-image: radial-gradient(ellipse 90% 88% at 50% 50%, black 45%, transparent 100%);
+  }
   /* BCorp showcase styling */
   .bcorp-badge-showcase {
     display: flex;
