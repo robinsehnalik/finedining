@@ -28,11 +28,11 @@
 		--color-paper: #F4F0E8;
 		--color-surface: #F4F0E8;
 		--color-border: rgba(43, 38, 34, 0.08);
-		--bg-gradient-start: #EAE4D9;
-		--bg-gradient-mid: #F1ECE3;
-		--bg-gradient-end: #F8F6F2;
+		--bg-gradient-start: #FFFFFF;
+		--bg-gradient-mid: #F5F0E8;
+		--bg-gradient-end: #EAE4D9;
 		--bg-menu-gradient: linear-gradient(135deg, #FAF8F5 0%, #EFECE4 100%);
-		--bg-footer-gradient: #F8F6F2;
+		--bg-footer-gradient: #EAE4D9;
 		--bg-header-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.65) 100%);
 		--bg-zigzag-gradient: linear-gradient(135deg, #FAF8F5 0%, #F5EFEB 100%);
 	}
@@ -69,7 +69,6 @@
 		line-height: 1.6;
 		color: var(--color-ink);
 		background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
-		background-attachment: fixed;
 	}
 
 	h1, h2, h3, h4, h5, h6 {

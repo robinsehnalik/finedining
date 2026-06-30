@@ -83,10 +83,9 @@ const site = await getSite();
 
   <!-- Section 3: Narrative Section ("Chef's Notebook" - Zigzag layout) -->
   <section id="story" class="py-24 md:py-36 space-y-48 overflow-hidden relative bg-transparent">
-    <!-- Glow blobs underneath the content with themed colors -->
-    <div class="absolute top-[5%] left-[5%] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[#4E7A62]/8 blur-[100px] md:blur-[140px] pointer-events-none z-0"></div>
-    <div class="absolute top-[45%] right-[5%] w-[40vw] h-[40vw] md:w-[30vw] md:h-[30vw] rounded-full bg-[#9C4A5B]/7 blur-[90px] md:blur-[120px] pointer-events-none z-0"></div>
-    <div class="absolute bottom-[5%] left-[10%] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[#D06A4F]/8 blur-[100px] md:blur-[140px] pointer-events-none z-0"></div>
+    <!-- Large color blobs — warm rose and sage green complementing white/beige -->
+    <div class="absolute pointer-events-none z-0" style="top: 0%; left: -10%; width: 70vw; height: 70vw; border-radius: 50%; background: rgba(197, 161, 128, 0.18); filter: blur(120px);"></div>
+    <div class="absolute pointer-events-none z-0" style="top: 50%; right: -15%; width: 60vw; height: 60vw; border-radius: 50%; background: rgba(180, 140, 110, 0.14); filter: blur(110px);"></div>
 
     <!-- Inner content wrapper -->
     <div class="relative z-10 space-y-48 w-full">
