@@ -8,19 +8,26 @@ const today = new Date();
   <div class="content-shell max-w-3xl mx-auto text-center space-y-8">
     <div class="space-y-2">
       <h3 class="text-2xl font-light tracking-[0.1em] uppercase">{site.title}</h3>
-      <p class="text-xs uppercase tracking-[0.2em] text-muted">Paris</p>
+      <p class="text-xs uppercase tracking-[0.2em] text-muted">{site.based}</p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8 pt-4 text-xs tracking-[0.15em] uppercase text-muted">
       <div class="space-y-2">
-        <p class="font-medium text-ink">Hours</p>
-        <p>Tuesday – Saturday</p>
+        <p class="font-medium text-ink">
+          <span data-lang="cz">Otevírací doba</span>
+          <span data-lang="en">Hours</span>
+        </p>
+        <p data-lang="cz">Úterý – Sobota</p>
+        <p data-lang="en">Tuesday – Saturday</p>
         <p>19:00 – 23:00</p>
       </div>
       <div class="space-y-2">
-        <p class="font-medium text-ink">Location</p>
-        <p>12 Rue de la Paix, Paris</p>
-        <p>reservations@letoile.com</p>
+        <p class="font-medium text-ink">
+          <span data-lang="cz">Adresa</span>
+          <span data-lang="en">Location</span>
+        </p>
+        <p>Address Line, City</p>
+        <p>reservations@example.com</p>
       </div>
     </div>
 
