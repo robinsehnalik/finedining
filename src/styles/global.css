@@ -21,7 +21,7 @@
 }
 
 @layer base {
-	:root[data-theme="light"] {
+	:root {
 		color-scheme: light;
 		--color-ink: #2B2622;
 		--color-muted: #6E6862;

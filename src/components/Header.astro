@@ -7,7 +7,7 @@ const site = await getSite();
 const subpath = import.meta.env.BASE_URL;
 ---
 
-<header class="fixed w-full z-30 flex items-center" style="background: var(--bg-header-gradient);">
+<header class="fixed w-full z-30 flex items-center">
   <div class="content-shell w-full py-6 md:py-8">
     <div class="flex items-center justify-between w-full">
       <!-- Left side: Unique brand text logo -->
@@ -242,6 +242,7 @@ const subpath = import.meta.env.BASE_URL;
   header {
     height: 100px;
     border-bottom: 1.5px solid var(--color-border);
+    background: var(--bg-header-gradient) !important;
     transition: background-color 150ms ease;
   }
 
