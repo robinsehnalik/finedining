@@ -82,132 +82,140 @@ const site = await getSite();
   </section>
 
   <!-- Section 3: Narrative Section ("Chef's Notebook" - Zigzag layout) -->
-  <section id="story" class="py-24 md:py-36 px-6 md:px-16 space-y-48 overflow-hidden rounded-3xl border border-[color:var(--color-border)]" style="background: var(--bg-zigzag-gradient);">
-    <!-- Notebook Entry I: Terroir (Image Left, Text Right) -->
-    <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-      <div class="md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
-        <Image 
-          src={storySetting} 
-          alt="L'Alchimiste minimal table setting" 
-          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-        />
-      </div>
-      <div class="md:col-span-6 md:col-start-7 space-y-6">
-        <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">I. TERROIR</span>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-[1.1] text-ink font-serif">
-          <span data-lang="cz">Surovina v plné nahotě.</span>
-          <span data-lang="en">Raw, unhurried sourcing.</span>
-        </h2>
-        <div class="text-base sm:text-lg lg:text-xl font-light text-muted leading-relaxed space-y-6 max-w-xl">
-          <p data-lang="cz">
-            Základem každého chodu je absolutní respekt k sezónní zralosti. Spolupracujeme výhradně s malými biodynamickými farmami v Čechách a ve Francii, které sdílejí naši filozofii pomalého pěstování a úcty k půdě.
-          </p>
-          <p data-lang="cz">
-            Naše menu se nemění podle kalendáře, ale podle ranní sklizně. Co ráno roste v zemi, večer definuje váš talíř a přináší na stůl čistou esenci přírody v její nejsyrovější a nejkrásnější podobě.
-          </p>
-          <p data-lang="en">
-            The foundation of every course is absolute respect for seasonal maturity. We collaborate exclusively with small, biodynamic farms in Bohemia and France that share our philosophy of slow cultivation and respect for the land.
-          </p>
-          <p data-lang="en">
-            Our menu does not adapt to the calendar, but to the morning harvest. What grows in the soil at dawn defines your plate by dusk, presenting the pure essence of nature in its rawest, most beautiful form.
-          </p>
-        </div>
-      </div>
-    </div>
+  <section id="story" class="py-24 md:py-36 px-6 md:px-16 space-y-48 overflow-hidden rounded-3xl border border-[color:var(--color-border)] relative bg-transparent">
+    <!-- Glow blobs underneath the content -->
+    <div class="absolute top-[5%] left-[5%] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[color:var(--color-accent)]/8 blur-[100px] md:blur-[140px] pointer-events-none z-0"></div>
+    <div class="absolute top-[45%] right-[5%] w-[40vw] h-[40vw] md:w-[30vw] md:h-[30vw] rounded-full bg-[color:var(--color-accent)]/6 blur-[90px] md:blur-[120px] pointer-events-none z-0"></div>
+    <div class="absolute bottom-[5%] left-[10%] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[color:var(--color-accent)]/8 blur-[100px] md:blur-[140px] pointer-events-none z-0"></div>
 
-    <!-- Notebook Entry II: Technique (Image Right, Text Left) -->
-    <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-      <div class="md:col-span-6 space-y-6 md:order-first">
-        <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">II. TECHNIQUE</span>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-[1.1] text-ink font-serif">
-          <span data-lang="cz">Neviditelné umění.</span>
-          <span data-lang="en">Invisible craftsmanship.</span>
-        </h2>
-        <div class="text-base sm:text-lg lg:text-xl font-light text-muted leading-relaxed space-y-6 max-w-xl">
-          <p data-lang="cz">
-            Složitost našich pokrmů spočívá v jejich zdánlivé jednoduchosti. Tradiční francouzské techniky redukcí a fermentace používáme k tomu, abychom zvýraznili přirozenou esenci surovin, nikoli ji zakryli.
-          </p>
-          <p data-lang="cz">
-            Tvorba našich komplexních omáček trvá dny; dokončení na talíři pak vteřiny. Je to čistá kulinářská alchymie chutí zbavená veškerého vizuálního šumu, kde každá kapka omáčky má svůj hluboký smysl.
-          </p>
-          <p data-lang="en">
-            The complexity of our dishes lies in their apparent simplicity. We apply classical French reduction and fermentation techniques to elevate the natural essence of the ingredients, never to mask them.
-          </p>
-          <p data-lang="en">
-            Crafting our complex sauces takes days; plating takes seconds. It is a pure culinary alchemy stripped of all unnecessary visual noise, where every single reduction has a profound purpose.
-          </p>
+    <!-- Inner content wrapper -->
+    <div class="relative z-10 space-y-48 w-full">
+      <!-- Notebook Entry I: Terroir (Image Left, Text Right) -->
+      <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
+        <div class="md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
+          <Image 
+            src={storySetting} 
+            alt="L'Alchimiste minimal table setting" 
+            class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+          />
+        </div>
+        <div class="md:col-span-6 md:col-start-7 space-y-6">
+          <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">I. TERROIR</span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-[1.1] text-ink font-serif">
+            <span data-lang="cz">Surovina v plné nahotě.</span>
+            <span data-lang="en">Raw, unhurried sourcing.</span>
+          </h2>
+          <div class="text-base sm:text-lg lg:text-xl font-light text-muted leading-relaxed space-y-6 max-w-xl">
+            <p data-lang="cz">
+              Základem každého chodu je absolutní respekt k sezónní zralosti. Spolupracujeme výhradně s malými biodynamickými farmami v Čechách a ve Francii, které sdílejí naši filozofii pomalého pěstování a úcty k půdě.
+            </p>
+            <p data-lang="cz">
+              Naše menu se nemění podle kalendáře, ale podle ranní sklizně. Co ráno roste v zemi, večer definuje váš talíř a přináší na stůl čistou esenci přírody v její nejsyrovější a nejkrásnější podobě.
+            </p>
+            <p data-lang="en">
+              The foundation of every course is absolute respect for seasonal maturity. We collaborate exclusively with small, biodynamic farms in Bohemia and France that share our philosophy of slow cultivation and respect for the land.
+            </p>
+            <p data-lang="en">
+              Our menu does not adapt to the calendar, but to the morning harvest. What grows in the soil at dawn defines your plate by dusk, presenting the pure essence of nature in its rawest, most beautiful form.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="md:col-span-6 md:order-last md:col-start-7 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
-        <Image 
-          src={menuDessert} 
-          alt="Michelin-starred dessert presentation" 
-          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-        />
-      </div>
-    </div>
 
-    <!-- Notebook Entry III: Silence (Image Left, Text Right) -->
-    <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-      <div class="md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
-        <Image 
-          src={diningRoomInterior} 
-          alt="L'Alchimiste dining room interior widely spaced tables" 
-          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-        />
-      </div>
-      <div class="md:col-span-6 md:col-start-7 space-y-6">
-        <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">III. SILENCE</span>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-[1.1] text-ink font-serif">
-          <span data-lang="cz">Ticho a prostor.</span>
-          <span data-lang="en">Space and serenity.</span>
-        </h2>
-        <div class="text-base sm:text-lg lg:text-xl font-light text-muted leading-relaxed space-y-6 max-w-xl">
-          <p data-lang="cz">
-            Věříme, že prostor a klid jsou pro kulinářský zážitek stejně důležité jako jídlo samotné. Naše restaurace je navržena jako útočiště pro smysly.
-          </p>
-          <p data-lang="cz">
-            Stoly držíme ve velké vzdálenosti od sebe, abychom chránili vaše soukromí a umožnili vám plně se soustředit na vůni, texturu a chuť každého sousta bez rušivých vlivů okolí.
-          </p>
-          <p data-lang="en">
-            We believe that space and serenity are just as crucial to a dining experience as the food itself. Our dining room is designed as a sensory sanctuary.
-          </p>
-          <p data-lang="en">
-            We keep our tables widely spaced to protect your privacy and let your focus return completely to the aroma, texture, and flavor of each bite without any outside distractions.
-          </p>
+      <!-- Notebook Entry II: Technique (Image Right, Text Left) -->
+      <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
+        <div class="md:col-span-6 space-y-6 md:order-first">
+          <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">II. TECHNIQUE</span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-[1.1] text-ink font-serif">
+            <span data-lang="cz">Neviditelné umění.</span>
+            <span data-lang="en">Invisible craftsmanship.</span>
+          </h2>
+          <div class="text-base sm:text-lg lg:text-xl font-light text-muted leading-relaxed space-y-6 max-w-xl">
+            <p data-lang="cz">
+              Složitost našich pokrmů spočívá v jejich zdánlivé jednoduchosti. Tradiční francouzské techniky redukcí a fermentace používáme k tomu, abychom zvýraznili přirozenou esenci surovin, nikoli ji zakryli.
+            </p>
+            <p data-lang="cz">
+              Tvorba našich komplexních omáček trvá dny; dokončení na talíři pak vteřiny. Je to čistá kulinářská alchymie chutí zbavená veškerého vizuálního šumu, kde každá kapka omáčky má svůj hluboký smysl.
+            </p>
+            <p data-lang="en">
+              The complexity of our dishes lies in their apparent simplicity. We apply classical French reduction and fermentation techniques to elevate the natural essence of the ingredients, never to mask them.
+            </p>
+            <p data-lang="en">
+              Crafting our complex sauces takes days; plating takes seconds. It is a pure culinary alchemy stripped of all unnecessary visual noise, where every single reduction has a profound purpose.
+            </p>
+          </div>
+        </div>
+        <div class="md:col-span-6 md:order-last md:col-start-7 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
+          <Image 
+            src={menuDessert} 
+            alt="Michelin-starred dessert presentation" 
+            class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+          />
         </div>
       </div>
-    </div>
 
-    <!-- Notebook Entry IV: Fire & Water (Image Right, Text Left) -->
-    <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-      <div class="md:col-span-6 space-y-6 md:order-first">
-        <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">IV. FIRE & WATER</span>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-[1.1] text-ink font-serif">
-          <span data-lang="cz">Oheň a voda.</span>
-          <span data-lang="en">Fire and water.</span>
-        </h2>
-        <div class="text-base sm:text-lg lg:text-xl font-light text-muted leading-relaxed space-y-6 max-w-xl">
-          <p data-lang="cz">
-            Návrat k elementárním základům vaření. Práce s otevřeným ohněm, kouřem a dřevěným uhlím dodává našim pokrmům nezaměnitelný rustikální charakter, který se dokonale snoubí s moderní precizností.
-          </p>
-          <p data-lang="cz">
-            Využíváme prastaré metody konzervace a zavařování, abychom uchovali plnou sílu surovin po celý rok.
-          </p>
-          <p data-lang="en">
-            A return to the elemental foundations of cooking. Working with open fire, smoke, and charcoal infuses our dishes with a unique rustic character that pairs beautifully with modern precision.
-          </p>
-          <p data-lang="en">
-            We utilize ancient methods of preservation and curing to capture the full strength of the seasons all year round.
-          </p>
+      <!-- Notebook Entry III: Silence (Image Left, Text Right) -->
+      <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
+        <div class="md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
+          <Image 
+            src={diningRoomInterior} 
+            alt="L'Alchimiste dining room interior widely spaced tables" 
+            class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+          />
+        </div>
+        <div class="md:col-span-6 md:col-start-7 space-y-6">
+          <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">III. SILENCE</span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-[1.1] text-ink font-serif">
+            <span data-lang="cz">Ticho a prostor.</span>
+            <span data-lang="en">Space and serenity.</span>
+          </h2>
+          <div class="text-base sm:text-lg lg:text-xl font-light text-muted leading-relaxed space-y-6 max-w-xl">
+            <p data-lang="cz">
+              Věříme, že prostor a klid jsou pro kulinářský zážitek stejně důležité jako jídlo samotné. Naše restaurace je navržena jako útočiště pro smysly.
+            </p>
+            <p data-lang="cz">
+              Stoly držíme ve velké vzdálenosti od sebe, abychom chránili vaše soukromí a umožnili vám plně se soustředit na vůni, texturu a chuť každého sousta bez rušivých vlivů okolí.
+            </p>
+            <p data-lang="en">
+              We believe that space and serenity are just as crucial to a dining experience as the food itself. Our dining room is designed as a sensory sanctuary.
+            </p>
+            <p data-lang="en">
+              We keep our tables widely spaced to protect your privacy and let your focus return completely to the aroma, texture, and flavor of each bite without any outside distractions.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="md:col-span-6 md:order-last md:col-start-7 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
-        <Image 
-          src={fireCookingDetail} 
-          alt="Gourmet food cooking over glowing charcoal" 
-          class="fire-cooking-img w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-        />
+
+      <!-- Notebook Entry IV: Fire & Water (Image Right, Text Left) -->
+      <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
+        <div class="md:col-span-6 space-y-6 md:order-first">
+          <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">IV. FIRE & WATER</span>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-[1.1] text-ink font-serif">
+            <span data-lang="cz">Oheň a voda.</span>
+            <span data-lang="en">Fire and water.</span>
+          </h2>
+          <div class="text-base sm:text-lg lg:text-xl font-light text-muted leading-relaxed space-y-6 max-w-xl">
+            <p data-lang="cz">
+              Návrat k elementárním základům vaření. Práce s otevřeným ohněm, kouřem a dřevěným uhlím dodává našim pokrmům nezaměnitelný rustikální charakter, který se dokonale snoubí s moderní precizností.
+            </p>
+            <p data-lang="cz">
+              Využíváme prastaré metody konzervace a zavařování, abychom uchovali plnou sílu surovin po celý rok.
+            </p>
+            <p data-lang="en">
+              A return to the elemental foundations of cooking. Working with open fire, smoke, and charcoal infuses our dishes with a unique rustic character that pairs beautifully with modern precision.
+            </p>
+            <p data-lang="en">
+              We utilize ancient methods of preservation and curing to capture the full strength of the seasons all year round.
+            </p>
+          </div>
+        </div>
+        <div class="md:col-span-6 md:order-last md:col-start-7 h-[55vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)]">
+          <Image 
+            src={fireCookingDetail} 
+            alt="Gourmet food cooking over glowing charcoal" 
+            class="fire-cooking-img w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+          />
+        </div>
       </div>
     </div>
   </section>
