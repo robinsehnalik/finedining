@@ -8,22 +8,16 @@ const subpath = import.meta.env.BASE_URL;
 ---
 
 <header class="fixed w-full z-30 flex items-center bg-[color:var(--color-paper)]/90 backdrop-blur-md">
-  <div class="content-shell w-full py-4 md:py-6">
+  <div class="content-shell w-full py-6 md:py-8">
     <div class="flex items-center justify-between w-full">
-      <!-- Left side: Mock Logo icon + Brand Name underneath -->
-      <a href={subpath} class="logo-group" aria-label={site.title}>
-        <div class="logo-box">
-          <svg viewBox="0 0 100 100" class="logo-svg">
-            <rect x="5" y="5" width="90" height="90" fill="none" stroke="var(--color-accent)" stroke-width="4"></rect>
-            <line x1="5" y1="95" x2="95" y2="5" stroke="var(--color-accent)" stroke-width="4"></line>
-          </svg>
-        </div>
-        <span class="brand-subtitle">{site.title}</span>
+      <!-- Left side: Unique brand text logo -->
+      <a href={subpath} class="brand-text-logo" aria-label={site.title}>
+        {site.title}
       </a>
 
       <!-- Right side: Navigation & Language switch & Popover Trigger -->
       <div class="flex items-center gap-6 md:gap-12">
-        <nav class="hidden sm:flex items-center gap-6 md:gap-8">
+        <nav class="hidden md:flex items-center gap-8 md:gap-10">
           <a href="#menu" class="nav-link-prev">
             <span data-lang="cz">menu ↗</span>
             <span data-lang="en">menu ↗</span>
@@ -41,7 +35,7 @@ const subpath = import.meta.env.BASE_URL;
           <button class="lang-btn" data-lang-target="cz">cz</button>
         </div>
 
-        <!-- Hamburger Icon Box -->
+        <!-- Hamburger Icon Box (Full Page Expandable Mobile-First Trigger) -->
         <button popovertarget="nav-menu" class="hamburger-box" aria-label="Open Menu">
           <div class="hamburger-lines">
             <span class="line"></span>
@@ -58,19 +52,13 @@ const subpath = import.meta.env.BASE_URL;
 <div id="nav-menu" popover class="menu-overlay">
   <div class="menu-overlay-container">
     <!-- Top Nav bar inside overlay to match background header layout -->
-    <div class="content-shell w-full py-4 md:py-6 flex items-center justify-between border-b border-[color:var(--color-border)]">
-      <div class="logo-group">
-        <div class="logo-box">
-          <svg viewBox="0 0 100 100" class="logo-svg">
-            <rect x="5" y="5" width="90" height="90" fill="none" stroke="var(--color-accent)" stroke-width="4"></rect>
-            <line x1="5" y1="95" x2="95" y2="5" stroke="var(--color-accent)" stroke-width="4"></line>
-          </svg>
-        </div>
-        <span class="brand-subtitle">{site.title}</span>
-      </div>
+    <div class="content-shell w-full py-6 md:py-8 flex items-center justify-between border-b border-[color:var(--color-border)]">
+      <a href={subpath} popovertarget="nav-menu" class="brand-text-logo" aria-label={site.title}>
+        {site.title}
+      </a>
 
       <div class="flex items-center gap-6 md:gap-12">
-        <nav class="hidden sm:flex items-center gap-6 md:gap-8">
+        <nav class="hidden md:flex items-center gap-8 md:gap-10">
           <a href="#menu" popovertarget="nav-menu" class="nav-link-prev">
             <span data-lang="cz">menu ↗</span>
             <span data-lang="en">menu ↗</span>
@@ -99,17 +87,9 @@ const subpath = import.meta.env.BASE_URL;
 
     <!-- Main Content Area: Split Layout -->
     <div class="overlay-body grid md:grid-cols-12 gap-8 items-center py-12 px-6 max-w-6xl mx-auto w-full">
-      <!-- Left Column: Logo + Food Image -->
+      <!-- Left Column: Branding + Food Image -->
       <div class="md:col-span-5 flex flex-col items-center md:items-start gap-8">
-        <div class="flex items-center gap-4">
-          <div class="logo-box-large">
-            <svg viewBox="0 0 100 100" class="logo-svg">
-              <rect x="5" y="5" width="90" height="90" fill="none" stroke="var(--color-accent)" stroke-width="3.5"></rect>
-              <line x1="5" y1="95" x2="95" y2="5" stroke="var(--color-accent)" stroke-width="3.5"></line>
-            </svg>
-          </div>
-          <span class="brand-title-large">{site.title}</span>
-        </div>
+        <span class="brand-title-large">{site.title}</span>
         <div class="overlay-img-wrapper border border-[color:var(--color-border)]">
           <Image 
             src={menuDessert} 
@@ -154,12 +134,6 @@ const subpath = import.meta.env.BASE_URL;
             </li>
             <li>
               <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
-                <span data-lang="cz">Letní festival</span>
-                <span data-lang="en">Summer festival</span>
-              </a>
-            </li>
-            <li>
-              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
                 <span data-lang="cz">Vinný lístek</span>
                 <span data-lang="en">Wine list</span>
               </a>
@@ -175,11 +149,19 @@ const subpath = import.meta.env.BASE_URL;
           </a>
         </div>
 
-        <!-- Section 3: About Us -->
+        <!-- Section 3: About Us (Our Story) -->
         <div class="overlay-menu-section">
           <a href="#story" popovertarget="nav-menu" class="overlay-section-header-link">
             <span data-lang="cz">O nás</span>
-            <span data-lang="en">About us</span>
+            <span data-lang="en">Our story</span>
+          </a>
+        </div>
+
+        <!-- Section 4: Contact & Reservations -->
+        <div class="overlay-menu-section">
+          <a href="#reservations" popovertarget="nav-menu" class="overlay-section-header-link">
+            <span data-lang="cz">Rezervace &amp; Kontakt</span>
+            <span data-lang="en">Reservation &amp; Contact</span>
           </a>
         </div>
 
@@ -205,7 +187,7 @@ const subpath = import.meta.env.BASE_URL;
 
 <script is:inline>
   const STORAGE_KEY = 'vzatisi_lang';
-  const DEFAULT_LANG = 'en'; // Let's set 'en' as default or 'cz' based on selector style
+  const DEFAULT_LANG = 'en';
 
   const getPreferredLang = () => {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -240,7 +222,7 @@ const subpath = import.meta.env.BASE_URL;
   });
 
   // Automatically close popover when clicking a submenu link or overlay link
-  document.querySelectorAll('.overlay-submenu-link, .overlay-section-header-link').forEach(link => {
+  document.querySelectorAll('.overlay-submenu-link, .overlay-section-header-link, .brand-text-logo, .nav-link-prev').forEach(link => {
     link.addEventListener('click', () => {
       const popover = document.getElementById('nav-menu');
       if (popover && popover.hidePopover) {
@@ -252,57 +234,52 @@ const subpath = import.meta.env.BASE_URL;
 
 <style>
   header {
-    height: 90px;
+    height: 100px;
     border-bottom: 1.5px solid var(--color-border);
     transition: background-color 150ms ease;
   }
 
-  .logo-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    text-decoration: none;
-  }
-
-  .logo-box {
-    width: 32px;
-    height: 32px;
-  }
-
-  .logo-box-large {
-    width: 44px;
-    height: 44px;
-  }
-
-  .logo-svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .brand-subtitle {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
+  /* Unique Typographic Text Logo */
+  .brand-text-logo {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2.1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--color-ink);
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: left center;
   }
 
+  .brand-text-logo:hover {
+    transform: scale(1.05);
+  }
+
+  /* Navigation Link styles - larger with bold + zoom effect on hover */
   .nav-link-prev {
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: 1.15rem;
     color: var(--color-ink);
     text-decoration: none;
-    padding-bottom: 2px;
-    border-bottom: 1.5px solid var(--color-accent);
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--color-accent);
     text-transform: lowercase;
     display: inline-flex;
     align-items: center;
+    transition: transform 0.25s ease, font-weight 0.25s ease, border-color 0.25s ease;
   }
 
+  .nav-link-prev:hover {
+    transform: scale(1.06);
+    font-weight: 700;
+  }
+
+  /* Language Switcher in Header */
   .lang-switch-header {
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: 1.15rem;
     color: var(--color-ink);
     display: flex;
     align-items: center;
@@ -320,17 +297,19 @@ const subpath = import.meta.env.BASE_URL;
     color: var(--color-ink);
     opacity: 0.5;
     font-weight: 300;
-    transition: opacity 150ms ease, font-weight 150ms ease;
+    transition: transform 0.25s ease, opacity 0.25s ease, font-weight 0.25s ease;
   }
 
   .lang-btn:hover {
     opacity: 1;
+    transform: scale(1.1);
+    font-weight: 700;
   }
 
   .lang-btn.active {
     opacity: 1;
     font-weight: 700;
-    border-bottom: 1.5px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
   }
 
   .lang-separator {
@@ -339,10 +318,10 @@ const subpath = import.meta.env.BASE_URL;
     margin: 0 4px;
   }
 
-  /* Hamburger & Close Boxes styling to match screen */
+  /* Hamburger & Close Boxes styling to match screen - with slight zoom */
   .hamburger-box, .close-box {
-    width: 42px;
-    height: 28px;
+    width: 48px;
+    height: 32px;
     background: none;
     border: 1.5px solid var(--color-ink);
     cursor: pointer;
@@ -350,13 +329,19 @@ const subpath = import.meta.env.BASE_URL;
     align-items: center;
     justify-content: center;
     padding: 0;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .hamburger-box:hover, .close-box:hover {
+    transform: scale(1.08);
+    border-color: var(--color-accent);
   }
 
   .hamburger-lines {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    width: 22px;
+    gap: 5px;
+    width: 26px;
   }
 
   .hamburger-lines .line {
@@ -367,13 +352,13 @@ const subpath = import.meta.env.BASE_URL;
 
   .close-cross {
     position: relative;
-    width: 22px;
-    height: 22px;
+    width: 26px;
+    height: 26px;
   }
 
   .close-cross .cross-line {
     position: absolute;
-    top: 10px;
+    top: 12px;
     left: 0;
     height: 1.5px;
     width: 100%;
@@ -388,7 +373,7 @@ const subpath = import.meta.env.BASE_URL;
     transform: rotate(-45deg);
   }
 
-  /* Full Screen Overlay Page overlay styling */
+  /* Full Screen Overlay Page overlay styling - VERY LOW TRANSPARENCY (OPAQUE) */
   .menu-overlay {
     display: none;
   }
@@ -399,7 +384,8 @@ const subpath = import.meta.env.BASE_URL;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    background-color: var(--color-paper);
+    background-color: var(--color-paper); /* Warm cream, fully opaque */
+    opacity: 0.99; /* Very low transparency */
   }
 
   .overlay-body {
@@ -411,9 +397,10 @@ const subpath = import.meta.env.BASE_URL;
   .brand-title-large {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     letter-spacing: 0.05em;
     color: var(--color-ink);
+    text-transform: uppercase;
   }
 
   .overlay-img-wrapper {
@@ -427,30 +414,33 @@ const subpath = import.meta.env.BASE_URL;
 
   .overlay-section-header {
     font-family: var(--font-mono);
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 500;
     color: var(--color-ink);
-    border-bottom: 2px solid var(--color-ink);
-    padding-bottom: 4px;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 6px;
     display: inline-block;
     text-transform: uppercase;
   }
 
   .overlay-section-header-link {
     font-family: var(--font-mono);
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 500;
     color: var(--color-ink);
-    border-bottom: 2px solid var(--color-ink);
-    padding-bottom: 4px;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 6px;
     display: inline-block;
     text-decoration: none;
     text-transform: uppercase;
+    transition: transform 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   }
 
   .overlay-section-header-link:hover {
     color: var(--color-accent);
     border-bottom-color: var(--color-accent);
+    transform: scale(1.05);
+    font-weight: 700;
   }
 
   .overlay-submenu-list {
@@ -459,18 +449,21 @@ const subpath = import.meta.env.BASE_URL;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .overlay-submenu-link {
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--color-muted);
     text-decoration: none;
-    transition: color 150ms ease;
+    display: inline-block;
+    transition: transform 0.25s ease, color 0.25s ease;
   }
 
   .overlay-submenu-link:hover {
     color: var(--color-accent);
+    transform: scale(1.05);
+    font-weight: 700;
   }
 </style>
