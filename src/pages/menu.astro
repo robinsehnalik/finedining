@@ -1,0 +1,467 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+import { getSite } from '../utils/consts';
+import storySetting from '../assets/story_setting.png';
+import menuDessert from '../assets/menu_dessert.png';
+import heroWagyu from '../assets/hero_wagyu.png';
+import fireCookingDetail from '../assets/fire_cooking_detail.png';
+
+const site = await getSite();
+---
+
+<PageLayout title={`Menu · ${site.title}`} description="Experience the culinary alchemy of L'Alchimiste restaurant in Prague. Tasting menus, à la carte selection, and curated wine pairings.">
+  <div class="menu-page py-12 md:py-20 max-w-6xl mx-auto space-y-24">
+    
+    <!-- Hero Header Block -->
+    <div class="text-center space-y-6 px-4">
+      <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block uppercase">L'Alchimiste</span>
+      <h1 class="text-5xl sm:text-7xl lg:text-8xl font-light text-ink font-serif tracking-tight">
+        <span data-lang="cz">Naše Menu</span>
+        <span data-lang="en">Our Menu</span>
+      </h1>
+      <p class="text-base sm:text-xl text-muted max-w-2xl mx-auto font-light leading-relaxed">
+        <span data-lang="cz">Harmonické spojení lokální půdy, klasického francouzského řemesla a moderního vizuálního ticha.</span>
+        <span data-lang="en">A harmonious connection of local soil, classical French craftsmanship, and modern visual silence.</span>
+      </p>
+    </div>
+
+    <!-- Page Banner Image -->
+    <div class="banner-wrapper w-full h-[35vh] md:h-[50vh] overflow-hidden relative border-y border-[color:var(--color-border)]">
+      <Image 
+        src={heroWagyu} 
+        alt="L'Alchimiste signature ingredient selection" 
+        class="w-full h-full object-cover object-center scale-105 hover:scale-100 transition-transform duration-[1.5s]"
+      />
+      <div class="absolute inset-0 bg-black/10"></div>
+    </div>
+
+    <!-- Anchor Navigation -->
+    <nav class="anchor-nav flex flex-wrap justify-center gap-6 md:gap-10 border-b border-[color:var(--color-border)] pb-6 px-4">
+      <a href="#tasting-menu" class="anchor-link">
+        <span data-lang="cz">Degustační menu</span>
+        <span data-lang="en">Tasting Menu</span>
+      </a>
+      <a href="#starters" class="anchor-link">
+        <span data-lang="cz">Předkrmy</span>
+        <span data-lang="en">Starters</span>
+      </a>
+      <a href="#mains" class="anchor-link">
+        <span data-lang="cz">Hlavní chody</span>
+        <span data-lang="en">Main Courses</span>
+      </a>
+      <a href="#desserts" class="anchor-link">
+        <span data-lang="cz">Dezerty</span>
+        <span data-lang="en">Desserts</span>
+      </a>
+      <a href="#wine" class="anchor-link">
+        <span data-lang="cz">Vinný lístek</span>
+        <span data-lang="en">Wine &amp; Pairings</span>
+      </a>
+    </nav>
+
+    <!-- Section 1: Tasting Menu (Two Columns: Text Left, Image Right) -->
+    <section id="tasting-menu" class="menu-section py-8 px-4 grid md:grid-cols-12 gap-12 md:gap-20 items-center">
+      <!-- Left side: Tasting Menu list -->
+      <div class="md:col-span-7 space-y-10">
+        <div class="space-y-2">
+          <span class="font-mono text-xs text-[color:var(--color-accent)] tracking-widest block uppercase">THE SIGNATURE JOURNEY</span>
+          <h2 class="text-3xl sm:text-5xl font-serif font-light text-ink leading-tight">
+            <span data-lang="cz">Degustační menu Alchymista</span>
+            <span data-lang="en">The Alchimiste Tasting Menu</span>
+          </h2>
+          <p class="text-xs font-mono text-muted uppercase tracking-wider">7 Courses · 3 100 CZK / 124 EUR</p>
+        </div>
+
+        <div class="tasting-menu-card border-l-2 border-[color:var(--color-accent)] pl-6 sm:pl-10 space-y-8 text-left">
+          <!-- Course 1 -->
+          <div class="space-y-1">
+            <span class="font-mono text-[10px] tracking-wider text-[color:var(--color-accent)] uppercase block">Amuse-Bouche</span>
+            <h3 class="text-lg font-serif italic text-ink">
+              <span data-lang="cz">Topinamburová textura, fermentovaný medvědí česnek</span>
+              <span data-lang="en">Sunchoke textures, fermented wild garlic</span>
+            </h3>
+          </div>
+
+          <!-- Course 2 -->
+          <div class="space-y-1">
+            <span class="font-mono text-[10px] tracking-wider text-[color:var(--color-accent)] uppercase block">First Starter</span>
+            <h3 class="text-lg font-serif italic text-ink">
+              <span data-lang="cz">Uzený siven, křenový sníh, jablka Granny Smith</span>
+              <span data-lang="en">Smoked Arctic char, horseradish snow, Granny Smith apples</span>
+            </h3>
+          </div>
+
+          <!-- Course 3 -->
+          <div class="space-y-1">
+            <span class="font-mono text-[10px] tracking-wider text-[color:var(--color-accent)] uppercase block">Second Starter</span>
+            <h3 class="text-lg font-serif italic text-ink">
+              <span data-lang="cz">Terina z divokého holuba, černý lanýž, nakládané lišky</span>
+              <span data-lang="en">Wild pigeon terrine, black truffle, pickled chanterelles</span>
+            </h3>
+          </div>
+
+          <!-- Course 4 -->
+          <div class="space-y-1">
+            <span class="font-mono text-[10px] tracking-wider text-[color:var(--color-accent)] uppercase block">Fish Course</span>
+            <h3 class="text-lg font-serif italic text-ink">
+              <span data-lang="cz">Divoký mořský jazyk, slanomilné řasy, máslová emulze</span>
+              <span data-lang="en">Wild Dover sole, sea succulents, brown butter emulsion</span>
+            </h3>
+          </div>
+
+          <!-- Course 5 -->
+          <div class="space-y-1">
+            <span class="font-mono text-[10px] tracking-wider text-[color:var(--color-accent)] uppercase block">Main Course</span>
+            <h3 class="text-lg font-serif italic text-ink">
+              <span data-lang="cz">Grilované Wagyu, omáčka z pečeného jalovce, celerové pyré</span>
+              <span data-lang="en">Grilled Wagyu beef, roasted juniper reduction, celeriac purée</span>
+            </h3>
+          </div>
+
+          <!-- Course 6 -->
+          <div class="space-y-1">
+            <span class="font-mono text-[10px] tracking-wider text-[color:var(--color-accent)] uppercase block">Pre-Dessert</span>
+            <h3 class="text-lg font-serif italic text-ink">
+              <span data-lang="cz">Granita z lesního šťavele, okurka, gin</span>
+              <span data-lang="en">Wood sorrel granita, compressed cucumber, gin infusion</span>
+            </h3>
+          </div>
+
+          <!-- Course 7 -->
+          <div class="space-y-1">
+            <span class="font-mono text-[10px] tracking-wider text-[color:var(--color-accent)] uppercase block">Dessert</span>
+            <h3 class="text-lg font-serif italic text-ink">
+              <span data-lang="cz">Dezert z tmavé čokolády a spáleného másla, mořská sůl</span>
+              <span data-lang="en">Dark chocolate and brown butter dessert, sea salt crystals</span>
+            </h3>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-[color:var(--color-border)] text-sm font-light text-muted">
+          <p>
+            <span data-lang="cz">Prestižní vinné párování: 1 850 CZK / 74 EUR (7 exkluzivních vín)</span>
+            <span data-lang="en">Exclusive wine pairing: 1 850 CZK / 74 EUR (7 premium wines)</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Right side: Menu Dessert Image -->
+      <div class="md:col-span-5 space-y-6">
+        <div class="story-img-wrap overflow-hidden border border-[color:var(--color-border)] p-2">
+          <Image 
+            src={menuDessert} 
+            alt="Artisanal dessert preparation" 
+            class="w-full h-full object-cover aspect-[4/5]"
+          />
+        </div>
+        <blockquote class="text-xs font-mono text-muted uppercase italic text-center">
+          <span data-lang="cz">„Každý detail na talíři má svůj chuťový smysl. Nic není navíc.“</span>
+          <span data-lang="en">"Every single detail on the plate has a flavor purpose. Nothing is extra."</span>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Section 2: Starters (Předkrmy) -->
+    <section id="starters" class="menu-section py-8 px-4 space-y-12">
+      <div class="section-title-wrap text-center">
+        <span class="font-mono text-xs text-[color:var(--color-accent)] tracking-widest block mb-2">SELECTIONS</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-light text-ink">
+          <span data-lang="cz">Předkrmy</span>
+          <span data-lang="en">Starters</span>
+        </h2>
+      </div>
+
+      <div class="menu-items-grid max-w-4xl mx-auto grid md:grid-cols-2 gap-x-16 gap-y-12">
+        <!-- Item 1 -->
+        <div class="menu-item-card flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+          <div class="space-y-2">
+            <h3 class="text-xl font-serif font-light text-ink">
+              <span data-lang="cz">Lanýžové Foie Gras</span>
+              <span data-lang="en">Truffled Foie Gras</span>
+            </h3>
+            <p class="text-sm text-muted font-light leading-relaxed">
+              <span data-lang="cz">Kachní játra marinovaná v koňaku, černý lanýž z oblasti Périgord, domácí brioška z divokého kvásku.</span>
+              <span data-lang="en">Duck liver marinated in cognac, black Périgord truffle, wild sourdough brioche.</span>
+            </p>
+          </div>
+          <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold mt-4">520 CZK</span>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="menu-item-card flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+          <div class="space-y-2">
+            <h3 class="text-xl font-serif font-light text-ink">
+              <span data-lang="cz">Pečený morkový chléb</span>
+              <span data-lang="en">Roasted Bone Marrow</span>
+            </h3>
+            <p class="text-sm text-muted font-light leading-relaxed">
+              <span data-lang="cz">Grilovaná hovězí kost, petrželkový salát s kapary, plátky kyselého kváskového chleba.</span>
+              <span data-lang="en">Grilled beef marrow bone, parsley caper salad, toasted artisan sourdough.</span>
+            </p>
+          </div>
+          <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold mt-4">420 CZK</span>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="menu-item-card flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+          <div class="space-y-2">
+            <h3 class="text-xl font-serif font-light text-ink">
+              <span data-lang="cz">Uzená řepa &amp; Kozí sýr</span>
+              <span data-lang="en">Smoked Beetroot &amp; Goat Cheese</span>
+            </h3>
+            <p class="text-sm text-muted font-light leading-relaxed">
+              <span data-lang="cz">Dřevěným uhlím zauzená červená řepa, čerstvý kozí sýr Krasolesí, emulze z vlašských ořechů a tymiánu.</span>
+              <span data-lang="en">Charcoal-smoked beetroot, fresh Krasolesí goat cheese, walnut thyme emulsion.</span>
+            </p>
+          </div>
+          <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold mt-4">380 CZK</span>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="menu-item-card flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+          <div class="space-y-2">
+            <h3 class="text-xl font-serif font-light text-ink">
+              <span data-lang="cz">Pošírovaná langusta</span>
+              <span data-lang="en">Poached Langoustine</span>
+            </h3>
+            <p class="text-sm text-muted font-light leading-relaxed">
+              <span data-lang="cz">Jemně pošírovaný ocas humra, fenyklové pyré, infuze z citronové trávy a šafránu.</span>
+              <span data-lang="en">Gently poached langoustine tail, fennel purée, lemongrass saffron infusion.</span>
+            </p>
+          </div>
+          <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold mt-4">680 CZK</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Main Courses (Two Columns: Image Left, Text Right) -->
+    <section id="mains" class="menu-section py-8 px-4 grid md:grid-cols-12 gap-12 md:gap-20 items-center">
+      <!-- Left side: Fire Cooking Image -->
+      <div class="md:col-span-5 order-last md:order-first space-y-6">
+        <div class="story-img-wrap overflow-hidden border border-[color:var(--color-border)] p-2">
+          <Image 
+            src={fireCookingDetail} 
+            alt="Chef cooking with wood fire detail" 
+            class="w-full h-full object-cover aspect-[4/5]"
+          />
+        </div>
+        <blockquote class="text-xs font-mono text-muted uppercase italic text-center">
+          <span data-lang="cz">„Oheň a kouř jsou základními pilíři naší kulinářské alchymie.“</span>
+          <span data-lang="en">"Fire and smoke are the primary pillars of our culinary alchemy."</span>
+        </blockquote>
+      </div>
+
+      <!-- Right side: Mains list -->
+      <div class="md:col-span-7 space-y-10">
+        <div class="space-y-2 text-left">
+          <span class="font-mono text-xs text-[color:var(--color-accent)] tracking-widest block uppercase">THE PIECES</span>
+          <h2 class="text-3xl sm:text-5xl font-serif font-light text-ink leading-tight">
+            <span data-lang="cz">Hlavní Chody</span>
+            <span data-lang="en">Main Courses</span>
+          </h2>
+        </div>
+
+        <div class="menu-items-grid space-y-8">
+          <!-- Item 1 -->
+          <div class="menu-item-row flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+            <div class="flex justify-between items-start gap-4">
+              <h3 class="text-xl font-serif font-light text-ink">
+                <span data-lang="cz">Šumavský potoční pstruh</span>
+                <span data-lang="en">Bohemian Brook Trout</span>
+              </h3>
+              <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold shrink-0">690 CZK</span>
+            </div>
+            <p class="text-sm text-muted font-light leading-relaxed mt-2">
+              <span data-lang="cz">Konfitovaný v másle s potočními bylinami, grilovaný pórek, omáčka z pečené syrovátky a pažitkového oleje.</span>
+              <span data-lang="en">Butter-confit trout, wild brook herbs, grilled leeks, toasted whey and chive oil sauce.</span>
+            </p>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="menu-item-row flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+            <div class="flex justify-between items-start gap-4">
+              <h3 class="text-xl font-serif font-light text-ink">
+                <span data-lang="cz">Zauzené holubí prso</span>
+                <span data-lang="en">Smoked Pigeon Breast</span>
+              </h3>
+              <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold shrink-0">780 CZK</span>
+            </div>
+            <p class="text-sm text-muted font-light leading-relaxed mt-2">
+              <span data-lang="cz">Zauzené bukovým dřevem, pyré z pečené dýně, jalovcová redukce s červeným rybízem.</span>
+              <span data-lang="en">Wood-smoked pigeon, roasted pumpkin purée, juniper berry and redcurrant reduction.</span>
+            </p>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="menu-item-row flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+            <div class="flex justify-between items-start gap-4">
+              <h3 class="text-xl font-serif font-light text-ink">
+                <span data-lang="cz">Hřbet z jelena s lanýžem</span>
+                <span data-lang="en">Deer Loin with Truffle</span>
+              </h3>
+              <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold shrink-0">840 CZK</span>
+            </div>
+            <p class="text-sm text-muted font-light leading-relaxed mt-2">
+              <span data-lang="cz">Grilovaný na dřevěném uhlí, divoké brusinky, bramborové lokše plněné škvarky, omáčka z černého lanýže.</span>
+              <span data-lang="en">Charcoal-grilled deer loin, wild cranberries, traditional potato lokše, Périgord truffle sauce.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Desserts -->
+    <section id="desserts" class="menu-section py-8 px-4 space-y-12">
+      <div class="section-title-wrap text-center">
+        <span class="font-mono text-xs text-[color:var(--color-accent)] tracking-widest block mb-2">CONFECTIONARY</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-light text-ink">
+          <span data-lang="cz">Dezerty</span>
+          <span data-lang="en">Desserts</span>
+        </h2>
+      </div>
+
+      <div class="menu-items-grid max-w-4xl mx-auto grid md:grid-cols-2 gap-x-16 gap-y-12">
+        <!-- Item 1 -->
+        <div class="menu-item-card flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+          <div class="space-y-2">
+            <h3 class="text-xl font-serif font-light text-ink">
+              <span data-lang="cz">Karamel &amp; Spálené máslo</span>
+              <span data-lang="en">Caramel &amp; Brown Butter</span>
+            </h3>
+            <p class="text-sm text-muted font-light leading-relaxed">
+              <span data-lang="cz">Slaný karamel, zmrzlina ze spáleného másla, křupavá oplatka z pohankové mouky.</span>
+              <span data-lang="en">Salted caramel ganache, brown butter ice cream, crispy buckwheat tuile.</span>
+            </p>
+          </div>
+          <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold mt-4">320 CZK</span>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="menu-item-card flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+          <div class="space-y-2">
+            <h3 class="text-xl font-serif font-light text-ink">
+              <span data-lang="cz">Rakytník &amp; Bílá čokoláda</span>
+              <span data-lang="en">Sea Buckthorn &amp; White Chocolate</span>
+            </h3>
+            <p class="text-sm text-muted font-light leading-relaxed">
+              <span data-lang="cz">Kyselý rakytníkový gel, mousse z bílé čokolády s estragonem, kokosový pudr.</span>
+              <span data-lang="en">Tangy sea buckthorn gel, white chocolate tarragon mousse, coconut snow.</span>
+            </p>
+          </div>
+          <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold mt-4">290 CZK</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Wine & Pairings (Text Left, Image Right) -->
+    <section id="wine" class="menu-section py-8 px-4 grid md:grid-cols-12 gap-12 md:gap-20 items-center">
+      <!-- Left side: Wine pairings details -->
+      <div class="md:col-span-7 space-y-10">
+        <div class="space-y-2 text-left">
+          <span class="font-mono text-xs text-[color:var(--color-accent)] tracking-widest block uppercase">THE CELLARS</span>
+          <h2 class="text-3xl sm:text-5xl font-serif font-light text-ink leading-tight">
+            <span data-lang="cz">Vinný Sklep &amp; Párování</span>
+            <span data-lang="en">Wine &amp; Pairings</span>
+          </h2>
+        </div>
+
+        <div class="menu-items-grid space-y-8">
+          <!-- Sommelier Select 1 -->
+          <div class="menu-item-row flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+            <div class="flex justify-between items-start gap-4">
+              <h3 class="text-xl font-serif font-light text-ink">
+                <span data-lang="cz">Ryzlink rýnský 2020, Gaisberg, Hirsch</span>
+                <span data-lang="en">Riesling 2020, Gaisberg, Hirsch</span>
+              </h3>
+              <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold shrink-0">290 CZK / Glass</span>
+            </div>
+            <p class="text-sm text-muted font-light leading-relaxed mt-2">
+              <span data-lang="cz">Kamptal, Rakousko · Výrazné, mineralita spojená s tóny meruněk a zralých citrusů, dlouhý slaný závěr.</span>
+              <span data-lang="en">Kamptal, Austria · Elegant, deep mineral structure with notes of apricot and ripe citrus, salinity on the finish.</span>
+            </p>
+          </div>
+
+          <!-- Sommelier Select 2 -->
+          <div class="menu-item-row flex flex-col justify-between border-b border-[color:var(--color-border)] pb-6 text-left">
+            <div class="flex justify-between items-start gap-4">
+              <h3 class="text-xl font-serif font-light text-ink">
+                <span data-lang="cz">Chassagne-Montrachet 2019, Domaine Margot</span>
+                <span data-lang="en">Chassagne-Montrachet 2019, Domaine Margot</span>
+              </h3>
+              <span class="font-mono text-sm text-[color:var(--color-accent)] font-semibold shrink-0">460 CZK / Glass</span>
+            </div>
+            <p class="text-sm text-muted font-light leading-relaxed mt-2">
+              <span data-lang="cz">Burgundsko, Francie · Tradiční bílé víno školené v barikových sudech, tóny vanilky, lískových oříšků a pečeného toustu.</span>
+              <span data-lang="en">Burgundy, France · Classic Chardonnay aged in oak casks, hazelnut aromas, complex buttery toast notes.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Setting Image -->
+      <div class="md:col-span-5 space-y-6">
+        <div class="story-img-wrap overflow-hidden border border-[color:var(--color-border)] p-2">
+          <Image 
+            src={storySetting} 
+            alt="Wine pairing glass detail on the table" 
+            class="w-full h-full object-cover aspect-[4/5]"
+          />
+        </div>
+        <blockquote class="text-xs font-mono text-muted uppercase italic text-center">
+          <span data-lang="cz">„Každá láhev v našem sklepě vypráví příběh o rodině, tradici a půdě.“</span>
+          <span data-lang="en">"Every bottle in our cellar tells a story of family, heritage, and soil."</span>
+        </blockquote>
+      </div>
+    </section>
+
+  </div>
+</PageLayout>
+
+<style>
+  .banner-wrapper {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+  }
+
+  .anchor-link {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: 2px;
+    border-bottom: 1.5px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .anchor-link:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    transform: translateY(-1px);
+  }
+
+  .story-img-wrap {
+    background-color: var(--color-surface);
+  }
+
+  .menu-item-card {
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .menu-item-card:hover {
+    transform: translateY(-2px);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .menu-item-row {
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .menu-item-row:hover {
+    transform: translateX(4px);
+    border-bottom-color: var(--color-accent);
+  }
+</style>

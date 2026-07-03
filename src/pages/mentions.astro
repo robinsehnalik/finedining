@@ -1,0 +1,116 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { getSite } from '../utils/consts';
+
+const site = await getSite();
+---
+
+<PageLayout title={`Mentions & Recognition · ${site.title}`} description="Awards, reviews, and news highlights for L'Alchimiste Prague. Michelin Guide 2025 selection and critical recognition.">
+  <div class="mentions-page py-16 md:py-24 max-w-5xl mx-auto space-y-16">
+    
+    <!-- Header Block -->
+    <div class="text-center space-y-4">
+      <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block uppercase">L'Alchimiste</span>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-light text-ink font-serif tracking-tight">
+        <span data-lang="cz">Ocenění &amp; Napsali o nás</span>
+        <span data-lang="en">Mentions &amp; Recognition</span>
+      </h1>
+      <p class="text-base sm:text-lg text-muted max-w-xl mx-auto font-light leading-relaxed">
+        <span data-lang="cz">Hrdě sdílíme hodnocení prestižních kulinářských průvodců, novinářů a odborné veřejnosti.</span>
+        <span data-lang="en">We are proud to share the recognition and reviews from prestigious culinary guides, critics, and journalists.</span>
+      </p>
+    </div>
+
+    <!-- Awards Grid (Large key recognitions) -->
+    <div class="grid sm:grid-cols-3 gap-8 pt-8">
+      <!-- Award 1 -->
+      <div class="award-card border border-[color:var(--color-border)] p-8 text-center space-y-4">
+        <span class="font-mono text-[10px] tracking-widest text-[color:var(--color-accent)] block uppercase">Michelin Guide</span>
+        <div class="text-3xl font-serif text-ink italic">“Recommended”</div>
+        <p class="text-xs text-muted font-light leading-relaxed">
+          <span data-lang="cz">Výběr pro rok 2025 · Ocenění za mistrovské ztvárnění tradičních francouzských technik s českými surovinami.</span>
+          <span data-lang="en">2025 Selection · Recognized for masterful application of French culinary techniques to local Czech ingredients.</span>
+        </p>
+      </div>
+
+      <!-- Award 2 -->
+      <div class="award-card border border-[color:var(--color-border)] p-8 text-center space-y-4">
+        <span class="font-mono text-[10px] tracking-widest text-[color:var(--color-accent)] block uppercase">Gault &amp; Millau</span>
+        <div class="text-3xl font-serif text-ink italic">“16.5 / 20”</div>
+        <p class="text-xs text-muted font-light leading-relaxed">
+          <span data-lang="cz">Tři kuchařské čepice · Čistý kulinářský minimalismus s hlubokou chutí v každé kapce omáčky.</span>
+          <span data-lang="en">Three Hats Selection · Pure culinary minimalism with deep complexity in every single drop of reduction.</span>
+        </p>
+      </div>
+
+      <!-- Award 3 -->
+      <div class="award-card border border-[color:var(--color-border)] p-8 text-center space-y-4">
+        <span class="font-mono text-[10px] tracking-widest text-[color:var(--color-accent)] block uppercase">Euro Magazine</span>
+        <div class="text-3xl font-serif text-ink italic">“Top 10”</div>
+        <p class="text-xs text-muted font-light leading-relaxed">
+          <span data-lang="cz">Restaurace roku 2024 · L'Alchimiste definuje novou éru zážitkové gastronomie v České republice.</span>
+          <span data-lang="en">Restaurants of the Year 2024 · L'Alchimiste defines a new wave of fine dining in the Czech Republic.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Editorial Reviews (Linear list) -->
+    <div class="space-y-12 pt-12">
+      <div class="border-b border-[color:var(--color-border)] pb-4 text-left">
+        <h2 class="text-2xl font-serif font-light text-ink">
+          <span data-lang="cz">Recenze &amp; Rozhovory</span>
+          <span data-lang="en">Press &amp; Editorial Reviews</span>
+        </h2>
+      </div>
+
+      <div class="space-y-12">
+        <!-- Review 1 -->
+        <div class="review-row space-y-2 text-left">
+          <span class="font-mono text-[10px] tracking-wider text-[color:var(--color-accent)] uppercase">Prague Post · June 2025</span>
+          <h3 class="text-xl font-serif italic text-ink">
+            “A Masterclass in restraint and flavor concentration”
+          </h3>
+          <p class="text-sm font-light text-muted leading-relaxed max-w-3xl">
+            <span data-lang="cz">„Je to vzácný zážitek, kdy restaurace nepotřebuje ohromovat složitými vizuálními efekty na talíři. Alchymie šéfkuchaře spočívá v odkrývání skryté chuti surovin, které známe celý život, a jejich povýšení na umění.“</span>
+            <span data-lang="en">"It is a rare treat when a restaurant does not feel the need to wow you with visual gimmicks. The alchemy lies in showing you the hidden dimension of ingredients you have known your entire life."</span>
+          </p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-row space-y-2 text-left">
+          <span class="font-mono text-[10px] tracking-wider text-[color:var(--color-accent)] uppercase">Culinary Art Journal · Autumn 2024</span>
+          <h3 class="text-xl font-serif italic text-ink">
+            “The invisible craftsmanship behind the sauces of L'Alchimiste”
+          </h3>
+          <p class="text-sm font-light text-muted leading-relaxed max-w-3xl">
+            <span data-lang="cz">„Rozhovor s naším šéfkuchařem o tom, jak se klasické redukce vaří po dobu několika dní, aby se na talíř dostaly v podobě několika dokonale vyvážených kapek.“</span>
+            <span data-lang="en">"A deep-dive interview with our Chef de Cuisine on how traditional reductions are cooked for days to be presented as just a few perfectly balanced droplets on the plate."</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</PageLayout>
+
+<style>
+  .award-card {
+    background-color: var(--color-surface);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .award-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+  }
+
+  .review-row {
+    border-left: 2px solid var(--color-border);
+    padding-left: 1.5rem;
+    transition: border-color 0.25s ease;
+  }
+
+  .review-row:hover {
+    border-left-color: var(--color-accent);
+  }
+</style>

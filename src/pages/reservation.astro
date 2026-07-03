@@ -1,0 +1,236 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { getSite } from '../utils/consts';
+
+const site = await getSite();
+---
+
+<PageLayout title={`Reservation · ${site.title}`} description="Book your table at L'Alchimiste Prague. Experience unique tasting menus, refined service, and exclusive wine selection.">
+  <div class="reservation-page py-16 md:py-24 max-w-5xl mx-auto space-y-16">
+    
+    <!-- Header Block -->
+    <div class="text-center space-y-4">
+      <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block uppercase">L'Alchimiste</span>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-light text-ink font-serif tracking-tight">
+        <span data-lang="cz">Rezervace</span>
+        <span data-lang="en">Reservations</span>
+      </h1>
+      <p class="text-base sm:text-lg text-muted max-w-xl mx-auto font-light leading-relaxed">
+        <span data-lang="cz">Rezervujte si svůj stůl online a zažijte kulinářskou alchymii v srdci Prahy.</span>
+        <span data-lang="en">Book your table online and experience culinary alchemy in the heart of Prague.</span>
+      </p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+      
+      <!-- Left side: Form -->
+      <form class="md:col-span-7 bg-transparent p-6 sm:p-10 border border-[color:var(--color-border)] space-y-6" id="reservation-form">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <!-- Date -->
+          <div class="flex flex-col space-y-2">
+            <label for="res-date" class="font-mono text-[10px] tracking-wider uppercase text-muted">
+              <span data-lang="cz">Datum</span>
+              <span data-lang="en">Date</span>
+            </label>
+            <input type="date" id="res-date" required class="res-input" />
+          </div>
+
+          <!-- Time -->
+          <div class="flex flex-col space-y-2">
+            <label for="res-time" class="font-mono text-[10px] tracking-wider uppercase text-muted">
+              <span data-lang="cz">Čas</span>
+              <span data-lang="en">Time</span>
+            </label>
+            <select id="res-time" required class="res-input">
+              <option value="" disabled selected>-- : --</option>
+              <optgroup label="Lunch / Oběd">
+                <option value="12:00">12:00</option>
+                <option value="12:30">12:30</option>
+                <option value="13:00">13:00</option>
+              </optgroup>
+              <optgroup label="Dinner / Večeře">
+                <option value="18:00">18:00</option>
+                <option value="18:30">18:30</option>
+                <option value="19:00">19:00</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00">20:00</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <!-- Guests -->
+          <div class="flex flex-col space-y-2">
+            <label for="res-guests" class="font-mono text-[10px] tracking-wider uppercase text-muted">
+              <span data-lang="cz">Počet hostů</span>
+              <span data-lang="en">Guests</span>
+            </label>
+            <select id="res-guests" required class="res-input">
+              <option value="1">1 Person</option>
+              <option value="2" selected>2 People</option>
+              <option value="3">3 People</option>
+              <option value="4">4 People</option>
+              <option value="5">5 People</option>
+              <option value="6">6 People</option>
+              <option value="7">7 People</option>
+              <option value="8">8 People</option>
+            </select>
+          </div>
+
+          <!-- Phone -->
+          <div class="flex flex-col space-y-2">
+            <label for="res-phone" class="font-mono text-[10px] tracking-wider uppercase text-muted">
+              <span data-lang="cz">Telefon</span>
+              <span data-lang="en">Phone</span>
+            </label>
+            <input type="tel" id="res-phone" required placeholder="+420 123 456 789" class="res-input" />
+          </div>
+        </div>
+
+        <!-- Name -->
+        <div class="flex flex-col space-y-2">
+          <label for="res-name" class="font-mono text-[10px] tracking-wider uppercase text-muted">
+            <span data-lang="cz">Celé jméno</span>
+            <span data-lang="en">Full Name</span>
+          </label>
+          <input type="text" id="res-name" required placeholder="John Doe" class="res-input" />
+        </div>
+
+        <!-- Email -->
+        <div class="flex flex-col space-y-2">
+          <label for="res-email" class="font-mono text-[10px] tracking-wider uppercase text-muted">
+            <span data-lang="cz">E-mail</span>
+            <span data-lang="en">Email</span>
+          </label>
+          <input type="email" id="res-email" required placeholder="john@example.com" class="res-input" />
+        </div>
+
+        <!-- Special Requirements / Notes -->
+        <div class="flex flex-col space-y-2">
+          <label for="res-notes" class="font-mono text-[10px] tracking-wider uppercase text-muted">
+            <span data-lang="cz">Poznámky &amp; Diety (např. alergie)</span>
+            <span data-lang="en">Special requests &amp; allergies</span>
+          </label>
+          <textarea id="res-notes" rows="4" placeholder="..." class="res-input-area"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-[color:var(--color-accent)] text-white font-mono text-xs uppercase tracking-widest py-4 transition-all duration-200 hover:brightness-110 active:scale-[0.98]">
+          <span data-lang="cz">Rezervovat stůl</span>
+          <span data-lang="en">Confirm Booking</span>
+        </button>
+
+        <!-- Dynamic Success message block -->
+        <div id="res-success-message" class="hidden border border-[color:var(--color-accent)] p-4 text-center">
+          <p class="font-serif italic text-ink">
+            <span data-lang="cz">Děkujeme! Vaše rezervace byla zaznamenána. Brzy vás budeme kontaktovat pro potvrzení.</span>
+            <span data-lang="en">Thank you! Your reservation request has been received. We will contact you shortly to confirm.</span>
+          </p>
+        </div>
+      </form>
+
+      <!-- Right side: Policies & Opening Hours -->
+      <div class="md:col-span-5 space-y-10 text-left">
+        
+        <!-- Opening Hours -->
+        <div class="space-y-4">
+          <h3 class="font-mono text-xs tracking-widest text-[color:var(--color-accent)] uppercase">
+            <span data-lang="cz">Otevírací doba</span>
+            <span data-lang="en">Opening Hours</span>
+          </h3>
+          <div class="space-y-2 font-serif text-ink">
+            <div class="flex justify-between border-b border-[color:var(--color-border)] pb-2">
+              <span class="font-light"><span data-lang="cz">Úterý – Sobota</span><span data-lang="en">Tuesday – Saturday</span></span>
+              <span class="font-mono text-xs">12:00 – 15:00 / 18:00 – 23:00</span>
+            </div>
+            <div class="flex justify-between border-b border-[color:var(--color-border)] pb-2 text-muted">
+              <span class="font-light"><span data-lang="cz">Neděle – Pondělí</span><span data-lang="en">Sunday – Monday</span></span>
+              <span class="font-mono text-xs"><span data-lang="cz">Zavřeno</span><span data-lang="en">Closed</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Policies -->
+        <div class="space-y-4">
+          <h3 class="font-mono text-xs tracking-widest text-[color:var(--color-accent)] uppercase">
+            <span data-lang="cz">Rezervační podmínky</span>
+            <span data-lang="en">Reservation Policies</span>
+          </h3>
+          <div class="text-sm font-light text-muted space-y-4 leading-relaxed">
+            <p>
+              <span data-lang="cz"><strong>Skupiny:</strong> Pro rezervace nad 8 osob nás prosím kontaktujte přímo prostřednictvím stránky pro skupiny.</span>
+              <span data-lang="en"><strong>Groups:</strong> For bookings larger than 8 guests, please contact us directly via our groups section.</span>
+            </p>
+            <p>
+              <span data-lang="cz"><strong>Zrušení:</strong> Rezervaci lze bezplatně zrušit nebo upravit nejpozději 24 hodin před plánovaným příchodem.</span>
+              <span data-lang="en"><strong>Cancellations:</strong> Bookings can be modified or cancelled free of charge up to 24 hours prior to your slot.</span>
+            </p>
+            <p>
+              <span data-lang="cz"><strong>Dress code:</strong> Doporučujeme styl smart casual.</span>
+              <span data-lang="en"><strong>Dress Code:</strong> We recommend a smart casual attire.</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</PageLayout>
+
+<script is:inline>
+  // Simple form submission handler
+  const form = document.getElementById('reservation-form');
+  const successBox = document.getElementById('res-success-message');
+  if (form && successBox) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Hide all standard inputs except success
+      successBox.classList.remove('hidden');
+      form.querySelectorAll('div, button, label, input, textarea, select').forEach(el => {
+        if (el !== successBox && !successBox.contains(el)) {
+          el.classList.add('opacity-40');
+        }
+      });
+      form.querySelector('button[type="submit"]').disabled = true;
+    });
+  }
+</script>
+
+<style>
+  .res-input {
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.25s ease;
+  }
+
+  .res-input:focus {
+    border-color: var(--color-accent);
+  }
+
+  .res-input-area {
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.25s ease;
+  }
+
+  .res-input-area:focus {
+    border-color: var(--color-accent);
+  }
+</style>

@@ -1,0 +1,169 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { getSite } from '../utils/consts';
+
+const site = await getSite();
+---
+
+<PageLayout title={`Groups & Private Events · ${site.title}`} description="Host your private dinners, celebrations, and corporate events at L'Alchimiste Prague. Capacity up to 40 seated guests.">
+  <div class="groups-page py-16 md:py-24 max-w-5xl mx-auto space-y-16">
+    
+    <!-- Header Block -->
+    <div class="text-center space-y-4">
+      <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block uppercase">L'Alchimiste</span>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-light text-ink font-serif tracking-tight">
+        <span data-lang="cz">Skupiny &amp; Akce</span>
+        <span data-lang="en">Groups &amp; Events</span>
+      </h1>
+      <p class="text-base sm:text-lg text-muted max-w-xl mx-auto font-light leading-relaxed">
+        <span data-lang="cz">Oslavte své výjimečné okamžiky v elegantním prostředí. Nabízíme pronájem celé restaurace nebo privátního salonku.</span>
+        <span data-lang="en">Celebrate your special moments in an elegant setting. We offer private dining buyouts and custom group menus.</span>
+      </p>
+    </div>
+
+    <!-- Info columns -->
+    <div class="grid md:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left column: Capacity details -->
+      <div class="md:col-span-6 space-y-10 text-left">
+        <!-- Private dining -->
+        <div class="space-y-4">
+          <h3 class="font-mono text-xs tracking-widest text-[color:var(--color-accent)] uppercase">
+            <span data-lang="cz">Privátní Salonek</span>
+            <span data-lang="en">Private Dining Room</span>
+          </h3>
+          <p class="text-base font-serif italic text-ink">
+            <span data-lang="cz">Kapacita: 8 až 14 osob</span>
+            <span data-lang="en">Capacity: 8 to 14 guests</span>
+          </p>
+          <p class="text-sm font-light text-muted leading-relaxed">
+            <span data-lang="cz">Náš intimní salonek nabízí naprosté soukromí pro rodinné oslavy nebo diskrétní obchodní jednání. K dispozici je dedikovaný číšník a na míru sestavené degustační menu.</span>
+            <span data-lang="en">Our intimate private dining room offers complete discretion for family celebrations or corporate board dinners, featuring dedicated service and customized tasting menus.</span>
+          </p>
+        </div>
+
+        <!-- Exclusive Buyout -->
+        <div class="space-y-4">
+          <h3 class="font-mono text-xs tracking-widest text-[color:var(--color-accent)] uppercase">
+            <span data-lang="cz">Exkluzivní Pronájem</span>
+            <span data-lang="en">Exclusive Buyout</span>
+          </h3>
+          <p class="text-base font-serif italic text-ink">
+            <span data-lang="cz">Kapacita: až 40 sedících / 60 stojících hostů</span>
+            <span data-lang="en">Capacity: up to 40 seated / 60 standing guests</span>
+          </p>
+          <p class="text-sm font-light text-muted leading-relaxed">
+            <span data-lang="cz">Pro větší oslavy, firemní večírky nebo tiskové konference je k dispozici celá restaurace. Pomůžeme vám naplánovat kompletní průběh večera, včetně květinové výzdoby a hudebního doprovodu.</span>
+            <span data-lang="en">For larger gatherings, wedding receptions, or corporate galas, the entire venue is available for exclusive buyouts. We help you choreograph the evening including flower decor and musical accompaniment.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Right column: Inquiry Form -->
+      <div class="md:col-span-6">
+        <form class="bg-transparent p-6 sm:p-10 border border-[color:var(--color-border)] space-y-6" id="groups-form">
+          <h3 class="font-serif text-xl font-light text-ink text-left">
+            <span data-lang="cz">Poptávka akce</span>
+            <span data-lang="en">Event Inquiry</span>
+          </h3>
+
+          <div class="flex flex-col space-y-2 text-left">
+            <label for="event-name" class="font-mono text-[10px] tracking-wider uppercase text-muted">Name</label>
+            <input type="text" id="event-name" required placeholder="Jane Doe" class="groups-input" />
+          </div>
+
+          <div class="flex flex-col space-y-2 text-left">
+            <label for="event-email" class="font-mono text-[10px] tracking-wider uppercase text-muted">Email</label>
+            <input type="email" id="event-email" required placeholder="jane@example.com" class="groups-input" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col space-y-2 text-left">
+              <label for="event-date" class="font-mono text-[10px] tracking-wider uppercase text-muted">Date</label>
+              <input type="date" id="event-date" required class="groups-input" />
+            </div>
+            <div class="flex flex-col space-y-2 text-left">
+              <label for="event-guests" class="font-mono text-[10px] tracking-wider uppercase text-muted">Guests</label>
+              <input type="number" id="event-guests" required min="8" value="12" class="groups-input" />
+            </div>
+          </div>
+
+          <div class="flex flex-col space-y-2 text-left">
+            <label for="event-notes" class="font-mono text-[10px] tracking-wider uppercase text-muted">
+              <span data-lang="cz">Detaily o akci (vize, catering)</span>
+              <span data-lang="en">Event details &amp; vision</span>
+            </label>
+            <textarea id="event-notes" rows="4" placeholder="..." class="groups-input-area"></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-[color:var(--color-accent)] text-white font-mono text-xs uppercase tracking-widest py-4 transition-all duration-200 hover:brightness-110 active:scale-[0.98]">
+            <span data-lang="cz">Odeslat poptávku</span>
+            <span data-lang="en">Submit Inquiry</span>
+          </button>
+
+          <div id="groups-success-message" class="hidden border border-[color:var(--color-accent)] p-4 text-center">
+            <p class="font-serif italic text-ink text-sm">
+              <span data-lang="cz">Poptávka odeslána! Náš event manažer se vám ozve nejpozději do 24 hodin s nabídkou.</span>
+              <span data-lang="en">Inquiry submitted! Our event manager will contact you within 24 hours with a custom proposal.</span>
+            </p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</PageLayout>
+
+<script is:inline>
+  // Simple form submission handler
+  const gForm = document.getElementById('groups-form');
+  const gSuccessBox = document.getElementById('groups-success-message');
+  if (gForm && gSuccessBox) {
+    gForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      gSuccessBox.classList.remove('hidden');
+      gForm.querySelectorAll('div, button, label, input, textarea, select').forEach(el => {
+        if (el !== gSuccessBox && !gSuccessBox.contains(el)) {
+          el.classList.add('opacity-40');
+        }
+      });
+      gForm.querySelector('button[type="submit"]').disabled = true;
+    });
+  }
+</script>
+
+<style>
+  .groups-input {
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.25s ease;
+  }
+
+  .groups-input:focus {
+    border-color: var(--color-accent);
+  }
+
+  .groups-input-area {
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.25s ease;
+  }
+
+  .groups-input-area:focus {
+    border-color: var(--color-accent);
+  }
+</style>
