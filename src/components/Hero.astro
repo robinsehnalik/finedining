@@ -3,52 +3,68 @@ import { Image } from "astro:assets";
 import heroWagyu from "../assets/hero_wagyu.png";
 ---
 
-<section class="hero-section min-h-[90vh] flex items-center py-12 md:py-24 overflow-hidden">
-  <div class="content-shell w-full grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
-    
-    <!-- Left / Top Column: Typographic Content (md:col-span-7 to prevent photo overlap) -->
-    <div class="md:col-span-7 space-y-8 text-left z-10">
-      <!-- Hidden H1 for SEO compliance while maintaining clean design -->
-      <h1 class="sr-only">L'Alchimiste - Fine Dining Restaurant Prague</h1>
-      
-      <div class="hero-heading-container">
-        <p class="hero-heading text-7xl sm:text-8xl lg:text-9xl xl:text-[7.5rem] font-light text-ink leading-[0.95] tracking-tighter">
-          <span class="block">pure taste.</span>
-          <span class="block font-serif italic text-[color:var(--color-accent)]">unhurried.</span>
-        </p>
-      </div>
+<section class="hero-section min-h-screen flex items-center justify-center overflow-hidden relative">
+  <!-- Parallax Background Image -->
+  <Image 
+    src={heroWagyu} 
+    alt="L'Alchimiste dining atmosphere" 
+    class="parallax-image w-full h-[120%] object-cover absolute top-[-10%] z-0 select-none pointer-events-none"
+    loading="eager"
+  />
+  
+  <!-- Subtle dark overlay for premium visual balance and high contrast readability -->
+  <div class="absolute inset-0 bg-black/40 z-1 pointer-events-none"></div>
 
-      <!-- Chef's Quote Description (Enlarged) -->
-      <div class="hero-subtext-container">
-        <blockquote class="hero-subtext text-lg sm:text-xl lg:text-2xl font-light text-muted leading-relaxed font-serif italic max-w-lg">
-          <span data-lang="cz">
-            „Kulinářská alchymie inspirovaná klidem české krajiny a precizností francouzské kuchyně. Každý pokrm je příběh napsaný ranní sklizní.“
-          </span>
-          <span data-lang="en">
-            “Culinary alchemy inspired by the tranquility of the Bohemian countryside and French precision. Every dish is a story written by the morning harvest.”
-          </span>
-        </blockquote>
-        <cite class="hero-quote-author text-xs uppercase tracking-widest text-ink mt-4 block font-sans not-italic">
-          <span data-lang="cz">&mdash; šéfkuchař</span>
-          <span data-lang="en">&mdash; Chef de Cuisine</span>
-        </cite>
-      </div>
+  <!-- Centered Content Overlay -->
+  <div class="content-shell w-full flex flex-col items-center text-center space-y-10 md:space-y-12 relative z-10 text-white py-12 md:py-16">
+    
+    <!-- Branding Label -->
+    <span class="entry-index font-mono font-medium tracking-[0.25em] text-[#C5A880] text-xs block uppercase">L'Alchimiste</span>
+
+    <!-- Typographic Title -->
+    <div class="max-w-4xl mx-auto">
+      <h1 class="sr-only">L'Alchimiste - Fine Dining Restaurant Prague</h1>
+      <p class="hero-heading text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[8rem] font-light text-white leading-[0.95] tracking-tighter">
+        pure taste. <span class="font-serif italic text-[#C5A880] block sm:inline">unhurried.</span>
+      </p>
     </div>
 
-    <!-- Right / Bottom Column: Single Big 4K Image Wrapper (md:col-span-5 to prevent overlap) -->
-    <div class="hero-image-wrapper md:col-span-5 relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] overflow-hidden border border-[color:var(--color-border)] md:-ml-[calc(1.5*var(--grid-cell))] md:-mr-[calc(3*var(--grid-cell))]">
-      <Image 
-        src={heroWagyu} 
-        alt="L'Alchimiste tasting plate presentation" 
-        class="parallax-image w-full h-[120%] object-cover absolute top-[-10%]"
-        loading="eager"
-      />
+    <!-- Chef's Quote Description -->
+    <div class="max-w-2xl mx-auto space-y-4 pb-4">
+      <blockquote class="hero-subtext text-lg sm:text-xl lg:text-2xl font-light text-[#EAE4D9] leading-relaxed font-serif italic">
+        <span data-lang="cz">
+          „Kulinářská alchymie inspirovaná klidem české krajiny a precizností francouzské kuchyně. Každý pokrm je příběh napsaný ranní sklizní.“
+        </span>
+        <span data-lang="en">
+          “Culinary alchemy inspired by the tranquility of the Bohemian countryside and French precision. Every dish is a story written by the morning harvest.”
+        </span>
+      </blockquote>
+      <cite class="hero-quote-author text-xs uppercase tracking-widest text-[#EAE4D9]/80 block font-sans not-italic">
+        <span data-lang="cz">&mdash; šéfkuchař</span>
+        <span data-lang="en">&mdash; Chef de Cuisine</span>
+      </cite>
     </div>
 
   </div>
 </section>
 
+
 <style>
+  .hero-section {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    margin-top: calc(100px - var(--grid-cell)); /* Align section top exactly with bottom of header */
+    min-height: calc(100vh - 100px) !important;
+  }
+
+  @media (max-width: 720px) {
+    .hero-section {
+      margin-top: calc(100px - (var(--grid-cell) * 4)); /* Adjust for mobile main padding-top */
+    }
+  }
+
   /* CSS-Only Hardware-Accelerated Load-in Animations (SEO & Performance Friendly) */
   @keyframes fadeUp {
     from {
@@ -85,10 +101,9 @@ import heroWagyu from "../assets/hero_wagyu.png";
     animation: fadeUp 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s forwards;
   }
 
-  /* Image wrapper animation (separates load-in animation from parallax scroll) */
-  .hero-image-wrapper {
+  /* Parallax image load-in animation */
+  .parallax-image {
     opacity: 0;
-    transform: scale(1.05) translateY(30px);
     animation: imageEntry 1.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s forwards;
   }
 

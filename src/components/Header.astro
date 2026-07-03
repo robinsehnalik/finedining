@@ -16,20 +16,20 @@ const subpath = import.meta.env.BASE_URL;
       </a>
 
       <!-- Right side: Navigation & Language switch & Popover Trigger -->
-      <div class="flex items-center gap-6 md:gap-12">
+      <div class="flex items-center gap-4 md:gap-12">
         <nav class="hidden md:flex items-center gap-8 md:gap-10">
-          <a href="#menu" class="nav-link-prev">
+          <a href="/menu" class="nav-link-prev">
             <span data-lang="cz">menu ↗</span>
             <span data-lang="en">menu ↗</span>
           </a>
-          <a href="#reservations" class="nav-link-prev">
+          <a href="/reservation" class="nav-link-prev">
             <span data-lang="cz">rezervace ↗</span>
             <span data-lang="en">reservation ↗</span>
           </a>
         </nav>
 
         <!-- Language Switcher in Header -->
-        <div class="lang-switch-header">
+        <div class="lang-switch-header lang-switch-main">
           <button class="lang-btn" data-lang-target="en">en</button>
           <span class="lang-separator">/</span>
           <button class="lang-btn" data-lang-target="cz">cz</button>
@@ -57,13 +57,13 @@ const subpath = import.meta.env.BASE_URL;
         {site.title}
       </a>
 
-      <div class="flex items-center gap-6 md:gap-12">
+      <div class="flex items-center gap-4 md:gap-12">
         <nav class="hidden md:flex items-center gap-8 md:gap-10">
-          <a href="#menu" popovertarget="nav-menu" class="nav-link-prev">
+          <a href="/menu" class="nav-link-prev">
             <span data-lang="cz">menu ↗</span>
             <span data-lang="en">menu ↗</span>
           </a>
-          <a href="#reservations" popovertarget="nav-menu" class="nav-link-prev">
+          <a href="/reservation" class="nav-link-prev">
             <span data-lang="cz">rezervace ↗</span>
             <span data-lang="en">reservation ↗</span>
           </a>
@@ -101,39 +101,39 @@ const subpath = import.meta.env.BASE_URL;
 
       <!-- Right Column: Navigation Links -->
       <div class="md:col-span-6 md:col-start-7 flex flex-col gap-12 text-left">
-        <!-- Section 1: Menu -->
+        <!-- Section 1: Menu with 5 suboptions -->
         <div class="overlay-menu-section space-y-4">
-          <h3 class="overlay-section-header">
+          <a href="/menu" class="overlay-section-header-link">
             <span data-lang="cz">Menu</span>
             <span data-lang="en">Menu</span>
-          </h3>
+          </a>
           <ul class="overlay-submenu-list">
             <li>
-              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
-                <span data-lang="cz">Tasting menu</span>
+              <a href="/menu#tasting-menu" class="overlay-submenu-link">
+                <span data-lang="cz">Degustační menu</span>
                 <span data-lang="en">Tasting menu</span>
               </a>
             </li>
             <li>
-              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
-                <span data-lang="cz">Á la carte</span>
-                <span data-lang="en">Á la carte</span>
+              <a href="/menu#appetizers" class="overlay-submenu-link">
+                <span data-lang="cz">Předkrmy</span>
+                <span data-lang="en">Appetizers</span>
               </a>
             </li>
             <li>
-              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
-                <span data-lang="cz">Obědové menu</span>
-                <span data-lang="en">Lunch menu</span>
+              <a href="/menu#main-courses" class="overlay-submenu-link">
+                <span data-lang="cz">Hlavní chody</span>
+                <span data-lang="en">Main courses</span>
               </a>
             </li>
             <li>
-              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
-                <span data-lang="cz">Víkendový brunch</span>
-                <span data-lang="en">Weekend brunch</span>
+              <a href="/menu#desserts" class="overlay-submenu-link">
+                <span data-lang="cz">Dezerty</span>
+                <span data-lang="en">Desserts</span>
               </a>
             </li>
             <li>
-              <a href="#menu" popovertarget="nav-menu" class="overlay-submenu-link">
+              <a href="/menu#wine-list" class="overlay-submenu-link">
                 <span data-lang="cz">Vinný lístek</span>
                 <span data-lang="en">Wine list</span>
               </a>
@@ -141,27 +141,27 @@ const subpath = import.meta.env.BASE_URL;
           </ul>
         </div>
 
-        <!-- Section 2: Group Dining -->
+        <!-- Section 2: Reserve a Table -->
         <div class="overlay-menu-section">
-          <a href="#menu" popovertarget="nav-menu" class="overlay-section-header-link">
-            <span data-lang="cz">Skupinové akce</span>
-            <span data-lang="en">Group dining</span>
+          <a href="/reservation" class="overlay-section-header-link">
+            <span data-lang="cz">Rezervovat stůl</span>
+            <span data-lang="en">Reserve a table</span>
           </a>
         </div>
 
-        <!-- Section 3: About Us (Our Story) -->
+        <!-- Section 3: Groups -->
         <div class="overlay-menu-section">
-          <a href="#story" popovertarget="nav-menu" class="overlay-section-header-link">
-            <span data-lang="cz">O nás</span>
-            <span data-lang="en">Our story</span>
+          <a href="/groups" class="overlay-section-header-link">
+            <span data-lang="cz">Skupiny</span>
+            <span data-lang="en">Groups</span>
           </a>
         </div>
 
-        <!-- Section 4: Contact & Reservations -->
+        <!-- Section 4: Mentions (awards, news) -->
         <div class="overlay-menu-section">
-          <a href="#reservations" popovertarget="nav-menu" class="overlay-section-header-link">
-            <span data-lang="cz">Rezervace &amp; Kontakt</span>
-            <span data-lang="en">Reservation &amp; Contact</span>
+          <a href="/mentions" class="overlay-section-header-link">
+            <span data-lang="cz">Napsali o nás &amp; ocenění</span>
+            <span data-lang="en">Mentions &amp; awards</span>
           </a>
         </div>
 
@@ -179,11 +179,22 @@ const subpath = import.meta.env.BASE_URL;
           </div>
 
           <!-- Socials inside overlay -->
-          <div class="flex items-center gap-4 text-ink text-sm">
-            <a href="#" class="hover:opacity-75" aria-label="Facebook">FB</a>
-            <a href="#" class="hover:opacity-75" aria-label="Instagram">IG</a>
-            <a href="#" class="hover:opacity-75" aria-label="YouTube">YT</a>
-            <a href="#" class="hover:opacity-75" aria-label="Tripadvisor">TA</a>
+          <div class="flex items-center gap-5 text-ink">
+            <a href="#" class="hover:text-[color:var(--color-accent)] transition-colors duration-200" aria-label="Facebook">
+              <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.95z"/>
+              </svg>
+            </a>
+            <a href="#" class="hover:text-[color:var(--color-accent)] transition-colors duration-200" aria-label="Instagram">
+              <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
+            <a href="#" class="hover:text-[color:var(--color-accent)] transition-colors duration-200" aria-label="YouTube">
+              <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
@@ -250,7 +261,7 @@ const subpath = import.meta.env.BASE_URL;
   .brand-text-logo {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: 2.1rem;
+    font-size: 1.25rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-ink);
@@ -258,6 +269,12 @@ const subpath = import.meta.env.BASE_URL;
     display: inline-block;
     transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform-origin: left center;
+  }
+
+  @media (min-width: 768px) {
+    .brand-text-logo {
+      font-size: 2.1rem;
+    }
   }
 
   .brand-text-logo:hover {
@@ -293,6 +310,16 @@ const subpath = import.meta.env.BASE_URL;
     gap: 2px;
   }
 
+  .lang-switch-main {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .lang-switch-main {
+      display: flex;
+    }
+  }
+
   .lang-btn {
     background: none;
     border: none;
@@ -325,23 +352,27 @@ const subpath = import.meta.env.BASE_URL;
     margin: 0 4px;
   }
 
-  /* Hamburger & Close Boxes styling to match screen - with slight zoom */
+  /* Hamburger & Close Boxes styling without outlines */
   .hamburger-box, .close-box {
-    width: 48px;
+    width: 32px;
     height: 32px;
     background: none;
-    border: 1.5px solid var(--color-ink);
+    border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    transition: transform 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
   }
 
   .hamburger-box:hover, .close-box:hover {
-    transform: scale(1.08);
-    border-color: var(--color-accent);
+    transform: scale(1.12);
+  }
+
+  .hamburger-box:hover .line, .close-box:hover .cross-line {
+    background-color: var(--color-accent);
   }
 
   .hamburger-lines {
@@ -355,6 +386,7 @@ const subpath = import.meta.env.BASE_URL;
     height: 1.5px;
     width: 100%;
     background-color: var(--color-ink);
+    transition: background-color 0.25s ease;
   }
 
   .close-cross {
@@ -370,6 +402,7 @@ const subpath = import.meta.env.BASE_URL;
     height: 1.5px;
     width: 100%;
     background-color: var(--color-ink);
+    transition: background-color 0.25s ease;
   }
 
   .close-cross .line-1 {
@@ -383,6 +416,10 @@ const subpath = import.meta.env.BASE_URL;
   /* Full Screen Overlay Page overlay styling - VERY LOW TRANSPARENCY (OPAQUE) */
   .menu-overlay {
     display: none;
+  }
+
+  .menu-overlay:popover-open {
+    display: flex !important;
   }
 
   .menu-overlay-container {

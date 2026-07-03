@@ -21,6 +21,14 @@ const site = await getSite();
   <!-- Section 2: Awards & Magazine Mentions (Compact Icon Showcase - Moved above CTA) -->
   <section class="reveal-on-scroll py-6">
     <div class="content-shell max-w-5xl mx-auto">
+      <!-- Section Label -->
+      <div class="text-center mb-10">
+        <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-muted)] text-xs block uppercase">
+          <span data-lang="cz">ocenění &amp; doporučení</span>
+          <span data-lang="en">recognition &amp; awards</span>
+        </span>
+      </div>
+
       <!-- Icons grid -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center">
         
@@ -83,15 +91,12 @@ const site = await getSite();
 
   <!-- Section 3: Narrative Section ("Chef's Notebook" - Zigzag layout) -->
   <section id="story" class="pt-10 md:pt-14 pb-24 md:pb-36 space-y-48 relative bg-transparent">
-    <!-- Large color blobs — warm gold tones complementing white and beige -->
-    <div class="absolute pointer-events-none z-0" style="top: 0%; left: -15%; width: 75vw; height: 75vw; border-radius: 50%; background: rgba(197, 161, 128, 0.28); filter: blur(100px);"></div>
-    <div class="absolute pointer-events-none z-0" style="top: 55%; right: -20%; width: 65vw; height: 65vw; border-radius: 50%; background: rgba(210, 175, 140, 0.22); filter: blur(90px);"></div>
 
     <!-- Inner content wrapper -->
     <div class="relative z-10 space-y-48 w-full">
       <!-- Notebook Entry I: Terroir (Image Left, Text Right) -->
       <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-        <div class="story-img-wrap md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden">
+        <div class="story-img-wrap md:col-span-6 h-[35vh] md:h-[75vh] overflow-hidden">
           <Image 
             src={storySetting} 
             alt="L'Alchimiste minimal table setting" 
@@ -123,6 +128,13 @@ const site = await getSite();
 
       <!-- Notebook Entry II: Technique (Image Right, Text Left) -->
       <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
+        <div class="story-img-wrap md:col-span-6 md:order-last md:col-start-7 h-[35vh] md:h-[75vh] overflow-hidden">
+          <Image 
+            src={menuDessert} 
+            alt="Michelin-starred dessert presentation" 
+            class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+          />
+        </div>
         <div class="md:col-span-6 space-y-6 md:order-first">
           <span class="entry-index font-mono font-medium tracking-[0.25em] text-[color:var(--color-accent)] text-xs block">II. TECHNIQUE</span>
           <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-[1.1] text-ink font-serif">
@@ -144,18 +156,11 @@ const site = await getSite();
             </p>
           </div>
         </div>
-        <div class="story-img-wrap md:col-span-6 md:order-last md:col-start-7 h-[55vh] md:h-[75vh] overflow-hidden">
-          <Image 
-            src={menuDessert} 
-            alt="Michelin-starred dessert presentation" 
-            class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-          />
-        </div>
       </div>
 
       <!-- Notebook Entry III: Silence (Image Left, Text Right) -->
       <div class="narrative-row reveal-on-scroll grid md:grid-cols-12 gap-12 md:gap-20 items-center">
-        <div class="story-img-wrap md:col-span-6 h-[55vh] md:h-[75vh] overflow-hidden">
+        <div class="story-img-wrap md:col-span-6 h-[35vh] md:h-[75vh] overflow-hidden">
           <Image 
             src={diningRoomInterior} 
             alt="L'Alchimiste dining room interior widely spaced tables" 
@@ -244,7 +249,7 @@ const site = await getSite();
 
   /* Image soft fade blend into background */
   .story-img-wrap {
-    border-radius: 1.5rem;
+    border-radius: 0px;
   }
   /* BCorp showcase styling */
   .bcorp-badge-showcase {
