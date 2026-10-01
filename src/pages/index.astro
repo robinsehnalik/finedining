@@ -2,14 +2,13 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import { Image } from 'astro:assets';
 import { getSite } from '../utils/consts';
+import { withBase } from '../utils/slugify';
 import Hero from '../components/Hero.astro';
 
 import storySetting from '../assets/story_setting.png';
 import menuDessert from '../assets/menu_dessert.png';
 import diningRoomInterior from '../assets/dining_room_interior.png';
 import fireCookingDetail from '../assets/fire_cooking_detail.png';
-
-
 
 const site = await getSite();
 ---
@@ -34,22 +33,22 @@ const site = await getSite();
         
         <!-- Michelin Real PNG -->
         <div class="flex items-center justify-center">
-          <img src="/michelin-2025.png" alt="Michelin Guide 2025" class="h-12 md:h-15 w-auto object-contain mix-blend-multiply" />
+          <img src={withBase("/michelin-2025.png")} alt="Michelin Guide 2025" class="h-12 md:h-15 w-auto object-contain mix-blend-multiply" />
         </div>
         
         <!-- Tripadvisor Real PNG -->
         <div class="flex items-center justify-center">
-          <img src="/tripadvisor.png" alt="Tripadvisor Travellers' Choice" class="h-24 md:h-30 w-auto object-contain mix-blend-multiply" />
+          <img src={withBase("/tripadvisor.png")} alt="Tripadvisor Travellers' Choice" class="h-24 md:h-30 w-auto object-contain mix-blend-multiply" />
         </div>
 
         <!-- Gault&Millau Real PNG -->
         <div class="flex items-center justify-center">
-          <img src="/gam.png" alt="Gault & Millau" class="h-18 md:h-22 w-auto object-contain mix-blend-multiply" />
+          <img src={withBase("/gam.png")} alt="Gault & Millau" class="h-18 md:h-22 w-auto object-contain mix-blend-multiply" />
         </div>
 
         <!-- B-Corp Real PNG -->
         <div class="flex items-center justify-center">
-          <img src="/bcorp.png" alt="Certified B Corporation" class="h-24 md:h-30 w-auto object-contain mix-blend-multiply" />
+          <img src={withBase("/bcorp.png")} alt="Certified B Corporation" class="h-24 md:h-30 w-auto object-contain mix-blend-multiply" />
         </div>
 
       </div>
@@ -81,7 +80,7 @@ const site = await getSite();
         </p>
       </div>
       <div class="pt-4">
-        <a href="/menu#tasting-menu" class="tasting-menu-cta-link">
+        <a href={withBase("/menu#tasting-menu")} class="tasting-menu-cta-link">
           <span data-lang="cz">Tasting menu ↗</span>
           <span data-lang="en">Tasting menu ↗</span>
         </a>

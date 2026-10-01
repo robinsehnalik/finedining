@@ -1,4 +1,8 @@
-- id: client-1
-  quote: "This is a placeholder testimonial from a happy client. You can customize this text."
-  author: "Client Name"
-  role: "CEO, Company Name"
+- id: review-1
+  quote: "An extraordinary sensory experience where precision meets passion in every plate."
+  author: "Michelin Guide Inspector"
+  role: "Gastronomy Critic"
+- id: review-2
+  quote: "One of the most compelling tasting menus in Central Europe. The wine pairing is sheer perfection."
+  author: "Gault & Millau Review"
+  role: "Culinary Guide"

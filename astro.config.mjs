@@ -11,7 +11,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://finedining.example.com",
+  site: "https://robinsehnalik.github.io",
   base: "/",
   integrations: [mdx(), sitemap(), pagefind(), icon()],
 

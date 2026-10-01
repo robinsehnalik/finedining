@@ -1,5 +1,6 @@
 ---
 import { getSite } from "../utils/consts";
+import { withBase } from "../utils/slugify";
 import { Image } from "astro:assets";
 import menuDessert from "../assets/menu_dessert.png";
 
@@ -18,11 +19,11 @@ const subpath = import.meta.env.BASE_URL;
       <!-- Right side: Navigation & Language switch & Popover Trigger -->
       <div class="flex items-center gap-4 md:gap-12">
         <nav class="hidden md:flex items-center gap-8 md:gap-10">
-          <a href="/menu" class="nav-link-prev">
+          <a href={withBase("/menu")} class="nav-link-prev">
             <span data-lang="cz">menu ↗</span>
             <span data-lang="en">menu ↗</span>
           </a>
-          <a href="/reservation" class="nav-link-prev">
+          <a href={withBase("/reservation")} class="nav-link-prev">
             <span data-lang="cz">rezervace ↗</span>
             <span data-lang="en">reservation ↗</span>
           </a>
@@ -59,11 +60,11 @@ const subpath = import.meta.env.BASE_URL;
 
       <div class="flex items-center gap-4 md:gap-12">
         <nav class="hidden md:flex items-center gap-8 md:gap-10">
-          <a href="/menu" class="nav-link-prev">
+          <a href={withBase("/menu")} class="nav-link-prev">
             <span data-lang="cz">menu ↗</span>
             <span data-lang="en">menu ↗</span>
           </a>
-          <a href="/reservation" class="nav-link-prev">
+          <a href={withBase("/reservation")} class="nav-link-prev">
             <span data-lang="cz">rezervace ↗</span>
             <span data-lang="en">reservation ↗</span>
           </a>
@@ -103,37 +104,37 @@ const subpath = import.meta.env.BASE_URL;
       <div class="md:col-span-6 md:col-start-7 flex flex-col gap-12 text-left">
         <!-- Section 1: Menu with 5 suboptions -->
         <div class="overlay-menu-section space-y-4">
-          <a href="/menu" class="overlay-section-header-link">
+          <a href={withBase("/menu")} class="overlay-section-header-link">
             <span data-lang="cz">Menu</span>
             <span data-lang="en">Menu</span>
           </a>
           <ul class="overlay-submenu-list">
             <li>
-              <a href="/menu#tasting-menu" class="overlay-submenu-link">
+              <a href={withBase("/menu#tasting-menu")} class="overlay-submenu-link">
                 <span data-lang="cz">Degustační menu</span>
                 <span data-lang="en">Tasting menu</span>
               </a>
             </li>
             <li>
-              <a href="/menu#appetizers" class="overlay-submenu-link">
+              <a href={withBase("/menu#appetizers")} class="overlay-submenu-link">
                 <span data-lang="cz">Předkrmy</span>
                 <span data-lang="en">Appetizers</span>
               </a>
             </li>
             <li>
-              <a href="/menu#main-courses" class="overlay-submenu-link">
+              <a href={withBase("/menu#main-courses")} class="overlay-submenu-link">
                 <span data-lang="cz">Hlavní chody</span>
                 <span data-lang="en">Main courses</span>
               </a>
             </li>
             <li>
-              <a href="/menu#desserts" class="overlay-submenu-link">
+              <a href={withBase("/menu#desserts")} class="overlay-submenu-link">
                 <span data-lang="cz">Dezerty</span>
                 <span data-lang="en">Desserts</span>
               </a>
             </li>
             <li>
-              <a href="/menu#wine-list" class="overlay-submenu-link">
+              <a href={withBase("/menu#wine-list")} class="overlay-submenu-link">
                 <span data-lang="cz">Vinný lístek</span>
                 <span data-lang="en">Wine list</span>
               </a>
@@ -143,7 +144,7 @@ const subpath = import.meta.env.BASE_URL;
 
         <!-- Section 2: Reserve a Table -->
         <div class="overlay-menu-section">
-          <a href="/reservation" class="overlay-section-header-link">
+          <a href={withBase("/reservation")} class="overlay-section-header-link">
             <span data-lang="cz">Rezervovat stůl</span>
             <span data-lang="en">Reserve a table</span>
           </a>
@@ -151,7 +152,7 @@ const subpath = import.meta.env.BASE_URL;
 
         <!-- Section 3: Groups -->
         <div class="overlay-menu-section">
-          <a href="/groups" class="overlay-section-header-link">
+          <a href={withBase("/groups")} class="overlay-section-header-link">
             <span data-lang="cz">Skupiny</span>
             <span data-lang="en">Groups</span>
           </a>
@@ -159,7 +160,7 @@ const subpath = import.meta.env.BASE_URL;
 
         <!-- Section 4: Mentions (awards, news) -->
         <div class="overlay-menu-section">
-          <a href="/mentions" class="overlay-section-header-link">
+          <a href={withBase("/mentions")} class="overlay-section-header-link">
             <span data-lang="cz">Napsali o nás &amp; ocenění</span>
             <span data-lang="en">Mentions &amp; awards</span>
           </a>
@@ -203,7 +204,7 @@ const subpath = import.meta.env.BASE_URL;
 </div>
 
 <script is:inline>
-  const STORAGE_KEY = 'vzatisi_lang';
+  const STORAGE_KEY = 'lalchimiste_lang';
   const DEFAULT_LANG = 'en';
 
   const getPreferredLang = () => {

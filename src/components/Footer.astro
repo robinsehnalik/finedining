@@ -1,5 +1,6 @@
 ---
 import { getSite } from '../utils/consts';
+import { withBase } from '../utils/slugify';
 const site = await getSite();
 const today = new Date();
 ---
@@ -32,7 +33,7 @@ const today = new Date();
           </p>
         </div>
 
-        <a href="/reservation" class="footer-reserve-link">
+        <a href={withBase("/reservation")} class="footer-reserve-link">
           <span data-lang="cz">rezervace ↗</span>
           <span data-lang="en">reservation ↗</span>
         </a>
