@@ -1,7 +1,8 @@
 {
-  "name": "scaffold",
+  "name": "lalchimiste-fine-dining",
+  "description": "An upscale fine dining restaurant website template built with Astro 5 and Tailwind CSS v4.",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
